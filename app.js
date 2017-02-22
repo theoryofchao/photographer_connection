@@ -4,6 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
+const knex = require('knex')({
+ client: 'pg',
+ connection: {
+   host : 'localhost',
+   user : 'development',
+   password : 'development',
+   database : 'photographer_connection'
+ },
+ pool: { min: 0, max: 8 },
+ debug: true
+});
+
+if(knex) {
+  console.log("Connected");
+}
+else {
+  console.log("Connection Failed");
+}
 
 var index = require('./routes/index');
 var users = require('./routes/users');
