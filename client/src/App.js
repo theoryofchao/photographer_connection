@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Test from './Test.js';
+import Header from './Header.js';
+import UserProfile from './UserProfile.js';
 
 class App extends Component {
   render() {
@@ -15,7 +17,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         <Test />
         </p>
-
+        <Header />
+        <UserProfile />
       </div>
     );
   }
