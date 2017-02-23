@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-// import './App.css';
-import UserInfo from './UserInfo.js';
-import Gallery from './Gallery.js';
-
+import { Link } from 'react-router';
 
 class UserProfile extends Component {
   render() {
     return (
         <div style={{border: "solid 1px black", padding: "10px"}}>
           User Profile
-          <UserInfo />
-          <Gallery />
+          <ul>
+            <li><Link to="/user-info">User Information</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
+          </ul>
+          {this.props.children}
         </div>
     );
   }

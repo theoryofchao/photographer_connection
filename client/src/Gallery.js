@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
-import Album from './Album.js';
-import Photo from './Photo.js';
+import { Link } from 'react-router';
 
 
 class Gallery extends Component {
@@ -9,8 +7,11 @@ class Gallery extends Component {
     return (
         <div style={{border: "solid 1px black", padding: "10px"}}>
           Gallery
-          <Album />
-          <Photo />
+          <ul>
+            <li><Link to="/album">Album</Link></li>
+            <li><Link to="/photo">Photo</Link></li>
+          </ul>
+          {this.props.children}
         </div>
     );
   }
