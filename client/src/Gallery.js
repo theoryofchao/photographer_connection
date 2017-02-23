@@ -7,7 +7,7 @@ import Photo from './Photo.js';
 class Gallery extends Component {
   render() {
     return (
-        <div>
+        <div style={{border: "solid 1px black", padding: "10px"}}>
           Gallery
           <Album />
           <Photo />

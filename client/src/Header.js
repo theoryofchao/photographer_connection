@@ -7,7 +7,7 @@ import Search from './Search.js';
 class Header extends Component {
   render() {
     return (
-        <div>
+        <div style={{border: "solid 1px black", padding: "10px"}}>
           Header
           <Nav />
           <Search />

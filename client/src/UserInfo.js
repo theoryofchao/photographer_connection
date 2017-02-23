@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 class UserInfo extends Component {
   render() {
     return (
-        <div>
+        <div style={{border: "solid 1px black", padding: "10px"}}>
           User Info
         </div>
     );
