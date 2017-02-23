@@ -6,6 +6,7 @@
     "react-scripts": "0.9.0"
   },
   "dependencies": {
+    "node-sass": "^4.5.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
@@ -13,6 +14,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "./node_modules/.bin/node-sass ./src/scss/ -o ./src/",
+    "watch-css": "./node_modules/.bin/node-sass -w ./src/scss/ -o ./src/"
   }
 }
