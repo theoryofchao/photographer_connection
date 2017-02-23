@@ -18,6 +18,7 @@ const knex = require('knex')({
 
 if(knex) {
   console.log("Connected");
+
 }
 else {
   console.log("Connection Failed");
@@ -32,6 +33,8 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.set('knex', knex);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
