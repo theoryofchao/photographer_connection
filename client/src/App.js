@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import Test from './Test.js';
 import { Button } from 'react-bootstrap';
+import Header from './Header.js';
+import UserProfile from './UserProfile.js';
+
 
 const buttonsInstance = (
   <Button bsSize="large">Click me!</Button>
@@ -21,7 +24,8 @@ class App extends Component {
         <Test />
         {buttonsInstance}
         </p>
-
+        <Header />
+        <UserProfile />
       </div>
     );
   }
