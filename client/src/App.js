@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Test from './Test.js';
 import { Button } from 'react-bootstrap';
-import Header from './Header.js';
-import UserProfile from './UserProfile.js';
+import { Link } from 'react-router';
 
 
 const buttonsInstance = (
@@ -24,8 +23,11 @@ class App extends Component {
         <Test />
         {buttonsInstance}
         </p>
-        <Header />
-        <UserProfile />
+        <ul>
+          <li><Link to="/header">Header</Link></li>
+          <li><Link to="/user-profile">User Profile</Link></li>
+        </ul>
+        {this.props.children}
       </div>
     );
   }
