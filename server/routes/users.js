@@ -15,6 +15,7 @@ let getKnex = (req) => {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  //TODO:
   res.send('respond with a resource');
 });
 
