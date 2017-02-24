@@ -26,13 +26,20 @@ else {
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var json = require('./routes/json');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// cookie session setup
+app.use(cookieSession({
+  name: 'session',
+  secret: '5m4rt15t',   //TODO: hardcoded will be moved to settings.json later
+  maxAge: 60 * 60 * 1000,
+  httpOnly : false
+}));
 
 app.set('knex', knex);
 
@@ -46,7 +53,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/json', json);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
