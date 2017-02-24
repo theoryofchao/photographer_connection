@@ -11,6 +11,9 @@ import UserInfo from './UserInfo.js';
 import Gallery from './Gallery.js';
 import Album from './Album.js';
 import Photo from './Photo.js';
+import Logout from './Logout.js';
+import Login from './Login.js';
+import Register from './Register.js';
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -20,7 +23,11 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <Route path="/header" component={Header}>
-        <Route path="/nav" component={Nav}/>
+        <Route path="/nav" component={Nav}>
+          <Route path="/login" component={Login}/>
+          <Route path="/logout" component={Logout}/>
+          <Route path="/register" component={Register}/>
+        </Route>
         <Route path="/search" component={Search}/>
       </Route>
       <Route path="/user-profile" component={UserProfile}>

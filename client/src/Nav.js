@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
+import { Link } from 'react-router';
 
 
 class Nav extends Component {
@@ -7,7 +7,12 @@ class Nav extends Component {
     return (
         <div style={{border: "solid 1px black", padding: "10px"}}>
           Nav
+           <Link to="/logout">Logout</Link>
+           <Link to="/login">Login</Link>
+           <Link to="/register">Register</Link>
+          {this.props.children}
         </div>
+
     );
   }
 }
