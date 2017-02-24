@@ -5,7 +5,7 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import App from './App';
 // import Header from './Header.js';
 import UserProfile from './UserProfile.js';
-import Gallery from './Gallery.js';
+import Album from './Album.js';
 import Logout from './Logout.js';
 import Login from './Login.js';
 import Register from './Register.js';
@@ -25,8 +25,9 @@ ReactDOM.render((
       <Route path="register" component={Register} />
       <Route path="user-profile" component={UserProfile}>
         <IndexRoute component={UserPhotoBin} />
-        <Route path="gallery" component={Gallery} />
+        <Route path="album" component={Album} />
       </Route>
+          // <Route path="/albums/:album" component={Album} />
     </Route>
   </Router>
   ), document.getElementById('root')
