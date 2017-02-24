@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import './App.css';
-import { Link } from 'react-router';
+import Nav from './Nav.js'
+import Search from './Search.js'
+
 
 
 class Header extends Component {
@@ -8,11 +10,9 @@ class Header extends Component {
     return (
         <div style={{border: "solid 1px black", padding: "10px"}}>
           Header
-          <ul>
-            <li><Link to="/nav">Navigation</Link></li>
-            <li><Link to="/search">Search</Link></li>
-          </ul>
-          {this.props.children}
+            <Nav />
+            <br />
+            <Search />
         </div>
     );
   }
