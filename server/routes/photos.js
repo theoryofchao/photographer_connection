@@ -89,4 +89,34 @@ router.put('/edit', (req, res, next) => {
   });
 });
 
+/* Delete Photo */
+router.delete('/delete', (req, res, next) => {
+  authenticationCheck(req, res);
+  const knex = getKnex(req);
+
+  //TODO: modify photo to input to file location
+  //upload photo to somewhere
+
+  let user_id = req.session.user_id;
+  let photo_id = req.body.photo_id;
+  let currentTime = new Date();
+
+  let result = knex(`photos`)
+  .where({
+    photo_id: photo_id,
+  })
+  .update({
+    status: -1,
+    updated_at: currentTime
+  })
+  .then( (result) => {
+    console.log(result);
+    return res.status(200).json({'message' : 'Photo Deleted.'});
+  })
+  .catch( (error) => {
+    console.error(error);
+    return res.status(400).json({'message' : 'Photo Deletion Failed.'});
+  });
+});
+
 module.exports = router;
