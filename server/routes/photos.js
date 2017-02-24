@@ -97,6 +97,8 @@ router.delete('/delete', (req, res, next) => {
   //TODO: modify photo to input to file location
   //upload photo to somewhere
 
+
+  //TODO: check if photo belongs to that user
   let user_id = req.session.user_id;
   let photo_id = req.body.photo_id;
   let currentTime = new Date();
@@ -118,5 +120,30 @@ router.delete('/delete', (req, res, next) => {
     return res.status(400).json({'message' : 'Photo Deletion Failed.'});
   });
 });
+
+/* Get all photos from a user */
+router.get('/user/:user_id', (req, res, next) => {
+  let user_id = req.params.user_id;
+  const knex = getKnex(req);
+
+  knex
+  .select(`*`)
+  .from(`albums`)
+  .innerJoin(`photos`, `albums.album_id`, `photos.album_id`)
+  .where({
+    user_id: user_id
+  })
+  .timeout(1000)
+  .then( (result) => {
+    console.log(result);
+    return res.status(200).json(result);
+  })
+  .catch( (error) => {
+    console.error(error);
+    return res.status(400).json({'message' : 'User photo Retrival Failed'});
+  });
+
+  
+})
 
 module.exports = router;
