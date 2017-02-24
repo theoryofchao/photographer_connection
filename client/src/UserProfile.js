@@ -8,7 +8,10 @@ class UserProfile extends Component {
         <div style={{border: "solid 1px black", padding: "10px"}}>
           User Profile
           <UserInfo /><br />
-          <Gallery /><br />
+          <Gallery>
+            {this.props.children}
+          </Gallery>
+          <br />
         </div>
     );
   }
