@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
+
 
 var borderStyles = {
   border: "solid 1px black",
@@ -23,10 +23,15 @@ class Register extends Component {
             Confirm Password:
               <input type="password" name="password-confirm"/>
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" onClick={this.context.onRegistrationSubmit}/>
+
         </div>
     );
   }
+}
+
+Register.contextTypes = {
+  onRegistrationSubmit: React.PropTypes.func
 }
 
 export default Register;

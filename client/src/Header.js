@@ -13,7 +13,7 @@ class Header extends Component {
     return (
         <div style={borderStyles}>
           Header
-            <Nav />
+            <Nav onReg={this.props.onReg} />
             <br />
             <Search />
         </div>
