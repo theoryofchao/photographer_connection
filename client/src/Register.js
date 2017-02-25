@@ -7,25 +7,36 @@ var borderStyles = {
 }
 
 class Register extends Component {
+
+  handleEmailChange = (e) => {
+    this.setState({registration: {email: e.target.value}})
+  }
+
+  handlePasswordChange = (e) => {
+    this.setState({registration: {password: e.target.value}})
+  }
+
+  handlePasswordConfirmationChange = (e) => {
+    this.setState({registration: {passwordConfirmation: e.target.value}})
+  }
+
+  onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.registration)
+  }
+//
   render() {
     return (
-        <div style={borderStyles}>
+        <form style={borderStyles} onSubmit={this.onFormSubmit.bind(this)}>
           Register
-            <label>
-             E-mail:
-              <input type="email" name="email" />
-            </label>
-            <label>
-             Password:
-              <input type="password" name="password" />
-            </label>
-            <label>
-            Confirm Password:
-              <input type="password" name="password-confirm"/>
-            </label>
-            <input type="submit" value="Submit" onClick={this.context.onRegistrationSubmit}/>
-
-        </div>
+            <label>E-mail:</label>
+              <input type="email" name="email" placeholder="Enter your email..." onChange={this.handleEmailChange}/>
+            <label>Password:</label>
+              <input type="password" name="password" placeholder="Enter your password..." onChange={this.handlePasswordChange}/>
+            <label>Confirm Password:</label>
+              <input type="password" name="password-confirm" placeholder="Re-enter your password..." onChange={this.handlePasswordConfirmationChange} />
+            <input type="submit" value="Submit" />
+        </form>
     );
   }
 }
@@ -35,3 +46,24 @@ Register.contextTypes = {
 }
 
 export default Register;
+
+
+// <input type="submit" value="Submit" onClick={this.context.onRegistrationSubmit}/>
+
+// handleEmailChange = (e) => {
+//     const registration = this.state.registration;
+//     registration.email = e.target.value;
+//     this.setState({registration: {registration}})
+//   }
+
+//   handlePasswordChange = (e) => {
+//     const registration = this.state.registration;
+//     registration.password = e.target.value;
+//     this.setState({registration: {registration}})
+//   }
+
+//   handlePasswordConfirmationChange = (e) => {
+//     const registration = this.state.registration;
+//     registration.passwordConfirmation = e.target.value;
+//     this.setState({registration: {registration}})
+//   }

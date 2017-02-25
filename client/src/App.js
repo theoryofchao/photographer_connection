@@ -3,7 +3,9 @@ import Header from './Header.js'
 import 'whatwg-fetch'
 
 const initialState = {
-  currentUser: {}
+  currentUser: {},
+  registration: {email: '', password: '', passwordConfirmation: ''},
+  login: {}
 }
 
 class App extends Component {
@@ -24,7 +26,7 @@ onRegistrationSubmit = (content) => {
   render() {
     return (
       <div>
-        <Header onReg={this.onRegistrationSubmit} />
+        <Header/>
         <br />
         {this.props.children}
       </div>
