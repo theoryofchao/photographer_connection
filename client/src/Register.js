@@ -24,9 +24,6 @@ class Register extends Component {
               <input type="password" name="password-confirm"/>
             </label>
             <input type="submit" value="Submit" />
-
-
-
         </div>
     );
   }
