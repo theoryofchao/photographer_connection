@@ -13,6 +13,12 @@ let getKnex = (req) => {
   return req.app.get('knex');
 };
 
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   //TODO:
@@ -23,7 +29,7 @@ router.get('/', function(req, res, next) {
 router.post('/register', (req, res, next) => {
   loggedInCheck(req, res);
   const knex = getKnex(req);
-  
+
   let email = req.body.email;
   let password = req.body.password;
   let password_confirmation = req.body.password_confirmation;
@@ -33,11 +39,11 @@ router.post('/register', (req, res, next) => {
   }
 
   password = bcrypt.hashSync(password, 10); //TODO: change later?
-  
+
   let currentTime = new Date();
 
   let result = knex(`users`)
-  .insert({ 
+  .insert({
     email: email,
     password: password,
     created_at: currentTime,
