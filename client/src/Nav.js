@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+var borderStyles = {
+  border: "solid 1px black",
+  padding: "10px"
+}
+
 class Nav extends Component {
   render() {
     return (
-        <div style={{border: "solid 1px black", padding: "10px"}}>
+        <div style={borderStyles}>
           Nav
           <br />
           <Link to="/">Home</Link><br />
