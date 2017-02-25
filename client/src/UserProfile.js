@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-// import './App.css';
-import UserInfo from './UserInfo.js';
-import Gallery from './Gallery.js';
+import UserInfo from './UserInfo.js'
+import Gallery from './Gallery.js'
 
+var borderStyles = {
+  border: "solid 1px black",
+  padding: "10px"
+}
 
 class UserProfile extends Component {
   render() {
     return (
-        <div style={{border: "solid 1px black", padding: "10px"}}>
+        <div style={borderStyles}>
           User Profile
-          <UserInfo />
-          <Gallery />
+          <UserInfo /><br />
+          <Gallery>
+            {this.props.children}
+          </Gallery>
+          <br />
         </div>
     );
   }

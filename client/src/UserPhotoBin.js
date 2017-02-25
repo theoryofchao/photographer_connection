@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-// import './App.css';
 
 var borderStyles = {
   border: "solid 1px black",
   padding: "10px"
 }
 
-class UserInfo extends Component {
+class UserPhotoBin extends Component {
   render() {
     return (
         <div style={borderStyles}>
-          User Info
+          User Photo Bin
         </div>
     );
   }
 }
 
-export default UserInfo;
+export default UserPhotoBin;

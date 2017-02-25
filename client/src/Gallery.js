@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
-// import './App.css';
-import Album from './Album.js';
-import Photo from './Photo.js';
+import React from 'react';
+import { Link } from 'react-router';
 
-
-class Gallery extends Component {
-  render() {
-    return (
-        <div style={{border: "solid 1px black", padding: "10px"}}>
-          Gallery
-          <Album />
-          <Photo />
-        </div>
-    );
-  }
+var borderStyles = {
+  border: "solid 1px black",
+  padding: "10px"
 }
+
+const Gallery = ({ children }) => (
+  <div style={borderStyles}>
+    Gallery<br />
+    <Link to="user-profile/album">Album</Link><br />
+    {children}
+  </div>
+);
 
 export default Gallery;
