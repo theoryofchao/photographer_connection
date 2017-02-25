@@ -8,21 +8,24 @@ var borderStyles = {
 
 class Register extends Component {
 
-  handleEmailChange = (e) => {
-    this.setState({registration: {email: e.target.value}})
-  }
+  handleChange = (e) => {
+    let key;
+    if (e.target.name === 'email') {
+      key = 'email';
+    } else if (e.target.name === 'password') {
+      key = 'password';
+    } else {
+      key = 'passwordConfirmation'
+    }
 
-  handlePasswordChange = (e) => {
-    this.setState({registration: {password: e.target.value}})
-  }
-
-  handlePasswordConfirmationChange = (e) => {
-    this.setState({registration: {passwordConfirmation: e.target.value}})
+    const registration = this.props.registration;
+    registration[key] = e.target.value;
+    this.setState({registration: {registration}})
   }
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.registration)
+    this.props.onRegistrationSubmit(this.props.registration);
   }
 //
   render() {
@@ -30,40 +33,15 @@ class Register extends Component {
         <form style={borderStyles} onSubmit={this.onFormSubmit.bind(this)}>
           Register
             <label>E-mail:</label>
-              <input type="email" name="email" placeholder="Enter your email..." onChange={this.handleEmailChange}/>
+              <input type="email" name="email" placeholder="Enter your email..." onChange={this.handleChange}/>
             <label>Password:</label>
-              <input type="password" name="password" placeholder="Enter your password..." onChange={this.handlePasswordChange}/>
+              <input type="password" name="password" placeholder="Enter your password..." onChange={this.handleChange}/>
             <label>Confirm Password:</label>
-              <input type="password" name="password-confirm" placeholder="Re-enter your password..." onChange={this.handlePasswordConfirmationChange} />
+              <input type="password" name="password-confirm" placeholder="Re-enter your password..." onChange={this.handleChange} />
             <input type="submit" value="Submit" />
         </form>
     );
   }
 }
 
-Register.contextTypes = {
-  onRegistrationSubmit: React.PropTypes.func
-}
-
 export default Register;
-
-
-// <input type="submit" value="Submit" onClick={this.context.onRegistrationSubmit}/>
-
-// handleEmailChange = (e) => {
-//     const registration = this.state.registration;
-//     registration.email = e.target.value;
-//     this.setState({registration: {registration}})
-//   }
-
-//   handlePasswordChange = (e) => {
-//     const registration = this.state.registration;
-//     registration.password = e.target.value;
-//     this.setState({registration: {registration}})
-//   }
-
-//   handlePasswordConfirmationChange = (e) => {
-//     const registration = this.state.registration;
-//     registration.passwordConfirmation = e.target.value;
-//     this.setState({registration: {registration}})
-//   }

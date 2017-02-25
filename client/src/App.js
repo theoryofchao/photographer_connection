@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import Header from './Header.js'
 import 'whatwg-fetch'
 
 const initialState = {
   currentUser: {},
   registration: {email: '', password: '', passwordConfirmation: ''},
-  login: {}
+  login: {email: '', password: ''}
 }
 
 class App extends Component {
@@ -14,27 +14,39 @@ class App extends Component {
    this.state = initialState;
   }
 
-getChildContext () {
-  return {
-    onRegistrationSubmit: this.onRegistrationSubmit
-  }
-}
-
-onRegistrationSubmit = (content) => {
-  alert("Test!");
+onRegistrationSubmit = (regInfo) => {
+  console.log(regInfo);
+  fetch('http://localhost:8080/users/register', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: regInfo.email,
+      password: regInfo.password,
+      password_confirmation: regInfo.passwordConfirmation
+    })
+  })
+  .then((response) => {
+    console.log(response);
+  })
 }
   render() {
     return (
       <div>
-        <Header/>
+        <Header />
         <br />
-        {this.props.children}
+        {Children.map(this.props.children, child =>
+          cloneElement(child, {
+            ...this.props,
+            ...this.state,
+            onRegistrationSubmit: this.onRegistrationSubmit,
+          })
+        )}
       </div>
     );
   }
 }
 
-App.childContextTypes = {
-  onRegistrationSubmit: React.PropTypes.func
-};
 export default App;
