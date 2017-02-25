@@ -110,4 +110,27 @@ router.delete('/delete', (req, res, next) => {
   });
 });
 
+/* Get all Albums by a User */
+router.get('/user/:user_id', (req, res, next) => {
+  let user_id = req.params.user_id;
+  const knex = getKnex(req);
+
+  knex
+  .select(`*`)
+  .from(`albums`)
+  .where({
+    user_id: user_id
+  })
+  .timeout(1000)
+  .then( (result) => {
+    console.log(result);
+    return res.status(200).json(result);
+  })
+  .catch( (error) => {
+    console.error(error);
+    return res.status(400).json({'message' : 'User Album Retrival Failed'});
+  });  
+})
+
+
 module.exports = router;
