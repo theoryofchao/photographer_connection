@@ -20,12 +20,7 @@ class App extends Component {
    this.state = initialState;
   }
 
-
-
-
-
   handleRegistrationChange = (e) => {
-    console.log('handleRegistrationChange', e, e.target.name);
     let newRegistrationData = Object.assign({}, this.state.registration);
     if (e.target.name === 'email') {
       newRegistrationData.email = e.target.value;
@@ -77,6 +72,53 @@ class App extends Component {
     });
   }
 
+  handleLoginChange = (e) => {
+    let newLoginData = Object.assign({}, this.state.login);
+    if (e.target.name === 'email') {
+      newLoginData.email = e.target.value;
+    } else {
+      newLoginData.password = e.target.value
+    }
+
+    this.setState({login: newLoginData})
+  }
+
+  onLoginSubmit = (loginInfo) => {
+    fetch('http://localhost:8080/users/login', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.token,
+        email: loginInfo.email,
+        password: loginInfo.password
+      })
+    })
+    .then((response) => {
+
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then( (json) => {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          }
+          else {
+            console.log(json.message);
+            if (json.token) {
+              localStorage.token = json.token;
+            }
+          }
+        })
+
+      }
+    })
+    .catch( (error) => {
+      console.error(error);
+    });
+  }
+
   handlePhotoUpload = (file) => {
     this.setState({uploadedFile: file})
   }
@@ -98,44 +140,6 @@ class App extends Component {
     });
   }
 
-
-onLoginSubmit = (loginInfo) => {
-  fetch('http://localhost:8080/users/login', {
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      token: localStorage.token,
-      email: loginInfo.email,
-      password: loginInfo.password
-    })
-  })
-  .then((response) => {
-
-    var contentType = response.headers.get("content-type");
-    if(contentType && contentType.indexOf("application/json") !== -1) {
-      return response.json().then( (json) => {
-        if (response.status !== 200) {
-          console.log(json.message); //if error occured
-        }
-        else {
-          console.log(json.message);
-          if (json.token) {
-            console.log('test');
-            localStorage.token = json.token;
-          }
-        }
-      })
-
-    }
-  })
-  .catch( (error) => {
-    console.error(error);
-  });
-}
-
   render() {
     return (
       <div>
@@ -148,6 +152,7 @@ onLoginSubmit = (loginInfo) => {
             onRegistrationSubmit: this.onRegistrationSubmit,
             onLoginSubmit: this.onLoginSubmit,
             handleRegistrationChange: this.handleRegistrationChange,
+            handleLoginChange: this.handleLoginChange,
             handlePhotoUpload: this.handlePhotoUpload.bind(this),
             handleImageUpload: this.handleImageUpload.bind(this)
             })

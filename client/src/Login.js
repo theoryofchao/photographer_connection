@@ -8,19 +8,6 @@ var borderStyles = {
 
 class Login extends Component {
 
-  handleChange = (e) => {
-    let key;
-    if (e.target.name === 'email') {
-      key = 'email';
-    } else {
-      key = 'password';
-    }
-
-    const login = this.props.login;
-    login[key] = e.target.value;
-    this.setState({login: {login}})
-  }
-
   onFormSubmit = (e) => {
     e.preventDefault();
     this.props.onLoginSubmit(this.props.login);
@@ -32,11 +19,11 @@ class Login extends Component {
           Login
             <label>
              E-mail:
-              <input type="email" name="email" onChange={this.handleChange}/>
+              <input type="email" name="email" onChange={this.props.handleLoginChange}/>
             </label>
             <label>
              Password:
-              <input type="password" name="password" onChange={this.handleChange}/>
+              <input type="password" name="password" onChange={this.props.handleLoginChange}/>
             </label>
             <input type="submit" value="Submit" />
         </form>
