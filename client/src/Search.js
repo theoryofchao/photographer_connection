@@ -9,7 +9,7 @@ var borderStyles = {
 }
 
 var spacing = {
-  padding: "25px",
+  padding: "25px"
 }
 
 class Search extends Component {
