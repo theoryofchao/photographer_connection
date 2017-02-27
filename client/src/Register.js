@@ -8,20 +8,6 @@ var borderStyles = {
 
 class Register extends Component {
 
-  handleChange = (e) => {
-    let key;
-    if (e.target.name === 'email') {
-      key = 'email';
-    } else if (e.target.name === 'password') {
-      key = 'password';
-    } else {
-      key = 'passwordConfirmation'
-    }
-    const registration = this.props.registration;
-    registration[key] = e.target.value;
-    this.setState({registration: {registration}})
-  }
-
   onFormSubmit = (e) => {
     e.preventDefault();
     this.props.onRegistrationSubmit(this.props.registration);
@@ -32,11 +18,11 @@ class Register extends Component {
         <form style={borderStyles} onSubmit={this.onFormSubmit.bind(this)}>
           Register
             <label>E-mail:</label>
-              <input type="email" name="email" placeholder="Enter your email..." onChange={this.handleChange}/>
+              <input type="email" name="email" value={this.props.registration.email} placeholder="Enter your email..." onChange={this.props.handleRegistrationChange}/>
             <label>Password:</label>
-              <input type="password" name="password" placeholder="Enter your password..." onChange={this.handleChange}/>
+              <input type="password" name="password" value={this.props.registration.password} placeholder="Enter your password..." onChange={this.props.handleRegistrationChange}/>
             <label>Confirm Password:</label>
-              <input type="password" name="password-confirm" placeholder="Re-enter your password..." onChange={this.handleChange} />
+              <input type="password" name="password-confirm" value={this.props.registration.passwordConfirmation} placeholder="Re-enter your password..." onChange={this.props.handleRegistrationChange} />
             <input type="submit" value="Submit" />
         </form>
     );
