@@ -5,7 +5,9 @@ import 'whatwg-fetch'
 const initialState = {
   currentUser: {},
   registration: {email: '', password: '', passwordConfirmation: ''},
-  login: {email: '', password: ''}
+  login: {email: '', password: ''},
+  uploadedFile: null,
+  uploadedFileCloudinaryUrl: ''
 }
 
 class App extends Component {
