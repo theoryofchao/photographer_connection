@@ -6,6 +6,13 @@ var borderStyles = {
   padding: "10px"
 }
 
+var size = {
+  height: "350px",
+  width: "350px",
+  padding: "25px",
+  border: "solid 4px yellow"
+}
+
 var images = {
   fish: "http://i.imgur.com/nemjxlN.jpg",
   octopus: "http://i.imgur.com/2f0XvJC.jpg",
@@ -17,9 +24,9 @@ class FillerPhoto extends Component {
     return (
         <div style={borderStyles}>
           FillerPhoto
-          <img src={images.fish} alt="1"/>
-          <img src={images.octopus} alt="2"/>
-          <img src={images.turtle} alt="3"/>
+          <img style={size} src={images.fish} alt="1"/>
+          <img style={size} src={images.octopus} alt="2"/>
+          <img style={size} src={images.turtle} alt="3" />
         </div>
     );
   }

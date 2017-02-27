@@ -17,7 +17,6 @@ class Register extends Component {
     } else {
       key = 'passwordConfirmation'
     }
-
     const registration = this.props.registration;
     registration[key] = e.target.value;
     this.setState({registration: {registration}})
@@ -27,7 +26,7 @@ class Register extends Component {
     e.preventDefault();
     this.props.onRegistrationSubmit(this.props.registration);
   }
-//
+
   render() {
     return (
         <form style={borderStyles} onSubmit={this.onFormSubmit.bind(this)}>

@@ -8,6 +8,10 @@ var borderStyles = {
   padding: "10px"
 }
 
+var spacing = {
+  padding: "25px",
+}
+
 class Search extends Component {
   render() {
     return (
@@ -17,32 +21,23 @@ class Search extends Component {
             <div className="row">
               <div className="col-sm-12">
                 <form>
-                  <div className="checkbox">
-                    <label>
+                    <label style={spacing}>
                       <input type="checkbox" value="all" />
                       All
                     </label>
-                  </div>
-                  <div className="checkbox">
-                    <label>
+                    <label style={spacing}>
                       <input type="checkbox" value="toronto" />
                       Toronto
                     </label>
-                  </div>
-                  <div className="checkbox">
-                    <label>
+                    <label style={spacing}>
                       <input type="checkbox" value="montreal" />
                       Montreal
                     </label>
-                  </div>
-                  <div className="checkbox">
-                    <label>
+                    <label style={spacing}>
                       <input type="checkbox" value="vancouver" />
                       Vancouver
                     </label>
-                  </div>
                 </form>
-
               </div>
             </div>
          </div>

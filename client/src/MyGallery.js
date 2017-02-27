@@ -16,7 +16,7 @@ class MyGallery extends Component {
       uploadedFile: files[0]
     })
     console.log("STATE",this.state);
-    console.log("FILE", files[0])
+    console.log("FILE", files[0]);
     this.handleImageUpload(files[0]);
   }
 
