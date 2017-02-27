@@ -24,7 +24,6 @@ router.post('/register', (req, res, next) => {
   let token = req.body.token;
 
   const jwt = getJwt(req);
-  
 
   //If there is already a token
   if(token) {
@@ -38,16 +37,18 @@ router.post('/register', (req, res, next) => {
         console.log(decoded.user_id);
         return res.status(400).json({ success: false, message: 'Already logged in.' })
       }
-    })  
+    })
   }
-  //If no token available
+
+  // //If no token available
   else {
     if (password != password_confirmation) {
-      return res.status(400).json({'message' : 'Passwords do not match.'})
+      return res.status(400).json({'message' : 'Passwords do not match.'});
     }
     password = bcrypt.hashSync(password, 10); //TODO: change salt later to env
     let currentTime = new Date();
     const knex = getKnex(req);
+
     let result = knex(`users`)
     .insert({
       email: email,
@@ -73,12 +74,12 @@ router.post('/register', (req, res, next) => {
         return res.status(400).json({
           'success' : false,
           'message' : 'Email Already Used.'
-        });  
+        });
       }
       else {
         return res.status(400).json({'message' : 'Registration Failure.'});
       }
-      
+
     });
   }
 });
@@ -103,7 +104,7 @@ router.post('/login', (req, res, next) => {
         console.log(decoded.user_id);
         return res.status(400).json({ success: false, message: 'Already logged in.' })
       }
-    })  
+    })
   }
 
   //If no token available
@@ -119,22 +120,22 @@ router.post('/login', (req, res, next) => {
     .then( (result) => {
       bcrypt.compare(password, result[0].password, (err, response) => {
         if(err) {
-          return res.status(400).json({ success: false, message: 'Error occurred during password comparison.' });          
+          return res.status(400).json({ success: false, message: 'Error occurred during password comparison.' });
         }
         else {
           if(response){
             let token = jwt.sign({user_id: result[0].user_id}, process.env.JWTSECRET, {
               expiresIn : '6h'  //300 seconds
             });
-            return res.status(200).json({ 
-              success: true, 
-              message: 'Login Successful.', 
+            return res.status(200).json({
+              success: true,
+              message: 'Login Successful.',
               token: token
             });
           }
           return res.status(400).json({ success: false, message: 'Incorrect password.' });
         }
-        
+
       });
     })
     .catch((error) => {

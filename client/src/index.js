@@ -7,6 +7,7 @@ import Album from './Album.js';
 import Logout from './Logout.js';
 import Login from './Login.js';
 import Register from './Register.js';
+import MyProfile from './MyProfile.js';
 import UserPhotoBin from './UserPhotoBin.js';
 import FillerPhotoBin from './FillerPhotoBin.js';
 import './index.css';
@@ -19,6 +20,8 @@ ReactDOM.render((
       <Route path="login" component={Login} />
       <Route path="logout" component={Logout} />
       <Route path="register" component={Register} />
+      <Route path="my-profile" component={MyProfile} />
+
       <Route path="user-profile" component={UserProfile}>
         <IndexRoute component={UserPhotoBin} />
         <Route path="album" component={Album} />
