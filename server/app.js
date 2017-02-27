@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -15,6 +16,7 @@ const knex = require('knex')({
  pool: { min: 0, max: 8 },
  debug: true
 });
+const jwt = require('jsonwebtoken');
 
 if(knex) {
   console.log("Connected");
@@ -42,8 +44,10 @@ app.use(cookieSession({
   maxAge: 60 * 60 * 1000,
   httpOnly : false
 }));
-
+//console.log(process.env.JWTSECRET);
+//app.set(`superSecret`, pro)
 app.set('knex', knex);
+app.set('jwt', jwt);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -52,6 +56,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieSession());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);
