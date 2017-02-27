@@ -15,7 +15,8 @@ class Nav extends Component {
           <Link to="/">Home</Link><br />
           <Link to="/logout">Logout</Link><br />
           <Link to="/login">Login</Link><br />
-          <Link to="/register">Register</Link>
+          <Link to="/register">Register</Link> <br />
+          <Link to="/my-profile">My Profile</Link>
           {this.props.children}
         </div>
     );
