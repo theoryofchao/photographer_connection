@@ -1,6 +1,10 @@
 import React, { Component, Children, cloneElement } from 'react';
 import Header from './Header.js'
 import 'whatwg-fetch'
+import request from 'superagent';
+
+const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
 
 const initialState = {
   currentUser: {},
@@ -49,6 +53,27 @@ class App extends Component {
     })
   }
 
+  handlePhotoUpload = (file) => {
+    this.setState({uploadedFile: file})
+  }
+
+  handleImageUpload(file) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                        .field('file', file);
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+      if (response.body.secure_url !== '') {
+        console.log(this);
+        this.setState({
+          uploadedFileCloudinaryUrl: response.body.secure_url
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <div>
@@ -59,8 +84,10 @@ class App extends Component {
             ...this.props,
             ...this.state,
             onRegistrationSubmit: this.onRegistrationSubmit,
-            handleRegistrationChange: this.handleRegistrationChange
-          })
+            handleRegistrationChange: this.handleRegistrationChange,
+            handlePhotoUpload: this.handlePhotoUpload.bind(this),
+            handleImageUpload: this.handleImageUpload.bind(this)
+            })
         )}
       </div>
     );

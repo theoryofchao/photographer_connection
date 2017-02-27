@@ -13,7 +13,11 @@ class MyProfile extends Component {
         <div style={borderStyles}>
           Edit Profile
           <MyInfo /><br />
-          <MyGallery>
+          <MyGallery
+            handlePhotoUpload={this.props.handlePhotoUpload}
+            handleImageUpload={this.props.handleImageUpload}
+            uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
+                     >
             {this.props.children}
           </MyGallery>
           <br />
