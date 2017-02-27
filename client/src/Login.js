@@ -30,7 +30,6 @@ class Login extends Component {
     return (
         <form style={borderStyles} onSubmit={this.onFormSubmit}>
           Login
-          <form>
             <label>
              E-mail:
               <input type="email" name="email" onChange={this.handleChange}/>
@@ -40,7 +39,6 @@ class Login extends Component {
               <input type="password" name="password" onChange={this.handleChange}/>
             </label>
             <input type="submit" value="Submit" />
-          </form>
         </form>
     );
   }
