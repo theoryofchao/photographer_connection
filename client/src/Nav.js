@@ -7,6 +7,7 @@ var borderStyles = {
 }
 
 class Nav extends Component {
+
   render() {
       if (this.props.userA) {
         return (

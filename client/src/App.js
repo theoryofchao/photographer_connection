@@ -7,7 +7,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
 
 const initialState = {
-  currentUser: {},
+  currentUser: {firstName: '', lastName: '', email: ''},
   registration: {email: '', password: '', passwordConfirmation: ''},
   login: {email: '', password: ''},
   userAuthenticated: false,
@@ -36,7 +36,8 @@ class App extends Component {
 
   onLogoutClick = (e) => {
     localStorage.removeItem("token");
-    this.setState({userAuthenticated: false})
+    localStorage.removeItem("email");
+    this.setState({userAuthenticated: false, currentUser: initialState.currentUser})
   }
 
   onRegistrationSubmit = (regInfo) => {
@@ -64,10 +65,13 @@ class App extends Component {
           else {
             console.log(json.message);
             console.log(json.token);
+            console.log(json.email);
             if (json.token) {
+              let newCurrentUser = {firstName: '', lastName: '', email: json.email}
               localStorage.token = json.token;
-              that.setState({userAuthenticated: true, registration: initialState.registration});
-
+              localStorage.email = json.email;
+              that.setState({userAuthenticated: true, registration: initialState.registration, currentUser: newCurrentUser});
+              return "render homepage";
             }
           }
         });
@@ -104,26 +108,29 @@ class App extends Component {
         password: loginInfo.password
       })
     })
-    .then((response) => {
-
+    .then( (response) => {
+      var that = this;
       var contentType = response.headers.get("content-type");
       if(contentType && contentType.indexOf("application/json") !== -1) {
-        return response.json().then( (json) => {
+        return response.json().then(function(json) {
           if (response.status !== 200) {
             console.log(json.message); //if error occured
-          }
-          else {
+          } else {
             console.log(json.message);
+            console.log(json.token);
+            console.log(json.email);
             if (json.token) {
+              let newCurrentUser = {firstName: '', lastName: '', email: json.email}
               localStorage.token = json.token;
+              localStorage.email = json.email;
+              that.setState({userAuthenticated: true, registration: initialState.registration, currentUser: newCurrentUser});
             }
           }
         })
-
       }
     })
     .catch( (error) => {
-      console.error(error);
+        console.error(error);
     });
   }
 
@@ -180,45 +187,11 @@ class App extends Component {
     });
   }
 
-  onLoginSubmit = (loginInfo) => {
-    fetch('http://localhost:8080/users/login', {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        token: localStorage.token,
-        email: loginInfo.email,
-        password: loginInfo.password
-      })
-    })
-    .then( (response) => {
-      var that = this;
-      var contentType = response.headers.get("content-type");
-      if(contentType && contentType.indexOf("application/json") !== -1) {
-        return response.json().then(function(json) {
-          if (response.status !== 200) {
-            console.log(json.message); //if error occured
-          } else {
-            console.log(json.message);
-            console.log(json.token);
-            if (json.token) {
-              localStorage.token = json.token;
-              that.setState({userAuthenticated: true, registration: initialState.registration});
-            }
-          }
-        })
-      }
-    })
-    .catch( (error) => {
-        console.error(error);
-    });
-  }
 
   componentDidMount() {
     if (localStorage.token) {
-      this.setState({userAuthenticated: true});
+      let newCurrentUser = {firstName: '', lastName: '', email: localStorage.email}
+      this.setState({userAuthenticated: true, currentUser: newCurrentUser});
     }
   }
 

@@ -13,9 +13,7 @@ class UserProfile extends Component {
         <div style={borderStyles}>
           User Profile
           <UserInfo /><br />
-          <Gallery>
-            {this.props.children}
-          </Gallery>
+          <Gallery children={this.props.children.props.children}/>
           <br />
         </div>
     );

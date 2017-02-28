@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 var borderStyles = {
@@ -6,12 +6,16 @@ var borderStyles = {
   padding: "10px"
 }
 
-const Gallery = ({ children }) => (
-  <div style={borderStyles}>
-    Gallery<br />
-    <Link to="user-profile/album">Album</Link><br />
-    {children}
-  </div>
-);
+class Gallery extends Component {
+  render() {
+    return (
+      <div style={borderStyles}>
+        Gallery<br />
+        <Link to="user-profile/album">Album</Link><br />
+        {this.props.children}
+      </div>
+    )
+  }
+};
 
 export default Gallery;
