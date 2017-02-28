@@ -132,7 +132,7 @@ class App extends Component {
   }
 
 
-handleImageUpload = (file) => {
+  handleImageUpload = (file) => {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
@@ -180,42 +180,47 @@ handleImageUpload = (file) => {
     });
   }
 
-onLoginSubmit = (loginInfo) => {
-  fetch('http://localhost:8080/users/login', {
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      token: localStorage.token,
-      email: loginInfo.email,
-      password: loginInfo.password
-    })
-  })
-
-  .then( (response) => {
-    var that = this;
-    var contentType = response.headers.get("content-type");
-    if(contentType && contentType.indexOf("application/json") !== -1) {
-      return response.json().then(function(json) {
-        if (response.status !== 200) {
-          console.log(json.message); //if error occured
-        } else {
-          console.log(json.message);
-          console.log(json.token);
-          if (json.token) {
-            localStorage.token = json.token;
-            that.setState({userAuthenticated: true, registration: initialState.registration});
-          }
-        }
+  onLoginSubmit = (loginInfo) => {
+    fetch('http://localhost:8080/users/login', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.token,
+        email: loginInfo.email,
+        password: loginInfo.password
       })
+    })
+    .then( (response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            console.log(json.message);
+            console.log(json.token);
+            if (json.token) {
+              localStorage.token = json.token;
+              that.setState({userAuthenticated: true, registration: initialState.registration});
+            }
+          }
+        })
+      }
+    })
+    .catch( (error) => {
+        console.error(error);
+    });
+  }
+
+  componentDidMount() {
+    if (localStorage.token) {
+      this.setState({userAuthenticated: true});
     }
-  })
-  .catch( (error) => {
-      console.error(error);
-  });
-}
+  }
 
   render() {
     return (
