@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-
-var borderStyles = {
-  padding: "30px"
-}
 
 class Login extends Component {
 
@@ -17,17 +12,18 @@ class Login extends Component {
 
   render() {
     return (
-      <Paper zDepth={2}>
-        <form style={borderStyles} onSubmit={this.onFormSubmit}>
+      <Paper zDepth={4}>
+        <form onSubmit={this.onFormSubmit}>
           <TextField
+            fullWidth={true}
             type="email"
             name="email"
             floatingLabelText="E-mail"
             hintText="Enter Your E-mail Address"
             onChange={this.props.handleLoginChange}
            />
-        <Divider />
         <TextField
+          fullWidth={true}
           type="password"
           name="password"
           floatingLabelText="Password"

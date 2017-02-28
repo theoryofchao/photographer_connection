@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-
-
-var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px"
-}
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
 
 class Register extends Component {
 
@@ -16,16 +12,38 @@ class Register extends Component {
 
   render() {
     return (
-        <form style={borderStyles} onSubmit={this.onFormSubmit.bind(this)} >
-          Register<br />
-            <label>E-mail:</label>
-              <input type="email" name="email" value={this.props.registration.email} placeholder="Enter your email..." onChange={this.props.handleRegistrationChange}/>
-            <br /><label>Password:</label>
-              <input type="password" name="password" value={this.props.registration.password} placeholder="Enter your password..." onChange={this.props.handleRegistrationChange}/>
-            <br /><label>Confirm Password:</label>
-              <input type="password" name="password-confirm" value={this.props.registration.passwordConfirmation} placeholder="Re-enter your password..." onChange={this.props.handleRegistrationChange} />
-            <input type="submit" value="Submit" />
+      <Paper zDepth={4}>
+        <form onSubmit={this.onFormSubmit.bind(this)} >
+          <TextField
+            name="email"
+            type="email"
+            fullWidth={true}
+            value={this.props.registration.email}
+            hintText="Enter Your E-mail...."
+            floatingLabelText="Your E-mail"
+            onChange={this.props.handleRegistrationChange}
+          />
+          <TextField
+            name="password"
+            type="password"
+            fullWidth={true}
+            value={this.props.registration.password}
+            hintText="Enter Your New Password"
+            floatingLabelText="Enter A Password"
+            onChange={this.props.handleRegistrationChange}
+          />
+          <TextField
+            name="password-confirm"
+            type="password"
+            fullWidth={true}
+            value={this.props.registration.passwordConfirmation}
+            hintText="Confirm Your Password"
+            floatingLabelText="Please Confirm Your Password"
+            onChange={this.props.handleRegistrationChange}
+            />
+          <input type="submit" value="Submit" />
         </form>
+      </Paper>
     );
   }
 }

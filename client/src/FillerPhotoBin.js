@@ -28,7 +28,6 @@ const tilesData = [
     img: 'http://i.imgur.com/2f0XvJC.jpg',
     title: 'Tasty burger',
     author: 'pashminu',
-
   },
   {
     img: 'http://i.imgur.com/2f0XvJC.jpg',
