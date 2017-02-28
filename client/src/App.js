@@ -67,6 +67,9 @@ class App extends Component {
         console.log("Oops, we haven't got JSON!");
       }
     })
+    .then(() => {
+      this.setState({registration: {email: '', password: '', passwordConfirmation: ''}})
+    })
     .catch( (error) => {  //network error only
       console.error(error);
     });
