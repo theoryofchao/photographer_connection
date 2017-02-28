@@ -14,9 +14,8 @@ class Nav extends Component {
             Nav
             <br />
             <Link to="/">Home</Link><br />
-            <button onClick={(e)=>{this.props.onLogoutClick()}}>Logout</button>
-            <Link to="/logout">Logout</Link><br />
             <Link to="/my-profile">My Profile</Link><br />
+            <Link to='/' onClick={(e)=>{this.props.onLogoutClick()}}>Logout</Link><br />
             {this.props.children}
           </div>
           )

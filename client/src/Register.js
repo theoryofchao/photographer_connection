@@ -11,17 +11,18 @@ class Register extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     this.props.onRegistrationSubmit(this.props.registration);
+    this.props.router.push("/")
   }
 
   render() {
     return (
-        <form style={borderStyles} onSubmit={this.onFormSubmit.bind(this)}>
-          Register
+        <form style={borderStyles} onSubmit={this.onFormSubmit.bind(this)} >
+          Register<br />
             <label>E-mail:</label>
               <input type="email" name="email" value={this.props.registration.email} placeholder="Enter your email..." onChange={this.props.handleRegistrationChange}/>
-            <label>Password:</label>
+            <br /><label>Password:</label>
               <input type="password" name="password" value={this.props.registration.password} placeholder="Enter your password..." onChange={this.props.handleRegistrationChange}/>
-            <label>Confirm Password:</label>
+            <br /><label>Confirm Password:</label>
               <input type="password" name="password-confirm" value={this.props.registration.passwordConfirmation} placeholder="Re-enter your password..." onChange={this.props.handleRegistrationChange} />
             <input type="submit" value="Submit" />
         </form>

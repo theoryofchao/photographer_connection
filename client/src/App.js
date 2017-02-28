@@ -21,8 +21,6 @@ class App extends Component {
    this.state = initialState;
   }
 
-
-
   handleRegistrationChange = (e) => {
     console.log('handleRegistrationChange', e, e.target.name);
     let newRegistrationData = Object.assign({}, this.state.registration);
@@ -58,7 +56,6 @@ class App extends Component {
     })
     .then((response) => {
       var that = this;
-
       var contentType = response.headers.get("content-type");
       if(contentType && contentType.indexOf("application/json") !== -1) {
         return response.json().then(function(json) {
@@ -70,7 +67,8 @@ class App extends Component {
             console.log(json.token);
             if (json.token) {
               localStorage.token = json.token;
-              that.setState({userAuthenticated: true});
+              that.setState({userAuthenticated: true, registration: initialState.registration});
+
             }
           }
         });
@@ -103,7 +101,6 @@ class App extends Component {
       }
     });
   }
-
 
 onLoginSubmit = (loginInfo) => {
   fetch('http://localhost:8080/users/login', {
