@@ -54,6 +54,7 @@ router.post('/register', (req, res, next) => {
       email: email,
       password: password,
       created_at: currentTime,
+      updated_at: currentTime,
       status: 1
     })
     .timeout(1000)
@@ -63,11 +64,31 @@ router.post('/register', (req, res, next) => {
       let token = jwt.sign({user_id: result[0].user_id}, process.env.JWTSECRET, {
         expiresIn : '6h'  //300 seconds
       });
-      return res.status(200).json({
-        'success' : true,
-        'message' : 'Registration Success.',
-        'token' : token
+
+      let result2 = knex(`albums`)
+      .insert({
+        user_id: result[0].user_id,
+        name: 'default',
+        description: 'default',
+        status: 0,
+        created_at: currentTime,
+        updated_at: currentTime
+      })
+      .timeout(1000)
+      .returning(`*`)
+      .then( (result2) => {
+        return res.status(200).json({
+          'success' : true,
+          'message' : 'Registration Success.',
+          'token' : token
+        });
+      })
+      .catch( (error) => {
+        console.error(error);
       });
+
+
+
     })
     .catch( (error) => {
       if(error['constraint'] == 'users_email_unique') {
@@ -101,7 +122,7 @@ router.post('/login', (req, res, next) => {
       else {
         // req.decoded = decoded
         // next()
-        console.log(decoded.user_id);
+        //console.log(decoded.user_id);
         return res.status(400).json({ success: false, message: 'Already logged in.' })
       }
     })
