@@ -13,6 +13,11 @@ var spacing = {
 }
 
 class Search extends Component {
+
+  componentWillMount() {
+    this.props.sampleProfiles();
+  }
+
   render() {
     return (
         <div style={borderStyles}>

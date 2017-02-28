@@ -10,13 +10,14 @@ var borderStyles = {
 
 class Header extends Component {
   render() {
+    console.log(this.props);
 
     return (
         <div style={borderStyles}>
           Header
             <Nav userA={this.props.userA} onLogoutClick={this.props.onLogoutClick}/>
             <br />
-            <Search />
+            <Search sampleProfiles={this.props.sampleProfiles}/>
         </div>
     );
   }

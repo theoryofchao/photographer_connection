@@ -14,6 +14,7 @@ const initialState = {
   uploadedFile: null,
   uploadedFileCloudinaryUrl: '',
   photos: [],
+  searchResults: []
 }
 
 class App extends Component {
@@ -243,6 +244,33 @@ class App extends Component {
     });
   }
 
+  sampleProfiles = () => {
+    fetch('http://localhost:8080/users/sample', {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({searchResults: json});
+            console.log(that.state);
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       this.setState({userAuthenticated: true});
@@ -252,7 +280,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick}/>
+        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles}/>
         <br />
         {Children.map(this.props.children, child =>
           cloneElement(child, {
@@ -264,8 +292,8 @@ class App extends Component {
             handleLoginChange: this.handleLoginChange,
             handlePhotoUpload: this.handlePhotoUpload.bind(this),
             handleImageUpload: this.handleImageUpload.bind(this),
-            onFeaturePhotos: this.onFeaturePhotos.bind(this)
-            })
+            onFeaturePhotos: this.onFeaturePhotos.bind(this),
+          })
         )}
       </div>
     );

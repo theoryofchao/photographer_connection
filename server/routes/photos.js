@@ -70,7 +70,6 @@ router.post('/new', (req, res, next) => {
 
 /* Edit Photo */
 router.put('/edit', (req, res, next) => {
-  //authenticationCheck(req, res);
   const knex = getKnex(req);
 
   //TODO: modify photo to input to file location
@@ -111,12 +110,9 @@ router.put('/edit', (req, res, next) => {
 
 /* Delete Photo */
 router.delete('/delete', (req, res, next) => {
-  //authenticationCheck(req, res);
   const knex = getKnex(req);
 
   //TODO: modify photo to input to file location
-  //upload photo to somewhere
-
 
   //TODO: check if photo belongs to that user
   let user_id = req.session.user_id;

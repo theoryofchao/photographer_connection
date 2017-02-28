@@ -10,10 +10,22 @@ let getJwt = (req) => {
   return req.app.get('jwt');
 };
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  //TODO:
-  res.send('respond with a resource');
+/* GET sample users listing. */
+router.get('/sample', function(req, res, next) {
+  const knex = getKnex(req);
+
+  knex.select()
+  .from(`users`)
+  .limit(10)
+  .timeout(1000)
+  .then( (result) => {
+    return res.status(200).json(result);
+  })
+  .catch((error) => {
+    console.log(error);
+    return res.status(400).json({ success: false, message: 'Login Failed.' });
+  });
+  
 });
 
 /* Register user account */
@@ -128,7 +140,6 @@ router.post('/login', (req, res, next) => {
 
   //If no token available
   else {
-
     const knex = getKnex(req);
 
     knex.select()

@@ -1,10 +1,11 @@
 require('dotenv').config();
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieSession = require('cookie-session');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieSession = require('cookie-session');
+const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 const knex = require('knex')({
  client: 'pg',
  connection: {
@@ -16,7 +17,7 @@ const knex = require('knex')({
  pool: { min: 0, max: 8 },
  debug: true
 });
-const jwt = require('jsonwebtoken');
+
 
 if(knex) {
   console.log("Connected");
@@ -26,10 +27,10 @@ else {
   console.log("Connection Failed");
 }
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var albums = require('./routes/albums');
-var photos = require('./routes/photos');
+const index = require('./routes/index');
+const users = require('./routes/users');
+const albums = require('./routes/albums');
+const photos = require('./routes/photos');
 
 var app = express();
 

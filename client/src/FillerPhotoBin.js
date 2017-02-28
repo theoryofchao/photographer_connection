@@ -7,8 +7,6 @@ var borderStyles = {
   padding: "10px"
 }
 
-
-
 class FillerPhotoBin extends Component {
 
   componentWillMount() {
@@ -16,11 +14,6 @@ class FillerPhotoBin extends Component {
   }
 
   render() {
-
-    // this.props.photos.forEach((photo) => {
-      
-    // })
-
     return (
         <div style={borderStyles}>
           FillerPhotoBin

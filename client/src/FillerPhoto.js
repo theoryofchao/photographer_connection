@@ -13,12 +13,6 @@ var size = {
   border: "solid 4px yellow"
 }
 
-// var images = {
-//   fish: "http://i.imgur.com/nemjxlN.jpg",
-//   octopus: "http://i.imgur.com/2f0XvJC.jpg",
-//   turtle: "http://i.imgur.com/syAAYDe.jpg"
-// }
-
 class FillerPhoto extends Component {
   render() {
     return (
