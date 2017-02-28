@@ -60,54 +60,17 @@ router.post('/new', (req, res, next) => {
               console.error(error);
               return res.status(400).json({'message' : 'Photo Creation Failed.'});
         });
-
-
-
-        //return res.status(200).json({'message' : 'TEMP.'});
       }
     })
   }
   else {
     return res.status(400).json({ success: false, message: 'Cannot upload photo if not authenticated.' })
   }
-
-
-  //TODO: modify photo to input to file location
-  //upload photo to somewhere
-
-  // let user_id = req.session.user_id;
-  // let album_id = req.body.album_id;
-  // let name = req.body.name;
-  // let description = req.body.description;
-  // let file_location = req.body.file_location;
-
-
-
-  // let result = knex(`photos`)
-  // .insert({
-  //   album_id: album_id,
-  //   name: name,
-  //   description: description,
-  //   file_location: file_location,
-  //   status: 1,
-  //   created_at: currentTime,
-  //   updated_at: currentTime
-  // })
-  // .timeout(1000)
-  // .returning(`*`)
-  // .then( (result) => {
-  //   console.log(result);
-  //   return res.status(200).json({'message' : 'Photo Created.'});
-  // })
-  // .catch( (error) => {
-  //   console.error(error);
-  //   return res.status(400).json({'message' : 'Photo Creation Failed.'});
-  // });
 });
 
 /* Edit Photo */
 router.put('/edit', (req, res, next) => {
-  authenticationCheck(req, res);
+  //authenticationCheck(req, res);
   const knex = getKnex(req);
 
   //TODO: modify photo to input to file location
@@ -148,7 +111,7 @@ router.put('/edit', (req, res, next) => {
 
 /* Delete Photo */
 router.delete('/delete', (req, res, next) => {
-  authenticationCheck(req, res);
+  //authenticationCheck(req, res);
   const knex = getKnex(req);
 
   //TODO: modify photo to input to file location
@@ -178,6 +141,32 @@ router.delete('/delete', (req, res, next) => {
   });
 });
 
+/* Get featured photos */
+// TODO: currently shows all
+router.get('/featured', (req, res, next) => {
+  const knex = getKnex(req);
+
+  knex.select(`*`)
+  .from(`photos`)
+  .where({
+    status: 1
+  })
+  .orderBy(`created_at`, `desc`)
+  .limit(5)
+  .timeout(1000)
+  .then( (result) => {
+    console.log(result);
+    return res.status(200).json(result);
+  })
+  .catch( (error) => {
+    console.error(error);
+    return res.status(400).json({
+      success: false,
+      message: 'Photo Retrieval Failed'
+    });
+  });
+})
+
 /* Get all photos from a user */
 router.get('/user/:user_id', (req, res, next) => {
   let user_id = req.params.user_id;
@@ -199,8 +188,6 @@ router.get('/user/:user_id', (req, res, next) => {
     console.error(error);
     return res.status(400).json({'message' : 'User photo Retrival Failed'});
   });
-
-
 })
 
 module.exports = router;

@@ -12,7 +12,8 @@ const initialState = {
   login: {email: '', password: ''},
   userAuthenticated: false,
   uploadedFile: null,
-  uploadedFileCloudinaryUrl: ''
+  uploadedFileCloudinaryUrl: '',
+  photos: [],
 }
 
 class App extends Component {
@@ -216,6 +217,32 @@ class App extends Component {
     });
   }
 
+  onFeaturePhotos = () => {
+    fetch('http://localhost:8080/photos/featured', {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({photos: json});
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       this.setState({userAuthenticated: true});
@@ -236,7 +263,8 @@ class App extends Component {
             handleRegistrationChange: this.handleRegistrationChange,
             handleLoginChange: this.handleLoginChange,
             handlePhotoUpload: this.handlePhotoUpload.bind(this),
-            handleImageUpload: this.handleImageUpload.bind(this)
+            handleImageUpload: this.handleImageUpload.bind(this),
+            onFeaturePhotos: this.onFeaturePhotos.bind(this)
             })
         )}
       </div>

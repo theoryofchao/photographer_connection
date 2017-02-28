@@ -8,12 +8,25 @@ var borderStyles = {
 }
 
 
+
 class FillerPhotoBin extends Component {
+
+  componentWillMount() {
+    this.props.onFeaturePhotos();
+  }
+
   render() {
+
+    // this.props.photos.forEach((photo) => {
+      
+    // })
+
     return (
         <div style={borderStyles}>
           FillerPhotoBin
-          <FillerPhoto />
+          {this.props.photos.map((photo) => {
+            return <FillerPhoto photo={photo}/>  
+          })}
         </div>
     );
   }
