@@ -24,8 +24,8 @@ class FillerPhotoBin extends Component {
     return (
         <div style={borderStyles}>
           FillerPhotoBin
-          {this.props.photos.map((photo) => {
-            return <FillerPhoto photo={photo}/>  
+          {this.props.photos.map((photo, index) => {
+            return <FillerPhoto key={index} photo={photo}/>  
           })}
         </div>
     );
