@@ -85,7 +85,7 @@ class App extends Component {
     this.setState({uploadedFile: file})
   }
 
-  handleImageUpload(file) {
+handleImageUpload = (file) => {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
@@ -95,8 +95,40 @@ class App extends Component {
       }
       if (response.body.secure_url !== '') {
         console.log(this);
+        console.log(response.body.secure_url);
+
         this.setState({
           uploadedFileCloudinaryUrl: response.body.secure_url
+        });
+        //fetch to create item in database
+        fetch('http://localhost:8080/photos/new', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            token: localStorage.token,
+            file_location: response.body.secure_url
+          })
+        })
+        .then((response) => {
+          var contentType = response.headers.get("content-type");
+          if(contentType && contentType.indexOf("application/json") !== -1) {
+            return response.json().then( function(json) {
+              if (response.status !== 200) {
+                console.log(json.message); //if error occured
+              }
+              else {
+                console.log(json.message);
+
+              }
+            })
+
+          }
+        })
+        .catch( (error) => {
+          console.error(error);
         });
       }
     });
@@ -116,18 +148,19 @@ onLoginSubmit = (loginInfo) => {
     })
   })
   .then((response) => {
-
+    var that = this;
     var contentType = response.headers.get("content-type");
     if(contentType && contentType.indexOf("application/json") !== -1) {
-      return response.json().then( (json) => {
+      return response.json().then(function(json) {
         if (response.status !== 200) {
           console.log(json.message); //if error occured
         }
         else {
           console.log(json.message);
+          console.log(json.token);
           if (json.token) {
-            console.log('test');
             localStorage.token = json.token;
+            that.setState({userAuthenticated: true, registration: initialState.registration});
           }
         }
       })
