@@ -10,6 +10,7 @@ const initialState = {
   currentUser: {},
   registration: {email: '', password: '', passwordConfirmation: ''},
   login: {email: '', password: ''},
+  userAuthenticated: false,
   uploadedFile: null,
   uploadedFileCloudinaryUrl: ''
 }
@@ -33,6 +34,11 @@ class App extends Component {
     this.setState({registration: newRegistrationData})
   }
 
+  onLogoutClick = (e) => {
+    localStorage.removeItem("token");
+    this.setState({userAuthenticated: false})
+  }
+
   onRegistrationSubmit = (regInfo) => {
     fetch('http://localhost:8080/users/register', {
       method: 'POST',
@@ -48,7 +54,7 @@ class App extends Component {
       })
     })
     .then((response) => {
-
+      var that = this;
       var contentType = response.headers.get("content-type");
       if(contentType && contentType.indexOf("application/json") !== -1) {
         return response.json().then(function(json) {
@@ -60,6 +66,8 @@ class App extends Component {
             console.log(json.token);
             if (json.token) {
               localStorage.token = json.token;
+              that.setState({userAuthenticated: true, registration: initialState.registration});
+
             }
           }
         });
@@ -159,10 +167,39 @@ class App extends Component {
               }
               else {
                 console.log(json.message);
-                
+
               }
             })
+      }
+    });
+  }
 
+onLoginSubmit = (loginInfo) => {
+  fetch('http://localhost:8080/users/login', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      token: localStorage.token,
+      email: loginInfo.email,
+      password: loginInfo.password
+    })
+  })
+  .then((response) => {
+
+    var contentType = response.headers.get("content-type");
+    if(contentType && contentType.indexOf("application/json") !== -1) {
+      return response.json().then( (json) => {
+        if (response.status !== 200) {
+          console.log(json.message); //if error occured
+        }
+        else {
+          console.log(json.message);
+          if (json.token) {
+            console.log('test');
+            localStorage.token = json.token;
           }
         })
     .catch( (error) => {
@@ -170,7 +207,7 @@ class App extends Component {
     });
 
 
-        
+
       }
     });
   }
@@ -178,7 +215,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick}/>
         <br />
         {Children.map(this.props.children, child =>
           cloneElement(child, {
