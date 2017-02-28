@@ -8,18 +8,29 @@ var borderStyles = {
 
 class Nav extends Component {
   render() {
+      if (this.props.userA) {
+        return (
+          <div style={borderStyles}>
+            Nav
+            <br />
+            <Link to="/">Home</Link><br />
+            <button onClick={(e)=>{this.props.onLogoutClick()}}>Logout</button>
+            <Link to="/logout">Logout</Link><br />
+            <Link to="/my-profile">My Profile</Link><br />
+            {this.props.children}
+          </div>
+          )
+      } else {
     return (
         <div style={borderStyles}>
           Nav
           <br />
           <Link to="/">Home</Link><br />
-          <Link to="/logout">Logout</Link><br />
-          <Link to="/login">Login</Link><br />
           <Link to="/register">Register</Link> <br />
-          <Link to="/my-profile">My Profile</Link>
+          <Link to="/login">Login</Link><br />
           {this.props.children}
         </div>
-    );
+    )}
   }
 }
 

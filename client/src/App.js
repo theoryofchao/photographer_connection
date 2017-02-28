@@ -10,6 +10,7 @@ const initialState = {
   currentUser: {},
   registration: {email: '', password: '', passwordConfirmation: ''},
   login: {email: '', password: ''},
+  userAuthenticated: false,
   uploadedFile: null,
   uploadedFileCloudinaryUrl: ''
 }
@@ -19,8 +20,6 @@ class App extends Component {
    super(props);
    this.state = initialState;
   }
-
-
 
 
 
@@ -38,6 +37,11 @@ class App extends Component {
     this.setState({registration: newRegistrationData})
   }
 
+  onLogoutClick = (e) => {
+    localStorage.removeItem("token");
+    this.setState({userAuthenticated: false})
+  }
+
   onRegistrationSubmit = (regInfo) => {
     fetch('http://localhost:8080/users/register', {
       method: 'POST',
@@ -53,6 +57,7 @@ class App extends Component {
       })
     })
     .then((response) => {
+      var that = this;
 
       var contentType = response.headers.get("content-type");
       if(contentType && contentType.indexOf("application/json") !== -1) {
@@ -65,6 +70,7 @@ class App extends Component {
             console.log(json.token);
             if (json.token) {
               localStorage.token = json.token;
+              that.setState({userAuthenticated: true});
             }
           }
         });
@@ -139,7 +145,7 @@ onLoginSubmit = (loginInfo) => {
   render() {
     return (
       <div>
-        <Header />
+        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick}/>
         <br />
         {Children.map(this.props.children, child =>
           cloneElement(child, {

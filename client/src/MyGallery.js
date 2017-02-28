@@ -15,15 +15,15 @@ class MyGallery extends Component {
   }
 
   render() {
-    console.log('rendering mygallery', this.props);
     return (
       <div style={borderStyles}>
         Edit Gallery<br />
         <div className="FileUpload">
           <Dropzone
-            multiple={false}
+            multiple={true}
             accept="image/*"
             onDrop={this.onImageDrop.bind(this)}>
+
             <p>Drop an image or click to select a file to upload.</p>
           </Dropzone>
         </div>
