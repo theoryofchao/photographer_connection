@@ -253,7 +253,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles}/>
+        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults}/>
         <br />
         {Children.map(this.props.children, child =>
           cloneElement(child, {

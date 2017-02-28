@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import './App.css';
-import { Link } from 'react-router';
-
+import SearchResult from './SearchResult.js'
 
 var borderStyles = {
   border: "solid 1px black",
@@ -46,7 +45,9 @@ class Search extends Component {
               </div>
             </div>
          </div>
-          <Link to="/user-profile/1">User Profile</Link>
+          {this.props.searchResults.map((result, index) => {
+            return <SearchResult key={index} result={result}/>
+          })}
         </div>
     );
   }
