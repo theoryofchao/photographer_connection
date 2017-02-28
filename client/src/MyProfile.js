@@ -9,8 +9,10 @@ var borderStyles = {
 
 class MyProfile extends Component {
   render() {
+    console.log('current user: ', this.props.currentUser);
     return (
         <div style={borderStyles}>
+          <h2>User {this.props.currentUser.email} - Profile</h2>
           Edit Profile
           <MyInfo /><br />
           <MyGallery
