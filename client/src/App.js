@@ -2,6 +2,7 @@ import React, { Component, Children, cloneElement } from 'react';
 import Header from './Header.js'
 import 'whatwg-fetch'
 import request from 'superagent';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
@@ -219,22 +220,24 @@ onLoginSubmit = (loginInfo) => {
 
   render() {
     return (
-      <div>
-        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick}/>
-        <br />
-        {Children.map(this.props.children, child =>
-          cloneElement(child, {
-            ...this.props,
-            ...this.state,
-            onRegistrationSubmit: this.onRegistrationSubmit,
-            onLoginSubmit: this.onLoginSubmit,
-            handleRegistrationChange: this.handleRegistrationChange,
-            handleLoginChange: this.handleLoginChange,
-            handlePhotoUpload: this.handlePhotoUpload.bind(this),
-            handleImageUpload: this.handleImageUpload.bind(this)
-            })
-        )}
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick}/>
+          <br />
+          {Children.map(this.props.children, child =>
+            cloneElement(child, {
+              ...this.props,
+              ...this.state,
+              onRegistrationSubmit: this.onRegistrationSubmit,
+              onLoginSubmit: this.onLoginSubmit,
+              handleRegistrationChange: this.handleRegistrationChange,
+              handleLoginChange: this.handleLoginChange,
+              handlePhotoUpload: this.handlePhotoUpload.bind(this),
+              handleImageUpload: this.handleImageUpload.bind(this)
+              })
+          )}
+          </div>
+      </MuiThemeProvider>
     );
   }
 }

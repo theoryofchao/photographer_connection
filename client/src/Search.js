@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 
+
 var borderStyles = {
   border: "solid 1px black",
   padding: "10px"
-}
-
-var spacing = {
-  padding: "25px"
 }
 
 class Search extends Component {
@@ -21,19 +18,19 @@ class Search extends Component {
             <div className="row">
               <div className="col-sm-12">
                 <form>
-                    <label style={spacing}>
+                    <label>
                       <input type="checkbox" value="all" />
                       All
                     </label>
-                    <label style={spacing}>
+                    <label>
                       <input type="checkbox" value="toronto" />
                       Toronto
                     </label>
-                    <label style={spacing}>
+                    <label>
                       <input type="checkbox" value="montreal" />
                       Montreal
                     </label>
-                    <label style={spacing}>
+                    <label>
                       <input type="checkbox" value="vancouver" />
                       Vancouver
                     </label>
