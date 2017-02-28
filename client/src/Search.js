@@ -41,7 +41,7 @@ class Search extends Component {
               </div>
             </div>
          </div>
-          <Link to="/user-profile">User Profile</Link>
+          <Link to="/user-profile/1">User Profile</Link>
         </div>
     );
   }

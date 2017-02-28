@@ -11,7 +11,7 @@ class Gallery extends Component {
     return (
       <div style={borderStyles}>
         Gallery<br />
-        <Link to="user-profile/album">Album</Link><br />
+        <Link to="user-profile/1/album/1">Album</Link><br />
         {this.props.children}
       </div>
     )
