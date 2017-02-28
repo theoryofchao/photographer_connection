@@ -11,6 +11,7 @@ class Login extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     this.props.onLoginSubmit(this.props.login);
+    this.props.router.push("/");
   }
 
   render() {

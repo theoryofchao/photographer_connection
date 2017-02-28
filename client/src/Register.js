@@ -11,7 +11,7 @@ class Register extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     this.props.onRegistrationSubmit(this.props.registration);
-    this.props.router.push("/")
+    this.props.router.push("/");
   }
 
   render() {
