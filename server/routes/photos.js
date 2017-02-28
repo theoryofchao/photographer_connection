@@ -41,7 +41,8 @@ router.post('/new', (req, res, next) => {
         .then( (result) => {
           //insert photo in database
             return result = knex(`photos`)
-            .insert({ 
+
+            .insert({
               album_id: result[0].album_id,
               file_location: file_location,
               status: 1,
@@ -62,8 +63,6 @@ router.post('/new', (req, res, next) => {
 
 
 
-        
-
         //return res.status(200).json({'message' : 'TEMP.'});
       }
     })
@@ -71,9 +70,7 @@ router.post('/new', (req, res, next) => {
   else {
     return res.status(400).json({ success: false, message: 'Cannot upload photo if not authenticated.' })
   }
-  
 
-  
 
   //TODO: modify photo to input to file location
   //upload photo to somewhere
@@ -83,10 +80,11 @@ router.post('/new', (req, res, next) => {
   // let name = req.body.name;
   // let description = req.body.description;
   // let file_location = req.body.file_location;
-  
+
+
 
   // let result = knex(`photos`)
-  // .insert({ 
+  // .insert({
   //   album_id: album_id,
   //   name: name,
   //   description: description,
@@ -202,7 +200,7 @@ router.get('/user/:user_id', (req, res, next) => {
     return res.status(400).json({'message' : 'User photo Retrival Failed'});
   });
 
-  
+
 })
 
 module.exports = router;

@@ -87,8 +87,6 @@ router.post('/register', (req, res, next) => {
         console.error(error);
       });
 
-
-      
     })
     .catch( (error) => {
       if(error['constraint'] == 'users_email_unique') {

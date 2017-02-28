@@ -131,7 +131,8 @@ class App extends Component {
     this.setState({uploadedFile: file})
   }
 
-  handleImageUpload = (file) => {
+
+handleImageUpload = (file) => {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
@@ -170,6 +171,11 @@ class App extends Component {
 
               }
             })
+          }
+        })
+        .catch( (error) => {
+          console.error(error);
+        });
       }
     });
   }
@@ -187,30 +193,29 @@ onLoginSubmit = (loginInfo) => {
       password: loginInfo.password
     })
   })
-  .then((response) => {
 
+  .then( (response) => {
+    var that = this;
     var contentType = response.headers.get("content-type");
     if(contentType && contentType.indexOf("application/json") !== -1) {
-      return response.json().then( (json) => {
+      return response.json().then(function(json) {
         if (response.status !== 200) {
           console.log(json.message); //if error occured
-        }
-        else {
+        } else {
           console.log(json.message);
+          console.log(json.token);
           if (json.token) {
-            console.log('test');
             localStorage.token = json.token;
+            that.setState({userAuthenticated: true, registration: initialState.registration});
           }
-        })
-    .catch( (error) => {
+        }
+      })
+    }
+  })
+  .catch( (error) => {
       console.error(error);
-    });
-
-
-
-      }
-    });
-  }
+  });
+}
 
   render() {
     return (
