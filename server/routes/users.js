@@ -80,7 +80,8 @@ router.post('/register', (req, res, next) => {
         return res.status(200).json({
           'success' : true,
           'message' : 'Registration Success.',
-          'token' : token
+          'token' : token,
+          'email' : email
         });
       })
       .catch( (error) => {
@@ -149,7 +150,8 @@ router.post('/login', (req, res, next) => {
             return res.status(200).json({
               success: true,
               message: 'Login Successful.',
-              token: token
+              token: token,
+              email: email
             });
           }
           return res.status(400).json({ success: false, message: 'Incorrect password.' });
