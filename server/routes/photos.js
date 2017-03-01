@@ -166,6 +166,7 @@ router.get('/featured', (req, res, next) => {
 /* Get all photos from a user */
 router.get('/user/:user_id', (req, res, next) => {
   let user_id = req.params.user_id;
+  console.log(user_id);
   const knex = getKnex(req);
 
   knex
@@ -177,6 +178,7 @@ router.get('/user/:user_id', (req, res, next) => {
   })
   .timeout(1000)
   .then( (result) => {
+    console.log("line 182");
     console.log(result);
     return res.status(200).json(result);
   })

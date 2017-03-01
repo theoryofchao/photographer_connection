@@ -17,6 +17,7 @@ router.get('/sample', function(req, res, next) {
   knex.select()
   .from(`users`)
   .limit(10)
+  .orderBy(`created_at`, `desc`)
   .timeout(1000)
   .then( (result) => {
     return res.status(200).json(result);
@@ -181,6 +182,25 @@ router.post('/login', (req, res, next) => {
 router.delete('/logout', (req, res, next) => {
   req.session = null;
   res.status(200).json({'message' : `Logged out`});
+});
+
+/* GET users profile. */
+router.get('/:id', function(req, res, next) {
+  const knex = getKnex(req);
+
+  knex.select()
+  .from(`users`)
+  .where(`user_id`, req.params.id)
+  .limit(1)
+  .timeout(1000)
+  .then( (result) => {
+    console.log(result)
+    return res.status(200).json(result);
+  })
+  .catch((error) => {
+    console.log(error);
+    return res.status(400).json({ success: false, message: 'Login Failed.' });
+  });
 });
 
 module.exports = router;
