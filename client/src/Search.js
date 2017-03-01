@@ -5,7 +5,8 @@ import SearchResult from './SearchResult.js'
 
 var borderStyles = {
   border: "solid 1px black",
-  padding: "10px"
+  padding: "10px",
+  overflow: "auto"
 }
 
 class Search extends Component {
