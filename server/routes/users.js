@@ -177,17 +177,52 @@ router.post('/login', (req, res, next) => {
   }
 });
 
-/* Logout user account */
-router.delete('/logout', (req, res, next) => {
-  req.session = null;
-  res.status(200).json({'message' : `Logged out`});
+/* Edit user account */
+router.put('/update', (req, res, next) => {
+  let token = req.body.token;
+  let handle = req.body.handle;
+  let first_name = req.body.first_name;
+  let last_name = req.body.last_name;
+  let location_string = req.body.location_string;
+  let years_exp = req.body.years_exp;
+  let summary = req.body.summary;
+
+  //If there is already a token
+  if(token) {
+    jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
+      if (err) {
+        return res.status(400).json({ success: false, message: 'Failed to authenticate token.' });
+      }
+      else {
+        const knex = getKnex(req);
+        //decoded.user_id
+        knex(`users`)
+        .where(`user_id`, `=`, decoded.user_id)
+        .update({
+          handle: handle,
+          first_name: first_name,
+          last_name: last_name,
+          location_string: location_string,
+          years_exp: years_exp,
+          summary: summary
+        })
+        .then(() => {
+          return res.status(200).json({ success: true, message: 'User Updated'});
+        })
+      }
+    })
+  }
+  else {
+    return res.status(401).json({ success: false, message: 'Not Authorized.' });
+  }
+
 });
 
 /* GET users profile. */
 router.get('/:id', function(req, res, next) {
   const knex = getKnex(req);
 
-  knex.select()
+  knex.select('user_id', 'email', 'handle', 'first_name', 'last_name', 'location_string', 'years_exp', 'summary', 'profile_picture')
   .from(`users`)
   .where(`user_id`, req.params.id)
   .limit(1)
