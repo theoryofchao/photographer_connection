@@ -8,9 +8,6 @@ var borderStyles = {
 
 
 class Gallery extends Component {
-  componentWillMount() {
-    this.props.getUserPhotos(this.props.children.props.params.id);
-  }
 
   render() {
     return (

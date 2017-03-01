@@ -5,10 +5,10 @@ import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 
-var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px"
-}
+// var borderStyles = {
+//   border: "solid 1px black",
+//   padding: "10px"
+// }
 
 const styles = {
   root: {
@@ -28,13 +28,7 @@ const styles = {
 
 class UserPhotoBin extends Component {
 
-
-    
-    //this.props.getUserPhotos(this.props.params.id);
-
   render() {
-
-    console.log(this.props.photos);
 
     return (
               <div style={styles.root}>

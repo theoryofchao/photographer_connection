@@ -16,7 +16,8 @@ const initialState = {
   uploadedFileCloudinaryUrl: '',
   photos: [],
   searchResults: [],
-  userProfile: {}
+  userProfile: {},
+  param: ''
 }
 
 class App extends Component {
@@ -261,7 +262,7 @@ class App extends Component {
           if (response.status !== 200) {
             console.log(json.message); //if error occured
           } else {
-            that.setState({userProfile: json[0]});
+            that.setState({userProfile: json[0], param: userId});
             console.log(that.state);
           }
         })
@@ -303,6 +304,16 @@ class App extends Component {
     if (localStorage.token) {
       let newCurrentUser = {firstName: '', lastName: '', email: localStorage.email}
       this.setState({userAuthenticated: true, currentUser: newCurrentUser});
+    }
+    if (this.props.params.id) {
+      this.setState({param: this.props.params.id})
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.params.id !== this.state.param) {
+      this.getUserProfile(this.props.params.id);
+      this.getUserPhotos(this.props.params.id);
     }
   }
 

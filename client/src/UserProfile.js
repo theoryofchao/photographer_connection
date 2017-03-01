@@ -11,20 +11,13 @@ var borderStyles = {
 
 class UserProfile extends Component {
 
-  componentWillMount() {
-    console.log('-------------------------');
-    console.log(this.props.params.id);
-    console.log('-------------------------');
-    this.props.getUserProfile(this.props.params.id);
-  }
-
   render() {
 
     return (
         <div style={borderStyles}>
-          User Profile
+          User Profile - {this.props.param}
           <UserInfo /><br />
-          <Gallery children={this.props.children.props.children} getUserPhotos={this.props.getUserPhotos} photos={this.props.photos}/>
+          <Gallery children={this.props.children.props.children} photos={this.props.photos}/>
           <br />
         </div>
     );
