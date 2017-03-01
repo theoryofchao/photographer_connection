@@ -15,7 +15,7 @@ class UserProfile extends Component {
 
     return (
         <div style={borderStyles}>
-          User Profile - {this.props.param}
+         {this.props.param}
           <UserInfo userProfile={this.props.userProfile}/><br />
           <Gallery children={this.props.children.props.children} photos={this.props.photos}/>
           <br />

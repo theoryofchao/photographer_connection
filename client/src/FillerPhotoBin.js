@@ -30,7 +30,7 @@ class FillerPhotoBin extends Component {
           cellHeight={180}
           style={styles.gridList}
         >
-        <Subheader>Our Photos</Subheader>
+        <Subheader>Recent Photos</Subheader>
         {this.props.photos.map((photo, i) => (
           <GridTile
             key={i}
