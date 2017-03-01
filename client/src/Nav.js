@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router';
-import {  NavItem, Nav } from 'react-bootstrap';
 import {AppBar} from 'material-ui';
+import FlatButton from 'material-ui/FlatButton';
 
 var style = {
   backgroundColor: "#afb5bf"
@@ -13,17 +12,25 @@ class Navigate extends Component {
     if (this.props.userA) {
       return (
         <div >
-        <AppBar
+          <AppBar
             iconElementLeft={null}
             style={style}
             title="Focus"
-          />
-
-          <Nav bsStyle="pills">
-            <NavItem bsStyle="pills" href="/#/">Home</NavItem>
-            <NavItem bsStyle="pills" href="/#/my-profile">My Profile</NavItem>
-            <NavItem bsStyle="pills" href="/#/" onClick={(e)=>{this.props.onLogoutClick()}}>Logout</NavItem>
-          </Nav>
+            >
+              <FlatButton
+                href="/#/"
+                label="Home"
+              />
+              <FlatButton
+                href="/#/my-profile"
+                label="My Profile"
+              />
+              <FlatButton
+                href="/#/"
+                label="Logout"
+                onClick={(e)=>{this.props.onLogoutClick()}}
+            />
+          </AppBar>
         </div>
        )
     } else {
@@ -33,13 +40,21 @@ class Navigate extends Component {
             iconElementLeft={null}
             style={style}
             title="Focus"
+          >
+            <FlatButton
+              href="/#/"
+              label="Home"
+            />
+            <FlatButton
+              href="/#/register"
+              label="Register"
+            />
+            <FlatButton
+              href="/#/login"
+              label="Login"
+              onClick={(e)=>{this.props.onLogoutClick()}}
           />
-
-           <Nav bsStyle="pills">
-              <NavItem href="/#/">Home</NavItem>
-              <NavItem href="/#/register">Register</NavItem>
-              <NavItem href="/#/login">Login</NavItem>
-           </Nav>
+          </AppBar>
         </div>
     )}
   }

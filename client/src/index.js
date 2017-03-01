@@ -10,7 +10,6 @@ import MyProfile from './MyProfile.js';
 import UserPhotoBin from './UserPhotoBin.js';
 import FillerPhotoBin from './FillerPhotoBin.js';
 import './index.css';
-// import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render((
   <Router history={hashHistory}>
