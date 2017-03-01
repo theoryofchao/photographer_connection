@@ -12,8 +12,8 @@ var titleStyle = {
 
 class MyInfo extends Component {
   onImageDrop(files) {
-    this.props.handlePhotoUpload(files[0]);
-    this.props.handleImageUpload(files[0]);
+    this.props.handleProfileImageUpload(files[0]);
+    this.props.handleImageUpload(files[0], 'http://localhost:8080/users/profile_image');
   }
   state = {
     value: 1,
@@ -32,6 +32,15 @@ class MyInfo extends Component {
                 <p>Drop an image or click to select a file to upload</p>
                 </Dropzone>
             </div>
+
+            <div>
+              {this.props.uploadedFileCloudinaryUrl === '' ? null :
+              <div>
+                <p>{this.props.uploadedFile}</p>
+                <img src={this.props.uploadedFileCloudinaryUrl} role="presentation" />
+              </div>}
+            </div>
+
 
             <div className="form">
               <form>

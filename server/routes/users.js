@@ -218,6 +218,46 @@ router.put('/update', (req, res, next) => {
 
 });
 
+/*Update user profile Image*/
+router.post('/profile_image', (req, res, next) => {
+  let token = req.body.token;
+  let file_location = req.body.file_location;
+  let currentTime = new Date();
+
+  const jwt = getJwt(req);
+  
+
+    //If there is already a token
+  if(token) {
+    jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
+      if (err) {
+        return res.status(400).json({ success: false, message: 'Failed to authenticate token.' });
+      }
+      else {
+        // req.decoded = decoded
+        // next()
+        const knex = getKnex(req);
+
+        knex(`users`)
+        .where(`user_id`, `=`, decoded.user_id)
+        .update({
+          profile_picture: file_location,
+          updated_at: currentTime,
+        })
+        .then(() => {
+          return res.status(200).json({ success: true, message: 'Profile Image Updated'});
+        })
+        .catch((error) => {
+          return res.status(400).json({ success: false, message: "Profile Image Update Failed"})
+        })
+      }
+    })
+  }
+  else {
+    return res.status(400).json({ success: false, message: 'Cannot upload profile image if not authenticated.' })
+  }
+});
+
 /* GET users profile. */
 router.get('/:id', function(req, res, next) {
   const knex = getKnex(req);

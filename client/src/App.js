@@ -11,11 +11,12 @@ const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
 
 const initialState = {
-  currentUser: {firstName: '', lastName: '', email: ''},
+  currentUser: {firstName: '', lastName: '', email: '', profile_image: ''},
   registration: {email: '', password: '', passwordConfirmation: ''},
   login: {email: '', password: ''},
   userAuthenticated: false,
   uploadedFile: null,
+  uploadedProfileImage: null,
   uploadedFileCloudinaryUrl: '',
   photos: [],
   searchResults: [],
@@ -146,8 +147,11 @@ class App extends Component {
     this.setState({uploadedFile: file})
   }
 
+  handleProfileImageUpload = (file) => {
+    this.setState({uploadedProfileImage: file})
+  }
 
-  handleImageUpload = (file) => {
+  handleImageUpload = (file, url) => {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
@@ -163,7 +167,7 @@ class App extends Component {
           uploadedFileCloudinaryUrl: response.body.secure_url
         });
         //fetch to create item in database
-        fetch('http://localhost:8080/photos/new', {
+        fetch(url, {
           method: 'POST',
           credentials: 'same-origin',
           headers: {
@@ -336,6 +340,7 @@ class App extends Component {
             handleRegistrationChange: this.handleRegistrationChange,
             handleLoginChange: this.handleLoginChange,
             handlePhotoUpload: this.handlePhotoUpload.bind(this),
+            handleProfileImageUpload: this.handleProfileImageUpload.bind(this),
             handleImageUpload: this.handleImageUpload.bind(this),
             onFeaturePhotos: this.onFeaturePhotos.bind(this),
             getUserProfile: this.getUserProfile.bind(this),
