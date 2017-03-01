@@ -93,7 +93,8 @@ router.post('/register', (req, res, next) => {
           'success' : true,
           'message' : 'Registration Success.',
           'token' : token,
-          'email' : email
+          'email' : email,
+          user_id: result[0].user_id
         });
       })
       .catch( (error) => {
@@ -162,7 +163,8 @@ router.post('/login', (req, res, next) => {
               success: true,
               message: 'Login Successful.',
               token: token,
-              email: email
+              email: email,
+              user_id: result[0].user_id
             });
           }
           return res.status(400).json({ success: false, message: 'Incorrect password.' });
@@ -178,14 +180,17 @@ router.post('/login', (req, res, next) => {
 });
 
 /* Edit user account */
-router.put('/update', (req, res, next) => {
+router.post('/update', (req, res, next) => {
   let token = req.body.token;
   let handle = req.body.handle;
   let first_name = req.body.first_name;
   let last_name = req.body.last_name;
   let location_string = req.body.location_string;
   let years_exp = req.body.years_exp;
-  let summary = req.body.summary;
+  console.log('yearsssssssssssssssss', years_exp);
+  let summary = req.body.description;
+
+  const jwt = getJwt(req);
 
   //If there is already a token
   if(token) {
@@ -225,7 +230,7 @@ router.post('/profile_image', (req, res, next) => {
   let currentTime = new Date();
 
   const jwt = getJwt(req);
-  
+
 
     //If there is already a token
   if(token) {
