@@ -41,6 +41,8 @@ class Register extends Component {
             floatingLabelText="Please Confirm Your Password"
             onChange={this.props.handleRegistrationChange}
             />
+            <br />
+            <br />
           <input type="submit" value="Submit" />
         </form>
       </Paper>
