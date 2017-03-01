@@ -1,16 +1,58 @@
 import React, { Component } from 'react';
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
 
 var borderStyles = {
   border: "solid 1px black",
   padding: "10px"
 }
 
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+    overflowY: 'auto',
+  },
+};
+
+
+
+
 class UserPhotoBin extends Component {
+
+
+    
+    //this.props.getUserPhotos(this.props.params.id);
+
   render() {
+
+    console.log(this.props.photos);
+
     return (
-        <div style={borderStyles}>
-          User Photo Bin
-        </div>
+              <div style={styles.root}>
+        <GridList
+          cellHeight={180}
+          style={styles.gridList}
+        >
+        <Subheader>Our Photos</Subheader>
+        {this.props.photos.map((photo, i) => (
+          <GridTile
+            key={i}
+            actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+          >
+            <img src={photo.file_location} role="presentation"/>
+          </GridTile>
+      ))}
+    </GridList>
+  </div>
     );
   }
 }

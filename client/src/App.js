@@ -15,7 +15,8 @@ const initialState = {
   uploadedFile: null,
   uploadedFileCloudinaryUrl: '',
   photos: [],
-  searchResults: []
+  searchResults: [],
+  userProfile: {}
 }
 
 class App extends Component {
@@ -244,6 +245,60 @@ class App extends Component {
     });
   }
 
+  getUserProfile = (userId) => {
+    fetch(`http://localhost:8080/users/${userId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({userProfile: json[0]});
+            console.log(that.state);
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
+  getUserPhotos = (userId) => {
+    fetch(`http://localhost:8080/photos/user/${userId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({photos: json});
+            console.log(that.state);
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       let newCurrentUser = {firstName: '', lastName: '', email: localStorage.email}
@@ -269,6 +324,8 @@ class App extends Component {
             handlePhotoUpload: this.handlePhotoUpload.bind(this),
             handleImageUpload: this.handleImageUpload.bind(this),
             onFeaturePhotos: this.onFeaturePhotos.bind(this),
+            getUserProfile: this.getUserProfile.bind(this),
+            getUserPhotos: this.getUserPhotos.bind(this)
           })
         )}
       </div>

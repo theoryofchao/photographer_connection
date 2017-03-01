@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import { Link } from 'react-router';
 
 var borderStyles = {
@@ -6,13 +6,23 @@ var borderStyles = {
   padding: "10px"
 }
 
+
 class Gallery extends Component {
+  componentWillMount() {
+    this.props.getUserPhotos(this.props.children.props.params.id);
+  }
+
   render() {
     return (
       <div style={borderStyles}>
         Gallery<br />
         <Link to="user-profile/1/album/1">Album</Link><br />
-        {this.props.children}
+        {Children.map(this.props.children, child =>
+          cloneElement(child, {
+            ...this.props,
+            ...this.state,
+          })
+        )}
       </div>
     )
   }
