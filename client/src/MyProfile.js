@@ -12,7 +12,16 @@ class MyProfile extends Component {
     return (
         <div style={borderStyles}>
           <h2>User {this.props.currentUser.email} - Profile</h2>
-          <MyInfo /><br />
+          <MyInfo
+            handleProfileImageUpload={this.props.handleProfileImageUpload}
+            handleImageUpload={this.props.handleImageUpload}
+            uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
+            myInfo={this.props.myInfo}
+            currentUser={this.props.currentUser}
+            myProfile={this.props.myProfile}
+            handleInfoChange={this.props.handleInfoChange}
+            onInfoSubmit={this.props.onInfoSubmit}
+          /><br />
           <MyGallery
             handlePhotoUpload={this.props.handlePhotoUpload}
             handleImageUpload={this.props.handleImageUpload}

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 
 var titleStyle = {
   textAlign: "center",
@@ -11,14 +9,16 @@ var titleStyle = {
 }
 
 class MyInfo extends Component {
+
   onImageDrop(files) {
-    this.props.handlePhotoUpload(files[0]);
-    this.props.handleImageUpload(files[0]);
+    this.props.handleProfileImageUpload(files[0]);
+    this.props.handleImageUpload(files[0], 'http://localhost:8080/users/profile_image');
   }
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    this.props.onInfoSubmit(this.props.myInfo);
+    console.log('CURRENT USER:', this.props.myProfile);
+    this.props.onInfoSubmit(this.props.myProfile);
   }
 
   render() {
@@ -35,18 +35,29 @@ class MyInfo extends Component {
                 </Dropzone>
             </div>
 
+            <div>
+              {this.props.uploadedFileCloudinaryUrl === '' ? null :
+              <div>
+                <p>{this.props.uploadedFile}</p>
+                <img src={this.props.uploadedFileCloudinaryUrl} role="presentation" />
+              </div>}
+            </div>
+
+
             <div className="form">
               <form onSubmit={this.onFormSubmit.bind(this)} >
                 <TextField
                   type="name"
-                  name="firstName"
+                  name="first_name"
+                  value={this.props.myProfile.first_name}
                   floatingLabelText="First Name"
                   hintText="Enter Your First Name"
                   onChange={this.props.handleInfoChange}
                  />
                 <TextField
                   type="name"
-                  name="lastName"
+                  name="last_name"
+                  value={this.props.myProfile.last_name}
                   floatingLabelText="Last Name"
                   hintText="Enter Your Last Name"
                   onChange={this.props.handleInfoChange}
@@ -54,37 +65,38 @@ class MyInfo extends Component {
                 <TextField
                   type="name"
                   name="handle"
+                  value={this.props.myProfile.handle}
                   floatingLabelText="Handle"
                   hintText="Enter Your Unique Handle"
                   onChange={this.props.handleInfoChange}
                  /> <br />
                 <TextField
                   type="location"
-                  name="location"
+                  name="location_string"
+                  value={this.props.myProfile.location_string}
                   floatingLabelText="Location"
                   hintText="Enter Your Location"
                   onChange={this.props.handleInfoChange}
                 /> <br />
                 <TextField
-                  type="description"
-                  name="description"
+                  type="summary"
+                  name="summary"
+                  value={this.props.myProfile.summary}
                   floatingLabelText="About Me"
-                  hintText="Tell Us About You!"
+                  hintText="Tell Us About Yourself!"
                   multiLine={true}
                   rows={4}
                   fullWidth={true}
                   onChange={this.props.handleInfoChange}
                  /> <br />
-                <SelectField
-                  floatingLabelText="Years Of Experince"
+                <TextField
+                  type="number"
+                  name="years_exp"
+                  value={this.props.myProfile.years_exp}
+                  floatingLabelText="How long have you been shooting?"
+                  hintText="No. of years"
                   onChange={this.props.handleInfoChange}
-                >
-                  <MenuItem value={1} primaryText="Under 1 Year" />
-                  <MenuItem value={2} primaryText="1+ Years" />
-                  <MenuItem value={3} primaryText="3+ Years" />
-                  <MenuItem value={4} primaryText="5+ Years" />
-                  <MenuItem value={5} primaryText="10+ Years" />
-                </SelectField> <br />
+                 /> <br />
                 <input type="submit" value="Submit" />
               </form>
 
