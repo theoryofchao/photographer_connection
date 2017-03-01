@@ -11,7 +11,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
 
 const initialState = {
-  currentUser: {firstName: '', lastName: '', email: '', profile_image: ''},
+  currentUser: {email: '', user_id: ''},
   registration: {email: '', password: '', passwordConfirmation: ''},
   login: {email: '', password: ''},
   userAuthenticated: false,
@@ -21,7 +21,10 @@ const initialState = {
   photos: [],
   searchResults: [],
   userProfile: {},
-  param: ''
+  myProfile: {},
+  param: '',
+  myInfo: {profilePicture: '', firstName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
+
 }
 
 class App extends Component {
@@ -46,6 +49,7 @@ class App extends Component {
   onLogoutClick = (e) => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
+    localStorage.removeItem("user_id");
     this.setState({userAuthenticated: false, currentUser: initialState.currentUser})
   }
 
@@ -76,10 +80,12 @@ class App extends Component {
             console.log(json.token);
             console.log(json.email);
             if (json.token) {
-              let newCurrentUser = {firstName: '', lastName: '', email: json.email}
+              let newCurrentUser = {user_id: json.user_id, email: json.email}
               localStorage.token = json.token;
               localStorage.email = json.email;
+              localStorage.user_id = json.user_id;
               that.setState({userAuthenticated: true, registration: initialState.registration, currentUser: newCurrentUser});
+              that.getMyProfile(localStorage.user_id);
               return "render homepage";
             }
           }
@@ -129,10 +135,12 @@ class App extends Component {
             console.log(json.token);
             console.log(json.email);
             if (json.token) {
-              let newCurrentUser = {firstName: '', lastName: '', email: json.email}
+              let newCurrentUser = {user_id: json.user_id, email: json.email}
               localStorage.token = json.token;
               localStorage.email = json.email;
+              localStorage.user_id = json.user_id;
               that.setState({userAuthenticated: true, registration: initialState.registration, currentUser: newCurrentUser});
+              that.getMyProfile(localStorage.user_id);
             }
           }
         })
@@ -268,7 +276,37 @@ class App extends Component {
           if (response.status !== 200) {
             console.log(json.message); //if error occured
           } else {
-            that.setState({userProfile: json[0], param: userId});
+            that.setState({userProfile: json[0],
+                          param: userId,
+                         });
+            console.log(that.state);
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
+  getMyProfile = (userId) => {
+    fetch(`http://localhost:8080/users/${userId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({myProfile: json[0]
+                         });
             console.log(that.state);
           }
         })
@@ -306,15 +344,74 @@ class App extends Component {
     });
   }
 
+  handleInfoChange = (e) => {
+    let newInfo = Object.assign({}, this.state.myProfile);
+    newInfo.email = this.state.currentUser.email;
+
+    if (e.target.name === 'first_name') {
+      newInfo.first_name = e.target.value;
+    } else if (e.target.name === 'last_name') {
+      newInfo.last_name = e.target.value;
+    } else if (e.target.name === 'handle') {
+      newInfo.handle = e.target.value;
+    } else if (e.target.name === 'location_string') {
+      newInfo.location_string = e.target.value;
+    } else if (e.target.name === 'summary') {
+      newInfo.summary = e.target.value;
+    } else {
+      newInfo.years_exp = e.target.value
+    }
+
+    // this.setState({myInfo: newInfo})
+    this.setState({myProfile: newInfo})
+    console.log('INFO CHANGE SETTING THE STATE: ', this.state.myProfile);
+  }
+
+  onInfoSubmit = (myInfo) => {
+    fetch('http://localhost:8080/users/update', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.token,
+        first_name: myInfo.first_name,
+        last_name: myInfo.last_name,
+        handle: myInfo.handle,
+        location_string: myInfo.location_string,
+        description: myInfo.summary,
+        years_exp: parseInt(myInfo.years_exp, 10)
+      })
+    })
+    .then((response) => {
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            console.log('JSON RETURN FROM SERVER:');
+            console.log(json.message);
+          }
+        })
+      }
+    })
+  }
+
   componentDidMount() {
     if (localStorage.token) {
-      let newCurrentUser = {firstName: '', lastName: '', email: localStorage.email}
+      let newCurrentUser = {user_id: localStorage.user_id, email: localStorage.email}
       this.setState({userAuthenticated: true, currentUser: newCurrentUser});
     }
     if (this.props.params.id) {
       this.setState({param: this.props.params.id})
     }
     console.log(this.props.params);
+
+    if (localStorage.user_id) {
+      this.getMyProfile(localStorage.user_id);
+    }
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -344,7 +441,10 @@ class App extends Component {
             handleImageUpload: this.handleImageUpload.bind(this),
             onFeaturePhotos: this.onFeaturePhotos.bind(this),
             getUserProfile: this.getUserProfile.bind(this),
-            getUserPhotos: this.getUserPhotos.bind(this)
+            getMyProfile: this.getMyProfile.bind(this),
+            getUserPhotos: this.getUserPhotos.bind(this),
+            handleInfoChange: this.handleInfoChange.bind(this),
+            onInfoSubmit: this.onInfoSubmit.bind(this)
           })
         )}
       </div>
