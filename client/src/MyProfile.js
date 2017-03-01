@@ -13,7 +13,6 @@ class MyProfile extends Component {
     return (
         <div style={borderStyles}>
           <h2>User {this.props.currentUser.email} - Profile</h2>
-          Edit Profile
           <MyInfo /><br />
           <MyGallery
             handlePhotoUpload={this.props.handlePhotoUpload}
