@@ -16,7 +16,7 @@ router.get('/sample', function(req, res, next) {
 
   knex.select()
   .from(`users`)
-  .limit(10)
+
   .timeout(1000)
   .then( (result) => {
     return res.status(200).json(result);
@@ -25,7 +25,7 @@ router.get('/sample', function(req, res, next) {
     console.log(error);
     return res.status(400).json({ success: false, message: 'Login Failed.' });
   });
-  
+
 });
 
 /* Register user account */
