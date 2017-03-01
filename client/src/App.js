@@ -159,7 +159,7 @@ class App extends Component {
     this.setState({uploadedProfileImage: file})
   }
 
-  handleImageUpload = (file, url) => {
+  handleImageUpload = (file, url, type) => {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
@@ -171,9 +171,15 @@ class App extends Component {
         console.log(this);
         console.log(response.body.secure_url);
 
-        this.setState({
-          uploadedFileCloudinaryUrl: response.body.secure_url
-        });
+        if (type === 'profile_image') {
+          let newProfileImage = Object.assign({}, this.state.myProfile);
+          newProfileImage.profile_picture = response.body.secure_url;
+          this.setState({myProfile: newProfileImage});
+        } else {
+          this.setState({
+            uploadedFileCloudinaryUrl: response.body.secure_url
+          });
+        }
         //fetch to create item in database
         fetch(url, {
           method: 'POST',

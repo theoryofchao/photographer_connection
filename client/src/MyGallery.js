@@ -14,7 +14,7 @@ var titleStyle = {
 class MyGallery extends Component {
   onImageDrop(files) {
     this.props.handlePhotoUpload(files[0]);
-    this.props.handleImageUpload(files[0], 'http://localhost:8080/photos/new');
+    this.props.handleImageUpload(files[0], 'http://localhost:8080/photos/new', 'gallery');
   }
   render() {
     return (

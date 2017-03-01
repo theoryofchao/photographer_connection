@@ -187,7 +187,6 @@ router.post('/update', (req, res, next) => {
   let last_name = req.body.last_name;
   let location_string = req.body.location_string;
   let years_exp = req.body.years_exp;
-  console.log('yearsssssssssssssssss', years_exp);
   let summary = req.body.description;
 
   const jwt = getJwt(req);

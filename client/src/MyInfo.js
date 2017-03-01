@@ -16,15 +16,15 @@ var titleStyle = {
   padding: "35px"
 }
 
-  var child = {
-    padding: "20px"
-  }
+var child = {
+  padding: "20px"
+}
 
 class MyInfo extends Component {
 
   onImageDrop(files) {
     this.props.handleProfileImageUpload(files[0]);
-    this.props.handleImageUpload(files[0], 'http://localhost:8080/users/profile_image');
+    this.props.handleImageUpload(files[0], 'http://localhost:8080/users/profile_image', 'profile_image');
   }
 
   onFormSubmit = (e) => {
@@ -47,10 +47,10 @@ class MyInfo extends Component {
         </div>
 
         <div>
-          {this.props.uploadedFileCloudinaryUrl === '' ? null :
+          {this.props.myProfile.profile_picture === '' ? null :
           <div>
             <p>{this.props.uploadedFile}</p>
-            <img src={this.props.uploadedFileCloudinaryUrl} role="presentation" />
+            <img src={this.props.myProfile.profile_picture} role="presentation" />
           </div>}
         </div>
 
