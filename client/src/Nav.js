@@ -12,11 +12,7 @@ class Navigate extends Component {
     if (this.props.userA) {
       return (
         <div >
-          <AppBar
-            iconElementLeft={null}
-            style={style}
-            title="Focus"
-            >
+          <AppBar style={style} title="Focus">
               <FlatButton
                 href="/#/"
                 label="Home"
@@ -36,11 +32,7 @@ class Navigate extends Component {
     } else {
       return (
         <div>
-          <AppBar
-            iconElementLeft={null}
-            style={style}
-            title="Focus"
-          >
+          <AppBar style={style} title="Focus">
             <FlatButton
               href="/#/"
               label="Home"

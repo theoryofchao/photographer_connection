@@ -5,11 +5,6 @@ import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 
-// var borderStyles = {
-//   border: "solid 1px black",
-//   padding: "10px"
-// }
-
 const styles = {
   root: {
     display: 'flex',
@@ -23,15 +18,12 @@ const styles = {
   },
 };
 
-
-
-
 class UserPhotoBin extends Component {
 
   render() {
 
     return (
-              <div style={styles.root}>
+      <div style={styles.root}>
         <GridList
           cellHeight={180}
           style={styles.gridList}
@@ -44,9 +36,9 @@ class UserPhotoBin extends Component {
           >
             <img src={photo.file_location} role="presentation"/>
           </GridTile>
-      ))}
-    </GridList>
-  </div>
+        ))}
+      </GridList>
+    </div>
     );
   }
 }

@@ -19,7 +19,6 @@ const styles = {
 };
 
 class FillerPhotoBin extends Component {
-
   componentWillMount() {
     this.props.onFeaturePhotos();
   }

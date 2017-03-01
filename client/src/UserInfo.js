@@ -11,6 +11,7 @@ class UserInfo extends Component {
     return (
         <div style={borderStyles}>
           User Info
+        <h2>User {this.props.userProfile.email} - Profile</h2>
         </div>
     );
   }

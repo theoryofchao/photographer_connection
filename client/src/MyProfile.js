@@ -19,7 +19,7 @@ class MyProfile extends Component {
             handlePhotoUpload={this.props.handlePhotoUpload}
             handleImageUpload={this.props.handleImageUpload}
             uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
-                     >
+          >
             {this.props.children}
           </MyGallery>
           <br />
