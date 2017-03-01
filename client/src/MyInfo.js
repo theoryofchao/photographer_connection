@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-var styles = {
-  customWidth: {
-    width: 150,
-  },
-};
-
+var parent = {
+  display: "inline-block",
+  padding: "25px",
+  textAlign: "center",
+  width: "90%",
+  backgroundImage: "radial-gradient(white, black)"
+}
 
 var titleStyle = {
-  textAlign: "center",
-  color: "red"
+  display: "inline-block",
+  color: "black",
+  padding: "35px"
 }
+  var child = {
+    padding: "20px"
+  }
 
 class MyInfo extends Component {
   onImageDrop(files) {
@@ -28,8 +32,7 @@ class MyInfo extends Component {
   handleChange = (event, index, value) => this.setState({value});
   render() {
     return (
-        <div>
-          <Paper zDepth={2}>
+        <div style={parent}>
             <div style={titleStyle} className="FileUpload">
               <Dropzone
                 multiple={false}
@@ -40,14 +43,14 @@ class MyInfo extends Component {
                 </Dropzone>
             </div>
 
-            <div className="form">
-              <form>
+            <div className="form" >
+              <form style={child}>
                 <TextField
                   type="name"
                   name="firstName"
                   floatingLabelText="First Name"
                   hintText="Enter Your First Name"
-                 />
+                 /> <br />
                 <TextField
                   type="name"
                   name="lastName"
@@ -70,12 +73,11 @@ class MyInfo extends Component {
                   type="description"
                   name="description"
                   floatingLabelText="About Me"
-                  hintText="Tell Us About You!"
                   multiLine={true}
-                  rows={4}
-                  fullWidth={true}
+
                  /> <br />
                 <SelectField
+
                   floatingLabelText="Years Of Experince"
                   value={this.state.value}
                   onChange={this.handleChange}
@@ -90,8 +92,7 @@ class MyInfo extends Component {
               </form>
 
             </div>
-          </Paper>
-        </div>
+          </div>
     );
   }
 }

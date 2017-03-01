@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
 
 const styles = {
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    flexWrap: "wrap",
+    justifyContent: 'space-between',
+    backgroundColor: "lightgrey",
+    padding: "70px"
   },
   gridList: {
-    width: 500,
-    height: 450,
-    overflowY: 'auto',
+    width: 200,
+    height: 200,
+    border: "solid 2px grey",
+    padding: "2px"
   },
 };
+
+function popUp() {
+  alert("test")
+ }
+
 
 class FillerPhotoBin extends Component {
   componentWillMount() {
@@ -26,20 +31,9 @@ class FillerPhotoBin extends Component {
   render() {
     return (
       <div style={styles.root}>
-        <GridList
-          cellHeight={180}
-          style={styles.gridList}
-        >
-        <Subheader>Recent Photos</Subheader>
-        {this.props.photos.map((photo, i) => (
-          <GridTile
-            key={i}
-            actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-          >
-            <img src={photo.file_location} role="presentation"/>
-          </GridTile>
+        {this.props.photos.map((photo) => (
+          <img onClick={popUp} style={styles.gridList} src={photo.file_location} role="presentation"/>
       ))}
-    </GridList>
   </div>
     );
   }
