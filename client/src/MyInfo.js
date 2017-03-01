@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField'
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-
 
 var parent = {
   display: "inline-block",
@@ -84,20 +81,7 @@ class MyInfo extends Component {
                   name="description"
                   floatingLabelText="About Me"
                   multiLine={true}
-
                  /> <br />
-                <SelectField
-
-                  floatingLabelText="Years Of Experince"
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                >
-                  <MenuItem value={1} primaryText="Under 1 Year" />
-                  <MenuItem value={2} primaryText="1+ Years" />
-                  <MenuItem value={3} primaryText="3+ Years" />
-                  <MenuItem value={4} primaryText="5+ Years" />
-                  <MenuItem value={5} primaryText="10+ Years" />
-                </SelectField> <br />
                 <input type="submit" value="Submit" />
               </form>
 
