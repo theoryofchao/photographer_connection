@@ -148,7 +148,6 @@ router.get('/featured', (req, res, next) => {
     status: 1
   })
   .orderBy(`created_at`, `desc`)
-  .limit(5)
   .timeout(1000)
   .then( (result) => {
     console.log(result);

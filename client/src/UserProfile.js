@@ -7,8 +7,6 @@ var borderStyles = {
   padding: "10px"
 }
 
-
-
 class UserProfile extends Component {
 
   render() {
