@@ -5,13 +5,6 @@ import Paper from 'material-ui/Paper';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-var styles = {
-  customWidth: {
-    width: 150,
-  },
-};
-
-
 var titleStyle = {
   textAlign: "center",
   color: "red"

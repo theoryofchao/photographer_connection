@@ -239,7 +239,6 @@ class App extends Component {
             console.log(json.message); //if error occured
           } else {
             that.setState({searchResults: json});
-            console.log(that.state);
           }
         })
       }
@@ -311,10 +310,11 @@ class App extends Component {
     if (this.props.params.id) {
       this.setState({param: this.props.params.id})
     }
+    console.log(this.props.params);
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (this.props.params.id !== this.state.param) {
+    if (this.props.params.id && this.props.params.id !== this.state.param) {
       this.getUserProfile(this.props.params.id);
       this.getUserPhotos(this.props.params.id);
     }
