@@ -4,6 +4,9 @@ import 'whatwg-fetch'
 import request from 'superagent';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
 

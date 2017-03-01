@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 // import './App.css';
 import SearchResult from './SearchResult.js'
-
+var Carousel = require('nuka-carousel');
 
 var borderStyles = {
   border: "solid 1px black",
-  padding: "10px",
-  overflow: "auto"
+  padding: "10px"
 }
 
 class Search extends Component {
-
+   mixins: [Carousel.ControllerMixin]
   componentWillMount() {
     this.props.sampleProfiles();
   }
@@ -19,34 +18,12 @@ class Search extends Component {
     return (
         <div style={borderStyles}>
           Search<br />
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12">
-                <form>
-                    <label>
-                      <input type="checkbox" value="all" />
-                      All
-                    </label>
-                    <label>
-                      <input type="checkbox" value="toronto" />
-                      Toronto
-                    </label>
-                    <label>
-                      <input type="checkbox" value="montreal" />
-                      Montreal
-                    </label>
-                    <label>
-                      <input type="checkbox" value="vancouver" />
-                      Vancouver
-                    </label>
-                </form>
-              </div>
-            </div>
-         </div>
+         <Carousel slidesToShow={5} cellAlign="center" slidesToScroll={6}>
           {this.props.searchResults.map((result, index) => {
             return <SearchResult key={index} result={result}/>
           })}
-        </div>
+         </Carousel>
+       </div>
     );
   }
 }
