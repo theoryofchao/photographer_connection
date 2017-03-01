@@ -11,6 +11,7 @@ import UserPhotoBin from './UserPhotoBin.js';
 import FillerPhotoBin from './FillerPhotoBin.js';
 import './index.css';
 
+
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
