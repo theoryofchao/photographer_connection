@@ -13,6 +13,11 @@ class Navigate extends Component {
     if (this.props.userA) {
       return (
         <div >
+        <AppBar
+            iconElementLeft={null}
+            style={style}
+            title="Focus"
+          />
 
           <Nav bsStyle="pills">
             <NavItem bsStyle="pills" href="/#/">Home</NavItem>
