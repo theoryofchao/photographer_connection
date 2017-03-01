@@ -35,20 +35,21 @@ var descript = {
 
 class UserInfo extends Component {
   render() {
+  let profile_picture_url = this.props.userProfile.profile_picture ? this.props.userProfile.profile_picture : "https://img.clipartfest.com/ae3134c8983b10e4b65d9777294cec41_profile-icon-clip-art-profile-icon-clipart_300-300.png";
     return (
         <div style={style}>
           <div>
-            <img style={profile} src="https://img.clipartfest.com/ae3134c8983b10e4b65d9777294cec41_profile-icon-clip-art-profile-icon-clipart_300-300.png" role="presentation" />
+            <img style={profile} src={profile_picture_url} role="presentation" />
             </div>
             <div>
               <ul style={info}>
-                <li style={listItems}>Handle</li>
-                <li style={listItems}>FirstName LastName</li>
-                <li style={listItems}>Location:</li>
-                <li style={listItems}>Years Of Experience:</li>
+                <li style={listItems}>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</li>
+                <li style={listItems}>@{this.props.userProfile.handle}</li>
+                <li style={listItems}>{this.props.userProfile.location_string}</li>
+                <li style={listItems}>{this.props.userProfile.years_exp} Years Of Experience</li>
                 <li style={listItems}>Contact: {this.props.userProfile.email}</li>
               </ul>
-              <p style={descript}>Description</p>
+              <p style={descript}>{this.props.userProfile.summary}</p>
             </div>
 
 
