@@ -11,7 +11,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
 
 const initialState = {
-  currentUser: {firstName: '', lastName: '', email: ''},
+  currentUser: {profilePicture: '', email: '', fistName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
   registration: {email: '', password: '', passwordConfirmation: ''},
   login: {email: '', password: ''},
   userAuthenticated: false,
@@ -302,6 +302,58 @@ class App extends Component {
     });
   }
 
+  handleInfoChange = (e) => {
+    let newInfo = Object.assign({}, this.state.currentUser);
+    newInfo.email = this.state.currentUser.email;
+
+    if (e.target.name === 'firstName') {
+      newInfo.firstName = e.target.value;
+    } else if (e.target.name === 'lastName') {
+      newInfo.lastName = e.target.value;
+    } else if (e.target.name === 'handle') {
+      newInfo.handle = e.target.value;
+    } else if (e.target.name === 'location') {
+      newInfo.location = e.target.value;
+    } else if (e.target.name === 'description') {
+      newInfo.description = e.target.value;
+    } else {
+      newInfo.years_exp = e.target.value
+    }
+
+    this.setState({currentUser: newInfo})
+  }
+
+  onInfoSubmit = (myInfo) => {
+    fetch('http://localhost:8080/users/update', {
+      method: 'PUT',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.token,
+        firstName: myInfo.firstName,
+        lastName: myInfo.lastName,
+        handle: myInfo.handle,
+        location: myInfo.location,
+        description: myInfo.description,
+        years_exp: myInfo.years_exp
+      })
+    })
+    .then((response) => {
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            console.log(json.message);
+          }
+        })
+      }
+    })
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       let newCurrentUser = {firstName: '', lastName: '', email: localStorage.email}
@@ -339,7 +391,9 @@ class App extends Component {
             handleImageUpload: this.handleImageUpload.bind(this),
             onFeaturePhotos: this.onFeaturePhotos.bind(this),
             getUserProfile: this.getUserProfile.bind(this),
-            getUserPhotos: this.getUserPhotos.bind(this)
+            getUserPhotos: this.getUserPhotos.bind(this),
+            handleInfoChange: this.handleInfoChange.bind(this),
+            onInfoSubmit: this.onInfoSubmit.bind(this)
           })
         )}
       </div>

@@ -15,10 +15,12 @@ class MyInfo extends Component {
     this.props.handlePhotoUpload(files[0]);
     this.props.handleImageUpload(files[0]);
   }
-  state = {
-    value: 1,
-  };
-  handleChange = (event, index, value) => this.setState({value});
+
+  onFormSubmit = (e) => {
+    e.preventDefault();
+    this.props.onInfoSubmit(this.props.myInfo);
+  }
+
   render() {
     return (
         <div>
@@ -34,30 +36,34 @@ class MyInfo extends Component {
             </div>
 
             <div className="form">
-              <form>
+              <form onSubmit={this.onFormSubmit.bind(this)} >
                 <TextField
                   type="name"
                   name="firstName"
                   floatingLabelText="First Name"
                   hintText="Enter Your First Name"
+                  onChange={this.props.handleInfoChange}
                  />
                 <TextField
                   type="name"
                   name="lastName"
                   floatingLabelText="Last Name"
                   hintText="Enter Your Last Name"
+                  onChange={this.props.handleInfoChange}
                 /> <br />
                 <TextField
                   type="name"
                   name="handle"
                   floatingLabelText="Handle"
                   hintText="Enter Your Unique Handle"
+                  onChange={this.props.handleInfoChange}
                  /> <br />
                 <TextField
                   type="location"
                   name="location"
                   floatingLabelText="Location"
                   hintText="Enter Your Location"
+                  onChange={this.props.handleInfoChange}
                 /> <br />
                 <TextField
                   type="description"
@@ -67,11 +73,11 @@ class MyInfo extends Component {
                   multiLine={true}
                   rows={4}
                   fullWidth={true}
+                  onChange={this.props.handleInfoChange}
                  /> <br />
                 <SelectField
                   floatingLabelText="Years Of Experince"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  onChange={this.props.handleInfoChange}
                 >
                   <MenuItem value={1} primaryText="Under 1 Year" />
                   <MenuItem value={2} primaryText="1+ Years" />
@@ -90,3 +96,5 @@ class MyInfo extends Component {
 }
 
 export default MyInfo;
+
+
