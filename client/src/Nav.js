@@ -1,37 +1,43 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
+import {  NavItem, Nav } from 'react-bootstrap';
+import {AppBar} from 'material-ui';
 
-var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px"
+var style = {
+  backgroundColor: "#afb5bf"
 }
 
-class Nav extends Component {
+class Navigate extends Component {
 
   render() {
-      if (this.props.userA) {
-        return (
-          <div style={borderStyles}>
-            Nav
-            <br />
-            <Link to="/">Home</Link><br />
-            <Link to="/my-profile">My Profile</Link><br />
-            <Link to='/' onClick={(e)=>{this.props.onLogoutClick()}}>Logout</Link><br />
-            {this.props.children}
-          </div>
-          )
-      } else {
-    return (
-        <div style={borderStyles}>
-          Nav
-          <br />
-          <Link to="/">Home</Link><br />
-          <Link to="/register">Register</Link> <br />
-          <Link to="/login">Login</Link><br />
-          {this.props.children}
+    if (this.props.userA) {
+      return (
+        <div >
+
+          <Nav bsStyle="pills">
+            <NavItem bsStyle="pills" href="/#/">Home</NavItem>
+            <NavItem bsStyle="pills" href="/#/my-profile">My Profile</NavItem>
+            <NavItem bsStyle="pills" href="/#/" onClick={(e)=>{this.props.onLogoutClick()}}>Logout</NavItem>
+          </Nav>
+        </div>
+       )
+    } else {
+      return (
+        <div>
+          <AppBar
+            iconElementLeft={null}
+            style={style}
+            title="Focus"
+          />
+
+           <Nav bsStyle="pills">
+              <NavItem href="/#/">Home</NavItem>
+              <NavItem href="/#/register">Register</NavItem>
+              <NavItem href="/#/login">Login</NavItem>
+           </Nav>
         </div>
     )}
   }
 }
 
-export default Nav;
+export default Navigate;

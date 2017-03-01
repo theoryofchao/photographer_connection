@@ -2,6 +2,7 @@ import React, { Component, Children, cloneElement } from 'react';
 import Header from './Header.js'
 import 'whatwg-fetch'
 import request from 'superagent';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const CLOUDINARY_UPLOAD_PRESET = 'hmxzziag';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lighthouse-cdr/upload'
@@ -252,6 +253,8 @@ class App extends Component {
 
   render() {
     return (
+
+<MuiThemeProvider>
       <div>
         <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults}/>
         <br />
@@ -269,6 +272,8 @@ class App extends Component {
           })
         )}
       </div>
+      </MuiThemeProvider>
+
     );
   }
 }

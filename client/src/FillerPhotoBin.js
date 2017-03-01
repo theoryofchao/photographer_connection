@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-// import './App.css';
-import FillerPhoto from './FillerPhoto.js';
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px"
-}
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+    overflowY: 'auto',
+  },
+};
 
 class FillerPhotoBin extends Component {
 
@@ -15,12 +26,22 @@ class FillerPhotoBin extends Component {
 
   render() {
     return (
-        <div style={borderStyles}>
-          FillerPhotoBin
-          {this.props.photos.map((photo, index) => {
-            return <FillerPhoto key={index} photo={photo}/>  
-          })}
-        </div>
+      <div style={styles.root}>
+        <GridList
+          cellHeight={180}
+          style={styles.gridList}
+        >
+        <Subheader>Our Photos</Subheader>
+        {this.props.photos.map((photo, i) => (
+          <GridTile
+            key={i}
+            actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+          >
+            <img src={photo.file_location} role="presentation"/>
+          </GridTile>
+      ))}
+    </GridList>
+  </div>
     );
   }
 }

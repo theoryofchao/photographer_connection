@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-// import './App.css';
-
-var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px"
-}
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
 
 class Login extends Component {
 
@@ -16,18 +12,27 @@ class Login extends Component {
 
   render() {
     return (
-        <form style={borderStyles} onSubmit={this.onFormSubmit}>
-          Login
-            <label>
-             E-mail:
-              <input type="email" name="email" onChange={this.props.handleLoginChange}/>
-            </label>
-            <label>
-             Password:
-              <input type="password" name="password" onChange={this.props.handleLoginChange}/>
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
+      <Paper zDepth={4}>
+        <form onSubmit={this.onFormSubmit}>
+          <TextField
+            fullWidth={true}
+            type="email"
+            name="email"
+            floatingLabelText="E-mail"
+            hintText="Enter Your E-mail Address"
+            onChange={this.props.handleLoginChange}
+           />
+        <TextField
+          fullWidth={true}
+          type="password"
+          name="password"
+          floatingLabelText="Password"
+          hintText="Enter Your Password"
+          onChange={this.props.handleLoginChange}
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </Paper>
     );
   }
 }
