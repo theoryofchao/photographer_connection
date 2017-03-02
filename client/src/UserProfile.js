@@ -16,7 +16,7 @@ class UserProfile extends Component {
          {this.props.param}
           <UserInfo userProfile={this.props.userProfile}/><br />
           <Gallery children={this.props.children.props.children} photos={this.props.photos}/>
-          <br />
+          <br />`
         </div>
     );
   }
