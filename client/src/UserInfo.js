@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
-
-var style = {
-  backgroundColor: "lightgrey",
-  height: "200px"
-}
+import Avatar from 'material-ui/Avatar';
 
 var profile = {
   display: "inline-block",
@@ -16,7 +11,7 @@ var profile = {
 
 var info = {
   display: "inline-block",
-  padding: "25px 180px 25px 50px",
+  paddingTop: "-20px",
   margin: "0 auto",
   listStyleType: "none"
 }
@@ -28,19 +23,27 @@ var listItems = {
 var descript = {
   display: "inline-block",
   verticalAlign: "top",
-  padding: "7px 0 7px 30px"
+  padding: "7px 20px",
+  maxWidth: "30%"
 }
 
+var style = {
+  margin: 5,
+
+  backgroundColor: "lightgrey"
+};
 
 class UserInfo extends Component {
   render() {
   let profile_picture_url = this.props.userProfile.profile_picture ? this.props.userProfile.profile_picture : "https://img.clipartfest.com/ae3134c8983b10e4b65d9777294cec41_profile-icon-clip-art-profile-icon-clipart_300-300.png";
     return (
         <div style={style}>
-          <div>
-            <img style={profile} src={profile_picture_url} role="presentation" />
-            </div>
-            <div>
+            <Avatar
+              src={profile_picture_url}
+              size={175}
+              style={style}
+            />
+
               <ul style={info}>
                 <li style={listItems}>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</li>
                 <li style={listItems}>@{this.props.userProfile.handle}</li>
@@ -49,7 +52,7 @@ class UserInfo extends Component {
                 <li style={listItems}>Contact: {this.props.userProfile.email}</li>
               </ul>
               <p style={descript}>{this.props.userProfile.summary}</p>
-            </div>
+
 
 
         </div>
