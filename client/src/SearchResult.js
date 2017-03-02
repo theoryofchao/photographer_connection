@@ -41,13 +41,13 @@ class SearchResult extends Component {
             <Avatar
             style={floaty}
             src={this.props.result.profile_picture}
-            size={150}
+            size={125}
             />
             <div>
               <p style={info}>{this.props.result.first_name}</p><br />
               <p style={info}>{this.props.result.last_name}</p><br /><br />
-              <p style={info}>{this.props.result.location_string}</p><br /><br />
-              <p style={info}>$$$$ Icon?</p>
+              <p style={info}>{this.props.result.location_string}</p><br />
+
               <Link to={profileLink}><FlatButton backgroundColor={"#babbbc"}style={button} label="Profile" /></Link>
             </div>
         </div>

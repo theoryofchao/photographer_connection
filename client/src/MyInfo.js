@@ -2,23 +2,28 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField'
 
-var parent = {
-  display: "inline-block",
+var main = {
   padding: "25px",
-  textAlign: "center",
-  width: "90%",
-  backgroundImage: "radial-gradient(white, black)"
+  width: "100%",
+  height: "100%",
+  boxSizing: "border-box",
+  backgroundColor: "#6b7b93"
 }
 
-var titleStyle = {
+var left = {
   display: "inline-block",
-  color: "black",
-  padding: "35px"
+  width: "50%",
+  height: "100%",
+  borderRight: "solid 2px black"
 }
 
-var child = {
-  padding: "20px"
+var right = {
+  display: "inline-block",
+  width: "45%",
+  height: "100%",
+  paddingLeft: "3%"
 }
+
 
 class MyInfo extends Component {
 
@@ -35,27 +40,29 @@ class MyInfo extends Component {
 
   render() {
     return (
-      <div style={parent}>
-        <div style={titleStyle} className="FileUpload">
-          <Dropzone
-            multiple={false}
-            accept="image/*"
-            onDrop={this.onImageDrop.bind(this)}>
-            <h3>Profile Picture</h3>
-            <p>Drop an image or click to select a file to upload</p>
-          </Dropzone>
-        </div>
+        <div style={main}>
+          <div style={left}>
+            <div className="FileUpload">
+              <Dropzone
+                multiple={false}
+                accept="image/*"
+                onDrop={this.onImageDrop.bind(this)}>
+                <h3>Profile Picture</h3>
+                <p>Drop an image or click to select a file to upload</p>
+              </Dropzone>
+            </div>
 
-        <div>
-          {this.props.myProfile.profile_picture === '' ? null :
-          <div>
-            <p>{this.props.uploadedFile}</p>
-            <img src={this.props.myProfile.profile_picture} role="presentation" />
-          </div>}
-        </div>
+            <div>
+              {this.props.myProfile.profile_picture === '' ? null :
+              <div>
+                <p>{this.props.uploadedFile}</p>
+                <img style={{border: "solid 3px black", maxWidth: "500px"}}src={this.props.myProfile.profile_picture} role="presentation" />
+              </div>}
+            </div>
+          </div>
 
-        <div className="form">
-          <form style={child} onSubmit={this.onFormSubmit.bind(this)} >
+
+          <form style={right} onSubmit={this.onFormSubmit.bind(this)} >
             <TextField
               type="name"
               name="first_name"
@@ -107,7 +114,6 @@ class MyInfo extends Component {
             <input type="submit" value="Submit" />
           </form>
         </div>
-      </div>
     );
   }
 }
