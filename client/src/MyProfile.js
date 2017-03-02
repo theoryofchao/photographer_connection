@@ -12,7 +12,6 @@ class MyProfile extends Component {
   render() {
     return (
         <div style={borderStyles}>
-          <h2>User {this.props.currentUser.email} - Profile</h2>
           <MyInfo
             handleProfileImageUpload={this.props.handleProfileImageUpload}
             handleImageUpload={this.props.handleImageUpload}

@@ -21,7 +21,8 @@ var right = {
   display: "inline-block",
   width: "45%",
   height: "100%",
-  paddingLeft: "3%"
+  paddingLeft: "3%",
+  verticalAlign: "top"
 }
 
 
@@ -41,14 +42,15 @@ class MyInfo extends Component {
   render() {
     return (
         <div style={main}>
+          <h2 style={{textAlign: "center", margin: "0 0 10px 0"}}>User {this.props.currentUser.email} - Profile</h2>
           <div style={left}>
             <div className="FileUpload">
               <Dropzone
                 multiple={false}
                 accept="image/*"
                 onDrop={this.onImageDrop.bind(this)}>
-                <h3>Profile Picture</h3>
-                <p>Drop an image or click to select a file to upload</p>
+                <h4 style={{textAlign: "center"}}>Update profile picture</h4>
+                <p style={{textAlign: "center", fontSize: "0.85em"}}>Drop an image or click<br />to select a file to upload</p>
               </Dropzone>
             </div>
 
@@ -56,13 +58,14 @@ class MyInfo extends Component {
               {this.props.myProfile.profile_picture === '' ? null :
               <div>
                 <p>{this.props.uploadedFile}</p>
-                <img style={{border: "solid 3px black", maxWidth: "500px"}}src={this.props.myProfile.profile_picture} role="presentation" />
+                <img style={{border: "solid 3px black", maxWidth: "75%", maxHeight: "75%"}}src={this.props.myProfile.profile_picture} role="presentation" />
               </div>}
             </div>
           </div>
 
 
           <form style={right} onSubmit={this.onFormSubmit.bind(this)} >
+            <h3>Update your info:</h3>
             <TextField
               type="name"
               name="first_name"
@@ -110,7 +113,7 @@ class MyInfo extends Component {
               floatingLabelText="How long have you been shooting?"
               hintText="No. of years"
               onChange={this.props.handleInfoChange}
-             /> <br />
+             /> <br /><br />
             <input type="submit" value="Submit" />
           </form>
         </div>
