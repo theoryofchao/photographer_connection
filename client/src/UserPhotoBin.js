@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 var Carousel = require('nuka-carousel');
 
 var parent = {
-  textAlign: "center"
+  textAlign: "center",
+  height: "300px"
 };
 
 var gridList = {
-    display: "inline-block",
-    maxWidth: "40%",
-    maxHeight: "1%",
-    border: "solid 3px black"
+    // display: "inline-block",
+    // maxWidth: "40%",
+    // maxHeight: "1%",
+    // border: "solid 3px black"
+    objectFit: "contain",
+    maxHeight: "400px"
 };
 
 class UserPhotoBin extends Component {
@@ -17,7 +20,7 @@ class UserPhotoBin extends Component {
   render() {
 
     return (
-      <div style={{ height: '500px' }}>
+      <div className="albumSlider" style={{ height: '500px' }}>
         <h1> My Photos </h1>
         <Carousel style={parent}>
         {this.props.photos.map((photo) => (
