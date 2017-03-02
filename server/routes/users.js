@@ -14,7 +14,7 @@ let getJwt = (req) => {
 router.get('/sample', function(req, res, next) {
   const knex = getKnex(req);
 
-  knex.select()
+  knex.select('user_id', 'email', 'handle', 'first_name', 'last_name', 'location_string', 'years_exp', 'summary', 'profile_picture')
   .from(`users`)
   .orderBy(`created_at`, `desc`)
   .timeout(1000)

@@ -20,7 +20,6 @@ function popUp() {
   alert("test")
  }
 
-
 class FillerPhotoBin extends Component {
   componentWillMount() {
     this.props.onFeaturePhotos();
