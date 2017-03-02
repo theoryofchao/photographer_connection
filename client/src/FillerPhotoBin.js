@@ -29,8 +29,8 @@ class FillerPhotoBin extends Component {
   render() {
     return (
       <div style={styles.root}>
-        {this.props.photos.map((photo) => (
-          <img onClick={popUp} style={styles.gridList} src={photo.file_location} role="presentation"/>
+        {this.props.photos.map((photo, index) => (
+          <img key={index} onClick={popUp} style={styles.gridList} src={photo.file_location} role="presentation"/>
       ))}
   </div>
     );
