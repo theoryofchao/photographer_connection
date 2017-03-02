@@ -22,6 +22,7 @@ const initialState = {
   searchResults: [],
   userProfile: {},
   myProfile: {},
+  myAlbums: [],
   param: '',
   myInfo: {profilePicture: '', firstName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
 
@@ -311,12 +312,54 @@ class App extends Component {
           if (response.status !== 200) {
             console.log(json.message); //if error occured
           } else {
-            that.setState({myProfile: json[0]
-                         });
+            that.setState({myProfile: json[0]});
             console.log(that.state);
           }
         })
       }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
+  createMyAlbum = (userId, name, description) => {
+    console.log(name);
+    console.log(description);
+
+    //TODO: check auth
+
+    fetch(`http://localhost:8080/albums/new`, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.token,
+        name: name,
+        description, description
+      })
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
+  getMyAlbums = (userId) => {
+    fetch(`http://localhost:8080/albums/user/${userId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      console.log('test');
+      console.log(response);
     })
     .catch((error) => {
       console.error(error);
@@ -413,10 +456,9 @@ class App extends Component {
     if (this.props.params.id) {
       this.setState({param: this.props.params.id})
     }
-    console.log(this.props.params);
-
     if (localStorage.user_id) {
       this.getMyProfile(localStorage.user_id);
+      //this.getMyAlbums(localStorage.user_id);
     }
   }
 
@@ -448,6 +490,8 @@ class App extends Component {
             onFeaturePhotos: this.onFeaturePhotos.bind(this),
             getUserProfile: this.getUserProfile.bind(this),
             getMyProfile: this.getMyProfile.bind(this),
+            createMyAlbum: this.createMyAlbum.bind(this),
+            getMyAlbums: this.getMyAlbums.bind(this),
             getUserPhotos: this.getUserPhotos.bind(this),
             handleInfoChange: this.handleInfoChange.bind(this),
             onInfoSubmit: this.onInfoSubmit.bind(this)
