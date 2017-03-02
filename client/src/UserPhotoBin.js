@@ -1,43 +1,29 @@
 import React, { Component } from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
-import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+var Carousel = require('nuka-carousel');
 
+var parent = {
+  textAlign: "center"
+};
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 500,
-    height: 450,
-    overflowY: 'auto',
-  },
+var gridList = {
+    display: "inline-block",
+    width: "400px",
+    height: "400px",
 };
 
 class UserPhotoBin extends Component {
-
+  mixins: [Carousel.ControllerMixin]
   render() {
 
     return (
-      <div style={styles.root}>
-        <GridList
-          cellHeight={180}
-          style={styles.gridList}
-        >
-        <Subheader>Our Photos</Subheader>
-        {this.props.photos.map((photo, i) => (
-          <GridTile
-            key={i}
-            actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-          >
-            <img src={photo.file_location} role="presentation"/>
-          </GridTile>
+      <div style={{ height: '500px' }}>
+        <h1> My Photos </h1>
+        <Carousel style={parent}>
+        {this.props.photos.map((photo) => (
+            <img style={gridList} src={photo.file_location} role="presentation"/>
         ))}
-      </GridList>
+        </Carousel>
+        <div>something</div>
     </div>
     );
   }
