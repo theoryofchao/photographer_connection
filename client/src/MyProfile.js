@@ -2,16 +2,10 @@ import React, { Component } from 'react';
 import MyInfo from './MyInfo.js'
 import MyGallery from './MyGallery.js'
 
-var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px",
-
-}
-
 class MyProfile extends Component {
   render() {
     return (
-        <div style={borderStyles}>
+        <div>
           <MyInfo
             handleProfileImageUpload={this.props.handleProfileImageUpload}
             handleImageUpload={this.props.handleImageUpload}
@@ -29,7 +23,6 @@ class MyProfile extends Component {
           >
             {this.props.children}
           </MyGallery>
-          <br />
         </div>
     );
   }

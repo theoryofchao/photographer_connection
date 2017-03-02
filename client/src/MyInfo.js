@@ -42,7 +42,7 @@ class MyInfo extends Component {
   render() {
     return (
         <div style={main}>
-          <h2 style={{textAlign: "center", margin: "0 0 10px 0"}}>User {this.props.currentUser.email} - Profile</h2>
+          <h2 style={{textAlign: "center", margin: "0 0 10px 0"}}>Profile for {this.props.currentUser.email}</h2>
           <div style={left}>
             <div className="FileUpload">
               <Dropzone

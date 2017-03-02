@@ -7,8 +7,9 @@ var parent = {
 
 var gridList = {
     display: "inline-block",
-    width: "400px",
-    height: "400px",
+    maxWidth: "40%",
+    maxHeight: "1%",
+    border: "solid 3px black"
 };
 
 class UserPhotoBin extends Component {
@@ -23,7 +24,6 @@ class UserPhotoBin extends Component {
             <img style={gridList} src={photo.file_location} role="presentation"/>
         ))}
         </Carousel>
-        <div>something</div>
     </div>
     );
   }

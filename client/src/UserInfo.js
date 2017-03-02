@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 var style = {
   backgroundColor: "lightgrey",
-  opacity: "0.7",
   height: "200px"
 }
 
