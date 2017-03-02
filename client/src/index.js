@@ -28,24 +28,3 @@ ReactDOM.render((
   </Router>
   ), document.getElementById('root')
 );
-
-// ReactDOM.render((
-//   <Router history={hashHistory}>
-//     <Route path="/" component={App}>
-//       <Route path="/login" component={Login} />
-//       <Route path="/logout" component={Logout} />
-//       <Route path="/register" component={Register} />
-//         <Route component={Search} />
-//       </Route>
-//       <Route path="/user-profile" component={UserProfile}>
-//         <IndexRoute component={FillerPhotoBin} />
-//         <Route path="/user-info" component={UserInfo}/>
-//         <Route path="/gallery" component={Gallery}>
-//           <Route path="/album" component={Album}/>
-//           <Route path="/photo" component={Photo}/>
-//         </Route>
-//       </Route>
-//     </Route>
-//   </Router>
-//   ), document.getElementById('root')
-// );

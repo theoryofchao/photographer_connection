@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
+import Avatar from 'material-ui/Avatar';
+import FlatButton from 'material-ui/FlatButton';
 
 import { Link } from 'react-router';
 
 var styles = {
   border: "solid 1px black",
-  padding: "10px 10px 15px 10px",
-  overflow: "auto"
+  padding: "10px",
+  overflow: "auto",
 }
 
-var img = {
-  height: "115px"
+var info = {
+  display: "inline-block",
+  textDecoration: "none",
+  float: "right",
+  color: "black",
+  fontSize: "0.8em",
+  margin: "0"
+}
+
+var floaty = {
+  float: "left",
+  display: "inline-block"
+}
+
+var button = {
+  display: "inline-block",
+  position: "absolute",
+  right: "11px",
+  bottom: "11px"
 }
 
 class SearchResult extends Component {
@@ -18,11 +37,19 @@ class SearchResult extends Component {
     let profileLink = "/user-profile/" + this.props.result.user_id;
     return (
         <div style={styles}>
-          <p>{this.props.result.first_name} {this.props.result.last_name}</p>
-          <img style={img} src={this.props.result.profile_picture} role="presentation"/>
-          <p>{this.props.result.location_string}</p>
-          <p>$$$$ Icon?</p>
-          <Link to={profileLink}>{this.props.result.email}</Link>
+
+            <Avatar
+            style={floaty}
+            src={this.props.result.profile_picture}
+            size={150}
+            />
+            <div>
+              <p style={info}>{this.props.result.first_name}</p><br />
+              <p style={info}>{this.props.result.last_name}</p><br /><br />
+              <p style={info}>{this.props.result.location_string}</p><br /><br />
+              <p style={info}>$$$$ Icon?</p>
+              <Link to={profileLink}><FlatButton backgroundColor={"#babbbc"}style={button} label="Profile" /></Link>
+            </div>
         </div>
     );
   }

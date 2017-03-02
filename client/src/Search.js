@@ -4,8 +4,7 @@ import SearchResult from './SearchResult.js'
 var Carousel = require('nuka-carousel');
 
 var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px"
+  height: "244px"
 }
 
 class Search extends Component {
@@ -16,9 +15,9 @@ class Search extends Component {
 
   render() {
     return (
-        <div style={borderStyles}>
+        <div >
           Search<br />
-         <Carousel slidesToShow={5} cellAlign="center" slidesToScroll={6}>
+         <Carousel style={borderStyles} slidesToShow={5} cellAlign="center" slidesToScroll={6}>
           {this.props.searchResults.map((result, index) => {
             return <SearchResult key={index} result={result}/>
           })}

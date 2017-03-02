@@ -429,33 +429,31 @@ class App extends Component {
 
   render() {
     return (
-
-<MuiThemeProvider>
-      <div>
-        <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults}/>
-        <br />
-        {Children.map(this.props.children, child =>
-          cloneElement(child, {
-            ...this.props,
-            ...this.state,
-            onRegistrationSubmit: this.onRegistrationSubmit,
-            onLoginSubmit: this.onLoginSubmit,
-            handleRegistrationChange: this.handleRegistrationChange,
-            handleLoginChange: this.handleLoginChange,
-            handlePhotoUpload: this.handlePhotoUpload.bind(this),
-            handleProfileImageUpload: this.handleProfileImageUpload.bind(this),
-            handleImageUpload: this.handleImageUpload.bind(this),
-            onFeaturePhotos: this.onFeaturePhotos.bind(this),
-            getUserProfile: this.getUserProfile.bind(this),
-            getMyProfile: this.getMyProfile.bind(this),
-            getUserPhotos: this.getUserPhotos.bind(this),
-            handleInfoChange: this.handleInfoChange.bind(this),
-            onInfoSubmit: this.onInfoSubmit.bind(this)
-          })
-        )}
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults}/>
+          <br />
+          {Children.map(this.props.children, child =>
+            cloneElement(child, {
+              ...this.props,
+              ...this.state,
+              onRegistrationSubmit: this.onRegistrationSubmit,
+              onLoginSubmit: this.onLoginSubmit,
+              handleRegistrationChange: this.handleRegistrationChange,
+              handleLoginChange: this.handleLoginChange,
+              handlePhotoUpload: this.handlePhotoUpload.bind(this),
+              handleProfileImageUpload: this.handleProfileImageUpload.bind(this),
+              handleImageUpload: this.handleImageUpload.bind(this),
+              onFeaturePhotos: this.onFeaturePhotos.bind(this),
+              getUserProfile: this.getUserProfile.bind(this),
+              getMyProfile: this.getMyProfile.bind(this),
+              getUserPhotos: this.getUserPhotos.bind(this),
+              handleInfoChange: this.handleInfoChange.bind(this),
+              onInfoSubmit: this.onInfoSubmit.bind(this)
+            })
+          )}
+        </div>
       </MuiThemeProvider>
-
     );
   }
 }
