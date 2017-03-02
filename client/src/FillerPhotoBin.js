@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const styles = {
   root: {
