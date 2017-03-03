@@ -25,10 +25,10 @@ router.post('/new', (req, res, next) => {
     jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
       if (err) {
         console.error(err);
-        return res.status(400).json({ success: false, message: 'Failed to authenticate token.' });
+        return res.status(400).json({ success: false, content: 'Failed to authenticate token.' });
       } else {
         let result = knex(`albums`)
-        .insert({ 
+        .insert({
           user_id: decoded.user_id,
           name: name,
           description: description,
@@ -149,7 +149,7 @@ router.get('/user/:user_id', (req, res, next) => {
   .catch( (error) => {
     console.error(error);
     return res.status(400).json({'message' : 'User Album Retrival Failed'});
-  });  
+  });
 })
 
 

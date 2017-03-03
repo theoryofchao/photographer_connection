@@ -349,7 +349,7 @@ class App extends Component {
       if(contentType && contentType.indexOf("application/json") !== -1) {
         return response.json().then(function(json) {
           if (response.status !== 200) {
-            console.log(json.content); //if error occured
+            console.log(json); //if error occured
           } else {
             let myAlbums = that.state.myAlbums;
             myAlbums.push(json.content[0]);
