@@ -340,7 +340,7 @@ class App extends Component {
       body: JSON.stringify({
         token: localStorage.token,
         name: name,
-        description, description
+        description: description
       })
     })
     .then((response) => {

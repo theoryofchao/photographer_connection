@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Card, CardHeader, CardMedia, CardTitle} from 'material-ui/Card';
 
 var styles = {
   root: {
@@ -36,7 +37,7 @@ var button = {
 }
 
 var modalImage = {
-  boxShadow: "2px"
+  boxShadow: "5px 5px 5px #888"
 }
 
 class FillerPhotoBin extends Component {
@@ -51,8 +52,20 @@ class FillerPhotoBin extends Component {
         contentLabel="Modal"
         style={modalStyles}
         >
-            <img style={modalImage} src={this.props.currentModal} role="presentation" />
-            <RaisedButton style={button} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+          <RaisedButton style={button} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+            <Card>
+              <CardHeader
+                title="URL Avatar"
+                subtitle="Subtitle"
+                avatar={"this.props.result.profile_picture"}
+              />
+
+
+
+                <img style={modalImage} src={this.props.currentModal} role="presentation" />
+
+            </Card>
+          <RaisedButton style={button} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
         </Modal>
         <div style={styles.root}>
           {this.props.photos.map((photo, i) => (
