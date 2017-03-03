@@ -9,7 +9,7 @@ class UserProfile extends Component {
     return (
         <div>
           <UserInfo userProfile={this.props.userProfile}/><br />
-          <Gallery children={this.props.children.props.children} photos={this.props.photos} userAlbums={this.props.userAlbums}/>
+          <Gallery children={this.props.children.props.children} photos={this.props.photos} userAlbums={this.props.userAlbums} userProfile={this.props.userProfile}/>
           <br />
         </div>
     );
