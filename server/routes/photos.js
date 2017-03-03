@@ -12,6 +12,12 @@ let getJwt = (req) => {
 /* Create Photo */
 router.post('/new', (req, res, next) => {
   let token = req.body.token;
+
+  let album_id = req.body.album ? req.body.album : null;
+
+  console.log(album_id);
+  return res.status(200).json({success: false});
+
   let file_location = req.body.file_location;
   let currentTime = new Date();
 
@@ -25,10 +31,6 @@ router.post('/new', (req, res, next) => {
         return res.status(400).json({ success: false, message: 'Failed to authenticate token.' });
       }
       else {
-        // req.decoded = decoded
-        // next()
-        console.log(decoded.user_id);
-
         knex
         .select(`album_id`)
         .from(`albums`)
@@ -59,6 +61,50 @@ router.post('/new', (req, res, next) => {
         .catch( (error) => {
               console.error(error);
               return res.status(400).json({'message' : 'Photo Creation Failed.'});
+        });
+      }
+    })
+  }
+  else {
+    return res.status(400).json({ success: false, message: 'Cannot upload photo if not authenticated.' })
+  }
+});
+
+/* Create Photo in a specific album*/
+router.post('/new/:album_id', (req, res, next) => {
+  let token = req.body.token;
+
+  let album_id = req.params.album_id ? req.params.album_id : null;
+  let file_location = req.body.file_location;
+  let currentTime = new Date();
+
+  const jwt = getJwt(req);
+  const knex = getKnex(req);
+
+    //If there is already a token
+  if(token) {
+    jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
+      if (err) {
+        return res.status(400).json({ success: false, message: 'Failed to authenticate token.' });
+      }
+      else {
+        knex(`photos`)
+        .insert({
+          album_id: album_id,
+          file_location: file_location,
+          status: 1,
+          created_at: currentTime,
+          updated_at: currentTime
+        })
+        .timeout(1000)
+        .returning(`*`)
+        .then((result) => {
+          console.log(result);
+          return res.status(200).json({'message' : `Photo inserted into album ${album_id}.`});
+        })
+        .catch((error) => {
+          console.error(error);
+          return res.status(400).json({'message' : 'Photo Creation Failed.'});
         });
       }
     })
