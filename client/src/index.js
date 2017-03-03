@@ -19,9 +19,9 @@ ReactDOM.render((
       <Route path="login" component={Login} />
       <Route path="register" component={Register} />
       <Route path="my-profile" component={MyProfile} />
-      <Route path="user-profile/:id" component={UserProfile}>
+      <Route path="user-profile/:user_id" component={UserProfile}>
         <IndexRoute component={UserPhotoBin} />
-        <Route path="album/:id" component={Album} />
+        <Route path="album/:album_id" component={Album} />
       </Route>
           // <Route path="/albums/:album" component={Album} />
     </Route>

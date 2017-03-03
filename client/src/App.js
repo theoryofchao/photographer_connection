@@ -24,7 +24,8 @@ const initialState = {
   userAlbums: [],
   myProfile: {},
   myAlbums: [],
-  param: '',
+  userParam: '',
+  albumParam: '',
   myInfo: {profilePicture: '', firstName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
   showModal: false,
   currentModal: ""
@@ -287,7 +288,7 @@ class App extends Component {
             console.log(json.message); //if error occured
           } else {
             that.setState({userProfile: json[0],
-                          param: userId,
+                          userParam: userId,
                          });
             console.log(that.state);
           }
@@ -418,6 +419,34 @@ class App extends Component {
     });
   }
 
+  getAlbumPhotos = (userId, albumId) => {
+    fetch(`http://localhost:8080/photos/user/${userId}/album/${albumId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({photos: json,
+                          albumParam: albumId});
+            console.log(that.state);
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
     getUserAlbums = (userId) => {
     fetch(`http://localhost:8080/albums/user/${userId}`, {
       method: 'GET',
@@ -515,9 +544,14 @@ class App extends Component {
       let newCurrentUser = {user_id: localStorage.user_id, email: localStorage.email}
       this.setState({userAuthenticated: true, currentUser: newCurrentUser});
     }
-    if (this.props.params.id) {
-      this.setState({param: this.props.params.id})
+    if (this.props.params.user_id) {
+      this.setState({userParam: this.props.params.user_id});
     }
+
+    if (this.props.params.album_id) {
+      this.setState({albumParam: this.props.params.album_id});
+    }
+
     if (localStorage.user_id) {
       this.getMyProfile(localStorage.user_id);
       this.getMyAlbums(localStorage.user_id);
@@ -525,11 +559,17 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (this.props.params.id && this.props.params.id !== this.state.param) {
-      this.getUserProfile(this.props.params.id);
-      this.getUserPhotos(this.props.params.id);
-      this.getUserAlbums(this.props.params.id);
+    if (this.props.params.user_id && this.props.params.user_id !== this.state.userParam) {
+      this.getUserProfile(this.props.params.user_id);
+      this.getUserPhotos(this.props.params.user_id);
+      this.getUserAlbums(this.props.params.user_id);
     }
+
+    if (this.props.params.album_id && this.props.params.album_id !== this.state.albumParam) {
+      this.getAlbumPhotos(this.props.params.user_id, this.props.params.album_id);
+    }
+
+    console.log("click on album, params------->", this.props.params);
   }
 
   render() {

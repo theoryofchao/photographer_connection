@@ -19,4 +19,4 @@ class UserProfile extends Component {
 export default UserProfile;
 
 // current url id:
-// {this.props.param}
+// {this.props.userParam}

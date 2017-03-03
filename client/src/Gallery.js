@@ -1,5 +1,5 @@
 import React, { Component, Children, cloneElement } from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import UserAlbums from './UserAlbums.js';
 
 var borderStyles = {
@@ -13,14 +13,13 @@ class Gallery extends Component {
   render() {
     let that = this;
 
-    
+
     return (
       <div style={borderStyles}>
         Gallery<br />
 
         {this.props.userAlbums.map((album, index) => (
           <UserAlbums user_id={that.props.userProfile.user_id} album={album}/>
-          
         ))}
 
 

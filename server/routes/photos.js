@@ -223,7 +223,32 @@ router.get('/user/:user_id', (req, res, next) => {
   })
   .timeout(1000)
   .then( (result) => {
-    console.log("line 182");
+    console.log(result);
+    return res.status(200).json(result);
+  })
+  .catch( (error) => {
+    console.error(error);
+    return res.status(400).json({'message' : 'User photo Retrival Failed'});
+  });
+})
+
+//http://localhost:8080/photos/user/${userId}/album/${albumId}
+/* Get all photos from a user's album*/
+router.get('/user/:user_id/album/:album_id', (req, res, next) => {
+  let user_id = req.params.user_id;
+  let album_id = req.params.album_id;
+
+  const knex = getKnex(req);
+  knex
+  .select(`*`)
+  .from(`albums`)
+  .innerJoin(`photos`, `albums.album_id`, `photos.album_id`)
+  .where({
+    "albums.album_id": album_id,
+    "albums.user_id": user_id
+  })
+  .timeout(1000)
+  .then( (result) => {
     console.log(result);
     return res.status(200).json(result);
   })
