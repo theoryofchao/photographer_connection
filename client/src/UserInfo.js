@@ -1,30 +1,41 @@
 import React, { Component } from 'react';
 import Avatar from 'material-ui/Avatar';
+import DatePicker from 'material-ui/DatePicker';
+import FlatButton from 'material-ui/FlatButton';
+import ActionAndroid from 'material-ui/svg-icons/action/android';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import { Link } from 'react-router';
 
 var style = {
   backgroundColor: "lightgrey",
   height: "200px",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "flex-start"
 }
 
 var info = {
-  display: "inline-block",
-  padding: "25px",
-  margin: "0 auto",
   listStyleType: "none",
-  width: "25%",
-  verticalAlign: "top"
+  padding: "20px"
 }
 
-var listItems = {
-  padding: "7px 0"
+var description = {
+    alignItems: "center",
+    display: "flex",
+    width: "22%",
+    padding: "75px",
+    border: "dotted 2px #b2b2b2"
+
 }
 
-var descript = {
-  display: "inline-block",
-  verticalAlign: "top",
-  padding: "20px 30px",
-  width: "35%"
-}
+var styles = {
+  block: {
+    maxWidth: 250,
+  },
+  radioButton: {
+    marginBottom: 16,
+  },
+};
 
 
 class UserInfo extends Component {
@@ -38,13 +49,33 @@ class UserInfo extends Component {
               style={style}
             />
             <div style={info}>
-              <span style={listItems}>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
-              <span style={listItems}>@{this.props.userProfile.handle}</span><br /><br />
-              <span style={listItems}>{this.props.userProfile.location_string}</span><br /><br />
-              <span style={listItems}>{this.props.userProfile.years_exp} Years Of Experience</span><br /><br />
-              <span style={listItems}>Contact: {this.props.userProfile.email}</span><br /><br />
+              <span>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
+              <span>@{this.props.userProfile.handle}</span><br /><br />
+              <span>{this.props.userProfile.location_string}</span><br /><br />
+              <span>{this.props.userProfile.years_exp} Years Of Experience</span><br /><br />
+              <span>Contact: {this.props.userProfile.email}</span><br /><br />
             </div>
-            <p style={descript}>{this.props.userProfile.summary}</p>
+            <p style={description}>{this.props.userProfile.summary}</p>
+            <div style={{paddingLeft: "20px"}}>
+              <h4 style={{margin: "9px"}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
+              <DatePicker hintText="Select A Date" />
+              <RadioButtonGroup name="shipSpeed" defaultSelected="Light">
+                <RadioButton
+                  value="Light"
+                  label="In-Person Consultation"
+                  style={styles.radioButton}
+                />
+                <RadioButton
+                  value="Dark"
+                  label="Live Chat Consultation"
+                  style={styles.radioButton}
+                />
+              </RadioButtonGroup>
+                <Link to={"/"}><FlatButton
+                  style={{backgroundColor: "#b2b2b2"}}
+                  icon={<ActionAndroid />}
+                /></Link>
+            </div>
         </div>
 
     );

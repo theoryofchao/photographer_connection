@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
-
 import { Link } from 'react-router';
 
 var styles = {
