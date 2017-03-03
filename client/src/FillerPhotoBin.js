@@ -52,20 +52,15 @@ class FillerPhotoBin extends Component {
         contentLabel="Modal"
         style={modalStyles}
         >
-          <RaisedButton style={button} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
             <Card>
               <CardHeader
                 title="URL Avatar"
                 subtitle="Subtitle"
                 avatar={"this.props.result.profile_picture"}
               />
-
-
-
+              <RaisedButton style={button} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
                 <img style={modalImage} src={this.props.currentModal} role="presentation" />
-
             </Card>
-          <RaisedButton style={button} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
         </Modal>
         <div style={styles.root}>
           {this.props.photos.map((photo, i) => (
