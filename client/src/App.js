@@ -504,6 +504,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("APP STATE ON RENDER: ", this.state);
     return (
       <MuiThemeProvider>
         <div>
