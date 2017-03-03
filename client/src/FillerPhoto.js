@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './App.css';
 
 var borderStyles = {
   border: "solid 1px black",

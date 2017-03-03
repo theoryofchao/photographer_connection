@@ -3,17 +3,19 @@ import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardHeader } from 'material-ui/Card';
 
+import { Link } from 'react-router';
+
 var styles = {
   root: {
     display: 'flex',
     flexWrap: "wrap",
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     backgroundColor: "lightgrey",
-    padding: "70px"
+    padding: "40px 10px"
   },
   gridList: {
-    width: 200,
-    height: 200,
+    maxHeight: "250px",
+    objectFit: "contain",
     border: "solid 2px grey",
     padding: "2px"
   },
@@ -28,7 +30,8 @@ var modalStyles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "column"
+    flexDirection: "column",
+    boxShadow: "5px 5px 5px #888",
   }
 }
 
@@ -37,7 +40,6 @@ var button = {
 }
 
 var modalImage = {
-  boxShadow: "5px 5px 5px #888"
 }
 
 class FillerPhotoBin extends Component {
@@ -45,6 +47,8 @@ class FillerPhotoBin extends Component {
     this.props.onFeaturePhotos();
   }
   render() {
+    let full_name = `${this.props.userProfile.first_name} ${this.props.userProfile.last_name}`;
+    let profile_link = "/user-profile/" + this.props.userProfile.user_id;
     return (
       <div>
         <Modal
@@ -52,19 +56,22 @@ class FillerPhotoBin extends Component {
         contentLabel="Modal"
         style={modalStyles}
         >
-            <Card>
-              <CardHeader
-                title="URL Avatar"
-                subtitle="Subtitle"
-                avatar={"this.props.result.profile_picture"}
-              />
+            <Card style={modalImage}>
+              <Link to={profile_link} onClick={this.props.handleCloseModal}>
+                <CardHeader
+                  title={full_name}
+                  subtitle={this.props.userProfile.location_string}
+                  avatar={this.props.userProfile.profile_picture}
+                  style={{backgroundColor: "#ddd"}}
+                />
+              </Link>
               <RaisedButton style={button} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
-                <img style={modalImage} src={this.props.currentModal} role="presentation" />
+                <img src={this.props.currentModal} role="presentation" />
             </Card>
         </Modal>
         <div style={styles.root}>
           {this.props.photos.map((photo, i) => (
-            <img key={i} onClick={this.props.handleOpenModal} style={styles.gridList} src={photo.file_location} role="presentation"/>
+            <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
           ))}
         </div>
       </div>
