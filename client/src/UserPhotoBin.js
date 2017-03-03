@@ -7,10 +7,6 @@ var parent = {
 };
 
 var gridList = {
-    // display: "inline-block",
-    // maxWidth: "40%",
-    // maxHeight: "1%",
-    // border: "solid 3px black"
     objectFit: "contain",
     maxHeight: "400px"
 };
