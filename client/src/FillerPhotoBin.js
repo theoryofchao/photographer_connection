@@ -7,13 +7,13 @@ var styles = {
   root: {
     display: 'flex',
     flexWrap: "wrap",
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     backgroundColor: "lightgrey",
-    padding: "70px"
+    padding: "40px 10px"
   },
   gridList: {
-    width: 200,
-    height: 200,
+    maxHeight: "250px",
+    objectFit: "contain",
     border: "solid 2px grey",
     padding: "2px"
   },
@@ -28,7 +28,8 @@ var modalStyles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "column"
+    flexDirection: "column",
+    boxShadow: "5px 5px 5px #888",
   }
 }
 
@@ -37,7 +38,6 @@ var button = {
 }
 
 var modalImage = {
-  boxShadow: "5px 5px 5px #888"
 }
 
 class FillerPhotoBin extends Component {
@@ -45,6 +45,7 @@ class FillerPhotoBin extends Component {
     this.props.onFeaturePhotos();
   }
   render() {
+    console.log("asdasda", this.props)
     return (
       <div>
         <Modal
@@ -52,14 +53,15 @@ class FillerPhotoBin extends Component {
         contentLabel="Modal"
         style={modalStyles}
         >
-            <Card>
+            <Card style={modalImage}>
               <CardHeader
                 title="URL Avatar"
                 subtitle="Subtitle"
-                avatar={"this.props.result.profile_picture"}
+                avatar={this.props.userProfile.profile_picture}
+                style={{backgroundColor: "#ddd"}}
               />
               <RaisedButton style={button} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
-                <img style={modalImage} src={this.props.currentModal} role="presentation" />
+                <img src={this.props.currentModal} role="presentation" />
             </Card>
         </Modal>
         <div style={styles.root}>
