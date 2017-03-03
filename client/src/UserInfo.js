@@ -50,8 +50,6 @@ class UserInfo extends Component {
               </ul>
               <p style={descript}>{this.props.userProfile.summary}</p>
             </div>
-
-
         </div>
     );
   }

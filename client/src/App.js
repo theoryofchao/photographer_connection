@@ -24,6 +24,8 @@ const initialState = {
   myProfile: {},
   param: '',
   myInfo: {profilePicture: '', firstName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
+  showModal: false,
+  currentModal: ""
 
 }
 
@@ -405,6 +407,16 @@ class App extends Component {
     })
   }
 
+  handleOpenModal(e) {
+    this.setState({showModal: true});
+    this.setState({currentModal: e.target.src})
+  }
+
+  handleCloseModal() {
+    this.setState({showModal: false});
+    this.setState({currentModal: initialState.currentModal})
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       let newCurrentUser = {user_id: localStorage.user_id, email: localStorage.email}
@@ -449,7 +461,9 @@ class App extends Component {
               getMyProfile: this.getMyProfile.bind(this),
               getUserPhotos: this.getUserPhotos.bind(this),
               handleInfoChange: this.handleInfoChange.bind(this),
-              onInfoSubmit: this.onInfoSubmit.bind(this)
+              onInfoSubmit: this.onInfoSubmit.bind(this),
+              handleOpenModal: this.handleOpenModal.bind(this),
+              handleCloseModal: this.handleCloseModal.bind(this)
             })
           )}
         </div>
