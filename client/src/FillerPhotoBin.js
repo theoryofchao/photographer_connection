@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardHeader, CardMedia, CardTitle} from 'material-ui/Card';
+import {Card, CardHeader } from 'material-ui/Card';
 
 var styles = {
   root: {
