@@ -27,8 +27,7 @@ const initialState = {
   param: '',
   myInfo: {profilePicture: '', firstName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
   showModal: false,
-  currentModal: ""
-
+  currentModal: "",
 }
 
 class App extends Component {
@@ -418,7 +417,7 @@ class App extends Component {
     });
   }
 
-    getUserAlbums = (userId) => {
+  getUserAlbums = (userId) => {
     fetch(`http://localhost:8080/albums/user/${userId}`, {
       method: 'GET',
       credentails: 'same-origin',
@@ -436,6 +435,33 @@ class App extends Component {
           } else {
             that.setState({userAlbums: json});
             console.log(that.state)
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
+  getAlbumById = (albumId) => {
+    fetch(`http://localhost:8080/albums/${albumId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            console.log("JSON:-->", json[0].user_id);
+            that.getUserProfile(json[0].user_id);
           }
         })
       }
@@ -500,9 +526,12 @@ class App extends Component {
     })
   }
 
-  handleOpenModal(e) {
-    this.setState({showModal: true});
-    this.setState({currentModal: e.target.src})
+  handleOpenModal(album_id) {
+    return function (e) {
+      this.getAlbumById(album_id)
+      this.setState({showModal: true});
+      this.setState({currentModal: e.target.src})
+    }.bind(this)
   }
 
   handleCloseModal() {
@@ -559,7 +588,7 @@ class App extends Component {
               handleInfoChange: this.handleInfoChange.bind(this),
               onInfoSubmit: this.onInfoSubmit.bind(this),
               handleOpenModal: this.handleOpenModal.bind(this),
-              handleCloseModal: this.handleCloseModal.bind(this)
+              handleCloseModal: this.handleCloseModal.bind(this),
             })
           )}
         </div>
