@@ -344,7 +344,19 @@ class App extends Component {
       })
     })
     .then((response) => {
-      console.log(response);
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.content); //if error occured
+          } else {
+            let myAlbums = that.state.myAlbums;
+            myAlbums.push(json.content[0]);
+            that.setState({myAlbums: myAlbums});
+          }
+        })
+      }
     })
     .catch((error) => {
       console.error(error);
@@ -360,8 +372,18 @@ class App extends Component {
       }
     })
     .then((response) => {
-      console.log('test');
-      console.log(response);
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({myAlbums: json});
+            console.log(that.state)
+          }
+        })
+      }
     })
     .catch((error) => {
       console.error(error);
@@ -470,7 +492,7 @@ class App extends Component {
     }
     if (localStorage.user_id) {
       this.getMyProfile(localStorage.user_id);
-      //this.getMyAlbums(localStorage.user_id);
+      this.getMyAlbums(localStorage.user_id);
     }
   }
 

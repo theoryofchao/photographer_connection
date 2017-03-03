@@ -40,11 +40,16 @@ router.post('/new', (req, res, next) => {
         .returning(`*`)
         .then( (result) => {
           console.log(result);
-          return res.status(200).json({'message' : 'Album Created.'});
+          return res.status(200).json({
+            success : true,
+            content : result
+          });
         })
         .catch( (error) => {
           console.error(error);
-          return res.status(400).json({'message' : 'Album Creation Failed.'});
+          return res.status(400).json({
+            success : false,
+            content : 'Album Creation Failed.'});
         });
       }
     })

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField';
+import MyAlbum from './MyAlbum.js';
 
 var borderStyles = {
   border: "solid 1px black",
@@ -25,13 +26,10 @@ class MyGallery extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.nameInput.input.value);
-    // console.log(this.descriptionInput.input.value);
     this.props.createMyAlbum(localStorage.user_id, this.nameInput.input.value, this.descriptionInput.input.value);
     this.nameInput.input.value = "";
     this.descriptionInput.input.value = "";
   }
-
 
   render() {
     return (
@@ -51,6 +49,16 @@ class MyGallery extends Component {
             <p>{this.props.uploadedFile}</p>
             <img src={this.props.uploadedFileCloudinaryUrl} role="presentation" />
           </div>}
+        </div>
+          {this.props.myAlbums.map((album, index) => {
+            return <MyAlbum key={index} album={album} 
+                      handlePhotoUpload={this.props.handlePhotoUpload}
+                      handleImageUpload={this.props.handleImageUpload}
+                      uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
+            />
+          })}
+        <div>
+
         </div>
 
         <div className="form">
