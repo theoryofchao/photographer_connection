@@ -7,3 +7,7 @@ body {
 .slider-list {
   height: 400px !important;
 }
+
+.albumSlider .slider-decorator-2 {
+  bottom: -160px !important;
+}
