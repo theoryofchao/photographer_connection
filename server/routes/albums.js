@@ -152,5 +152,28 @@ router.get('/user/:user_id', (req, res, next) => {
   });
 })
 
+/* Get all Albums by Album Id */
+router.get('/:album_id', (req, res, next) => {
+  let album_id = req.params.album_id;
+  const knex = getKnex(req);
+
+  knex
+  .select(`*`)
+  .from(`albums`)
+  .where({
+    album_id: album_id
+  })
+  .limit(1)
+  .timeout(1000)
+  .then( (result) => {
+    console.log(result);
+    return res.status(200).json(result);
+  })
+  .catch( (error) => {
+    console.error(error);
+    return res.status(400).json({'message' : 'User Album Retrival Failed'});
+  });
+})
+
 
 module.exports = router;

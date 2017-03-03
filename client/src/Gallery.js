@@ -10,10 +10,16 @@ var borderStyles = {
 class Gallery extends Component {
 
   render() {
+
+    console.log(this.props);
     return (
       <div style={borderStyles}>
         Gallery<br />
-        <Link to="user-profile/1/album/1">Album</Link><br />
+
+        {this.props.userAlbums.map((album, index) => {
+          
+          return <Link to="user-profile/1/album/{album.album_id}">{album.name}</Link>
+        })}
         {Children.map(this.props.children, child =>
           cloneElement(child, {
             ...this.props,

@@ -21,6 +21,7 @@ const initialState = {
   photos: [],
   searchResults: [],
   userProfile: {},
+  userAlbums: [],
   myProfile: {},
   myAlbums: [],
   param: '',
@@ -417,6 +418,33 @@ class App extends Component {
     });
   }
 
+    getUserAlbums = (userId) => {
+    fetch(`http://localhost:8080/albums/user/${userId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({userAlbums: json});
+            console.log(that.state)
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   handleInfoChange = (e) => {
     let newInfo = Object.assign({}, this.state.myProfile);
     newInfo.email = this.state.currentUser.email;
@@ -500,6 +528,7 @@ class App extends Component {
     if (this.props.params.id && this.props.params.id !== this.state.param) {
       this.getUserProfile(this.props.params.id);
       this.getUserPhotos(this.props.params.id);
+      this.getUserAlbums(this.props.params.id);
     }
   }
 
