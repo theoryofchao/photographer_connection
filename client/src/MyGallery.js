@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField';
 import MyAlbum from './MyAlbum.js';
@@ -51,7 +51,7 @@ class MyGallery extends Component {
           </div>}
         </div>
           {this.props.myAlbums.map((album, index) => {
-            return <MyAlbum key={index} album={album} 
+            return <MyAlbum key={index} album={album}
                       handlePhotoUpload={this.props.handlePhotoUpload}
                       handleImageUpload={this.props.handleImageUpload}
                       uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
