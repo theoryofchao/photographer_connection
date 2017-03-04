@@ -22,6 +22,8 @@ class MyProfile extends Component {
             uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
             createMyAlbum={this.props.createMyAlbum}
             myAlbums={this.props.myAlbums}
+            handleShowAlbum={this.props.handleShowAlbum}
+            myProfilePhotos={this.props.myProfilePhotos}
           >
             {this.props.children}
           </MyGallery>

@@ -26,9 +26,11 @@ const initialState = {
   myAlbums: [],
   userParam: '',
   albumParam: '',
+  myAlbumParam: '',
   myInfo: {profilePicture: '', firstName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
   showModal: false,
   currentModal: "",
+  myProfilePhotos: []
 }
 
 class App extends Component {
@@ -446,6 +448,33 @@ class App extends Component {
     });
   }
 
+  getMyProfileAlbumPhotos = (userId, albumId) => {
+    fetch(`http://localhost:8080/photos/user/${userId}/album/${albumId}`, {
+      method: 'GET',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            console.log(json.message); //if error occured
+          } else {
+            that.setState({myProfilePhotos: json,
+                          myAlbumParam: albumId});
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   getUserAlbums = (userId) => {
     fetch(`http://localhost:8080/albums/user/${userId}`, {
       method: 'GET',
@@ -568,6 +597,14 @@ class App extends Component {
     this.setState({currentModal: initialState.currentModal})
   }
 
+  handleShowAlbum(album) {
+    return function (e) {
+      console.log("album: ", album);
+    }
+      this.getMyProfileAlbumPhotos(album.user_id, album.album_id);
+      console.log("profile photos: ",this.state.myProfilePhotos);
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       let newCurrentUser = {user_id: localStorage.user_id, email: localStorage.email}
@@ -629,6 +666,7 @@ class App extends Component {
               onInfoSubmit: this.onInfoSubmit.bind(this),
               handleOpenModal: this.handleOpenModal.bind(this),
               handleCloseModal: this.handleCloseModal.bind(this),
+              handleShowAlbum: this.handleShowAlbum.bind(this)
             })
           )}
         </div>

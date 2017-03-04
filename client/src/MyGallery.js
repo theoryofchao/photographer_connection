@@ -49,14 +49,16 @@ class MyGallery extends Component {
   }
 
   render() {
+    console.log("hiiiiiiiiii", this.props.myProfilePhotos);
     return (
       <div style={padding}>
-      <h2>Your Albums</h2>
+        <h2>Your Albums</h2>
         {this.props.myAlbums.map((album, index) => {
           return <MyAlbum key={index} album={album}
                     handlePhotoUpload={this.props.handlePhotoUpload}
                     handleImageUpload={this.props.handleImageUpload}
                     uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
+                    handleShowAlbum={this.props.handleShowAlbum}
                   />
         })}
         <div style={form} className="form">
@@ -75,6 +77,13 @@ class MyGallery extends Component {
             <img src={this.props.uploadedFileCloudinaryUrl} role="presentation" />
           </div>}
         </div>
+        {this.props.myProfilePhotos.length === 0 ? null :
+        <div>
+          {this.props.myProfilePhotos.map((photo, index) => {
+            return <img key={index} role="presentation" />
+          })}
+        </div>
+        }
       </div>
     );
   }

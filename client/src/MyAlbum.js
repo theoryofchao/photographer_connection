@@ -32,6 +32,7 @@ class MyAlbum extends Component {
           <h3>{this.props.album.name}</h3>
           <p>Drop an image or click to select a file to upload.</p>
         </Dropzone>
+        <button onClick={this.props.handleShowAlbum(this.props.album)}>Show</button>
       </div>
     );
   }
