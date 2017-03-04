@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router';
 
 var styles = {
-  border: "solid 1px black",
+  border: "solid 2px black",
   padding: "10px",
   overflow: "auto",
 }
@@ -13,9 +13,9 @@ var info = {
   display: "inline-block",
   textDecoration: "none",
   float: "right",
-  color: "black",
   fontSize: "0.8em",
-  margin: "0"
+  margin: "0",
+  color: "#000"
 }
 
 var floaty = {

@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import {AppBar} from 'material-ui';
 import FlatButton from 'material-ui/FlatButton';
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
+import Badge from 'material-ui/Badge';
 
 var style = {
-  backgroundColor: "#afb5bf"
+  backgroundColor: "#000",
+  color: "#fff",
+  display: "flex",
+  alignItems: "center",
 }
 
 class Navigate extends Component {
@@ -13,18 +18,24 @@ class Navigate extends Component {
       return (
         <div >
           <AppBar style={style} title="Focus">
-              <FlatButton
-                href="/#/"
-                label="Home"
-              />
+
+            <Badge
+              badgeContent={1}
+              primary={true}
+            >
+              <NotificationsIcon />
+            </Badge>
               <FlatButton
                 href="/#/my-profile"
                 label="My Profile"
+                style={style}
               />
+
               <FlatButton
                 href="/#/"
                 label="Logout"
                 onClick={(e)=>{this.props.onLogoutClick()}}
+                style={style}
             />
           </AppBar>
         </div>
@@ -32,19 +43,17 @@ class Navigate extends Component {
     } else {
       return (
         <div>
-          <AppBar style={style} title="Focus">
-            <FlatButton
-              href="/#/"
-              label="Home"
-            />
+          <AppBar style={style} title="Focus" >
             <FlatButton
               href="/#/register"
               label="Register"
+              style={style}
             />
             <FlatButton
               href="/#/login"
               label="Login"
               onClick={(e)=>{this.props.onLogoutClick()}}
+              style={style}
           />
           </AppBar>
         </div>
