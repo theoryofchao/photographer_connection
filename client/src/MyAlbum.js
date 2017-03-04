@@ -9,8 +9,7 @@ import Dropzone from 'react-dropzone';
 var titleStyle = {
   display: "inline-block",
   textAlign: "center",
-  color: "red",
-  margin: "10px",
+  marginRight: "10px",
   veritcalAlign: "top"
 }
 

@@ -9,7 +9,14 @@ var padding = {
 
 var form = {
   display: "inline-block",
-  verticalAlign: "top"
+  verticalAlign: "top",
+  borderLeft: "solid 2px black",
+  paddingLeft: "10px"
+}
+
+var formh3 = {
+  marginBottom: "0",
+  marginTop: "0"
 }
 
 var upload = {
@@ -53,10 +60,10 @@ class MyGallery extends Component {
                   />
         })}
         <div style={form} className="form">
-          <h3 style={{marginBottom: "0"}}><u>Add Album</u></h3>
+          <h3 style={formh3}><u>Add Album</u></h3>
           <form onSubmit={this.onFormSubmit.bind(this)}>
-            <TextField type="string" name="name" floatingLabelText="Album Name" hintText="Enter Your Album"  ref={(input) => this.nameInput = input}/><br />
-            <TextField type="string" name="description" floatingLabelText="Description" hintText="Enter Your Description"  ref={(input) => this.descriptionInput = input}/><br />
+            <TextField type="string" name="name" floatingLabelText="Album Name" hintText="Name your album"  ref={(input) => this.nameInput = input}/><br />
+            <TextField type="string" name="description" floatingLabelText="Description" hintText="Enter a description"  ref={(input) => this.descriptionInput = input}/><br /><br />
             <input type="submit" value="Create Album" />
           </form>
         </div>
