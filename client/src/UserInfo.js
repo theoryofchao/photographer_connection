@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Avatar from 'material-ui/Avatar';
 import DatePicker from 'material-ui/DatePicker';
 import FlatButton from 'material-ui/FlatButton';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import { Link } from 'react-router';
 
@@ -73,7 +72,7 @@ class UserInfo extends Component {
               </RadioButtonGroup>
                 <Link to={"/"}><FlatButton
                   style={{backgroundColor: "#b2b2b2"}}
-                  icon={<ActionAndroid />}
+                  icon={<i class="material-icons">email</i>}
                 /></Link>
             </div>
         </div>
