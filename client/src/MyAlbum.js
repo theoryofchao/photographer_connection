@@ -10,6 +10,7 @@ var titleStyle = {
   display: "inline-block",
   textAlign: "center",
   marginRight: "10px",
+  marginBottom: "10px",
   veritcalAlign: "top"
 }
 
