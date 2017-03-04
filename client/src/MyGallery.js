@@ -49,7 +49,6 @@ class MyGallery extends Component {
   }
 
   render() {
-    console.log("hiiiiiiiiii", this.props.myProfilePhotos);
     return (
       <div style={padding}>
         <h2>Your Albums</h2>
@@ -80,7 +79,7 @@ class MyGallery extends Component {
         {this.props.myProfilePhotos.length === 0 ? null :
         <div>
           {this.props.myProfilePhotos.map((photo, index) => {
-            return <img key={index} src={photo.file_location} role="presentation" />
+            return <div><img key={index} src={photo.file_location} role="presentation" /><button onClick={this.props.deletePhoto}>Delete</button></div>
           })}
         </div>
         }

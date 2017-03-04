@@ -24,6 +24,7 @@ class MyProfile extends Component {
             myAlbums={this.props.myAlbums}
             handleShowAlbum={this.props.handleShowAlbum}
             myProfilePhotos={this.props.myProfilePhotos}
+            deletePhoto={this.props.deletePhoto}
           >
             {this.props.children}
           </MyGallery>

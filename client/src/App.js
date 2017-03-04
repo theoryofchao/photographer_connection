@@ -222,6 +222,10 @@ class App extends Component {
     });
   }
 
+  deletePhoto = () => {
+    alert('test');
+  }
+
 
   onFeaturePhotos = () => {
     fetch('http://localhost:8080/photos/featured', {
@@ -669,7 +673,8 @@ class App extends Component {
               onInfoSubmit: this.onInfoSubmit.bind(this),
               handleOpenModal: this.handleOpenModal.bind(this),
               handleCloseModal: this.handleCloseModal.bind(this),
-              handleShowAlbum: this.handleShowAlbum.bind(this)
+              handleShowAlbum: this.handleShowAlbum.bind(this),
+              deletePhoto: this.deletePhoto.bind(this)
             })
           )}
         </div>
