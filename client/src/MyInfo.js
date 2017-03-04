@@ -49,7 +49,7 @@ class MyInfo extends Component {
                 multiple={false}
                 accept="image/*"
                 onDrop={this.onImageDrop.bind(this)}>
-                <h4 style={{textAlign: "center"}}>Update profile picture</h4>
+                <h4 style={{textAlign: "center"}}><u>Update profile picture</u></h4>
                 <p style={{textAlign: "center", fontSize: "0.85em"}}>Drop an image or click<br />to select a file to upload</p>
               </Dropzone>
             </div>
@@ -65,7 +65,7 @@ class MyInfo extends Component {
 
 
           <form style={right} onSubmit={this.onFormSubmit.bind(this)} >
-            <h3>Update your info:</h3>
+            <h3><u>Update your info</u></h3>
             <TextField
               type="name"
               name="first_name"

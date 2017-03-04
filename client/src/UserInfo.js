@@ -52,7 +52,7 @@ class UserInfo extends Component {
               <span>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
               <span>@{this.props.userProfile.handle}</span><br /><br />
               <span>{this.props.userProfile.location_string}</span><br /><br />
-              <span>{this.props.userProfile.years_exp} Years Of Experience</span><br /><br />
+              <span>{this.props.userProfile.years_exp} Year(s) Of Experience</span><br /><br />
               <span>Contact: {this.props.userProfile.email}</span><br /><br />
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>

@@ -1,17 +1,27 @@
   import React, { Component } from 'react';
-import Dropzone from 'react-dropzone';
+// import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField';
 import MyAlbum from './MyAlbum.js';
 
-var borderStyles = {
-  border: "solid 1px black",
-  padding: "10px"
+var padding = {
+  padding: "15px 30px"
 }
 
-var titleStyle = {
-  textAlign: "center",
-  color: "red"
+var form = {
+  display: "inline-block",
+  verticalAlign: "top"
 }
+
+var upload = {
+  margin: "auto",
+  width: "50%"
+}
+
+// var titleStyle = {
+//   display: "inline-block",
+//   textAlign: "center",
+//   color: "red"
+// }
 
 class MyGallery extends Component {
   constructor(props) {
@@ -33,40 +43,30 @@ class MyGallery extends Component {
 
   render() {
     return (
-      <div style={borderStyles}>
-        <div className="FileUpload" style={titleStyle}>
-          <Dropzone
-            multiple={true}
-            accept="image/*"
-            onDrop={this.onImageDrop.bind(this)}>
-            <h3>Gallery</h3>
-            <p>Drop an image or click to select a file to upload.</p>
-          </Dropzone>
+      <div style={padding}>
+      <h2>Your Albums</h2>
+        {this.props.myAlbums.map((album, index) => {
+          return <MyAlbum key={index} album={album}
+                    handlePhotoUpload={this.props.handlePhotoUpload}
+                    handleImageUpload={this.props.handleImageUpload}
+                    uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
+                  />
+        })}
+        <div style={form} className="form">
+          <h3 style={{marginBottom: "0"}}><u>Add Album</u></h3>
+          <form onSubmit={this.onFormSubmit.bind(this)}>
+            <TextField type="string" name="name" floatingLabelText="Album Name" hintText="Enter Your Album"  ref={(input) => this.nameInput = input}/><br />
+            <TextField type="string" name="description" floatingLabelText="Description" hintText="Enter Your Description"  ref={(input) => this.descriptionInput = input}/><br />
+            <input type="submit" value="Create Album" />
+          </form>
         </div>
         <div>
           {this.props.uploadedFileCloudinaryUrl === '' ? null :
-          <div>
-            <p>{this.props.uploadedFile}</p>
+          <div style={upload}>
+            <br />
+            <h4>Your uploaded image:</h4>
             <img src={this.props.uploadedFileCloudinaryUrl} role="presentation" />
           </div>}
-        </div>
-          {this.props.myAlbums.map((album, index) => {
-            return <MyAlbum key={index} album={album}
-                      handlePhotoUpload={this.props.handlePhotoUpload}
-                      handleImageUpload={this.props.handleImageUpload}
-                      uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
-            />
-          })}
-        <div>
-
-        </div>
-
-        <div className="form">
-          <form onSubmit={this.onFormSubmit.bind(this)}>
-            <TextField type="string" name="name" floatingLabelText="Album Name" hintText="Enter Your Album"  ref={(input) => this.nameInput = input}/>
-            <TextField type="string" name="description" floatingLabelText="Description" hintText="Enter Your Description"  ref={(input) => this.descriptionInput = input}/>
-            <input type="submit" value="Submit" />
-          </form>
         </div>
       </div>
     );
@@ -74,3 +74,13 @@ class MyGallery extends Component {
 }
 
 export default MyGallery;
+
+// <div className="FileUpload" style={titleStyle}>
+//           <Dropzone
+//             multiple={true}
+//             accept="image/*"
+//             onDrop={this.onImageDrop.bind(this)}>
+//             <h3>Gallery</h3>
+//             <p>Drop an image or click to select a file to upload.</p>
+//           </Dropzone>
+//         </div>

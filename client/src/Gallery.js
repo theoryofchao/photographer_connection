@@ -19,7 +19,7 @@ class Gallery extends Component {
         Gallery<br />
 
         {this.props.userAlbums.map((album, index) => (
-          <UserAlbums user_id={that.props.userProfile.user_id} album={album}/>
+          <UserAlbums key={index} user_id={that.props.userProfile.user_id} album={album}/>
         ))}
 
 
