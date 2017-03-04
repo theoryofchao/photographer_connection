@@ -232,7 +232,6 @@ router.get('/user/:user_id', (req, res, next) => {
   });
 })
 
-//http://localhost:8080/photos/user/${userId}/album/${albumId}
 /* Get all photos from a user's album*/
 router.get('/user/:user_id/album/:album_id', (req, res, next) => {
   let user_id = req.params.user_id;

@@ -40,6 +40,7 @@ class MyInfo extends Component {
   }
 
   render() {
+
     return (
         <div style={main}>
           <h2 style={{textAlign: "center", margin: "0 0 10px 0"}}>Profile for {this.props.currentUser.email}</h2>
@@ -116,6 +117,7 @@ class MyInfo extends Component {
              /> <br /><br />
             <input type="submit" value="Submit" />
           </form>
+
         </div>
     );
   }

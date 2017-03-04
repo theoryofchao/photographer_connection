@@ -3,6 +3,7 @@ import {AppBar} from 'material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import Badge from 'material-ui/Badge';
+import IconButton from 'material-ui/IconButton';
 
 var style = {
   backgroundColor: "#000",
@@ -17,7 +18,7 @@ class Navigate extends Component {
     if (this.props.userA) {
       return (
         <div >
-          <AppBar style={style} title="Focus">
+          <AppBar style={style} title="Focus"  iconElementLeft={<IconButton></IconButton>}>
 
             <Badge
               badgeContent={1}
