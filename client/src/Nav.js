@@ -18,6 +18,7 @@ class Navigate extends Component {
       return (
         <div >
           <AppBar style={style} title="Focus">
+
             <Badge
               badgeContent={1}
               primary={true}
@@ -42,7 +43,7 @@ class Navigate extends Component {
     } else {
       return (
         <div>
-          <AppBar style={style} title="Focus">
+          <AppBar style={style} title="Focus" >
             <FlatButton
               href="/#/register"
               label="Register"
