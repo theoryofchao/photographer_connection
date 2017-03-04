@@ -80,7 +80,7 @@ class MyGallery extends Component {
         {this.props.myProfilePhotos.length === 0 ? null :
         <div>
           {this.props.myProfilePhotos.map((photo, index) => {
-            return <img key={index} role="presentation" />
+            return <img key={index} src={photo.file_location} role="presentation" />
           })}
         </div>
         }

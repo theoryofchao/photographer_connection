@@ -57,6 +57,7 @@ class App extends Component {
     localStorage.removeItem("email");
     localStorage.removeItem("user_id");
     this.setState({userAuthenticated: false, currentUser: initialState.currentUser})
+    location.reload();
   }
 
   onRegistrationSubmit = (regInfo) => {
@@ -92,6 +93,7 @@ class App extends Component {
               localStorage.user_id = json.user_id;
               that.setState({userAuthenticated: true, registration: initialState.registration, currentUser: newCurrentUser});
               that.getMyProfile(localStorage.user_id);
+              that.getMyAlbums(localStorage.user_id);
               return "render homepage";
             }
           }
@@ -147,6 +149,7 @@ class App extends Component {
               localStorage.user_id = json.user_id;
               that.setState({userAuthenticated: true, registration: initialState.registration, currentUser: newCurrentUser});
               that.getMyProfile(localStorage.user_id);
+              that.getMyAlbums(localStorage.user_id);
             }
           }
         })
@@ -598,11 +601,11 @@ class App extends Component {
   }
 
   handleShowAlbum(album) {
+    let that = this;
     return function (e) {
       console.log("album: ", album);
+      that.getMyProfileAlbumPhotos(album.user_id, album.album_id);
     }
-      this.getMyProfileAlbumPhotos(album.user_id, album.album_id);
-      console.log("profile photos: ",this.state.myProfilePhotos);
   }
 
   componentDidMount() {
