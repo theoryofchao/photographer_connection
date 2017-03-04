@@ -80,8 +80,8 @@ router.post('/register', (req, res, next) => {
       let result2 = knex(`albums`)
       .insert({
         user_id: result[0].user_id,
-        name: 'default',
-        description: 'default',
+        name: 'General',
+        description: '',
         status: 0,
         created_at: currentTime,
         updated_at: currentTime
