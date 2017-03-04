@@ -25,7 +25,9 @@ router.post('/new', (req, res, next) => {
     jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
       if (err) {
         console.error(err);
-        return res.status(400).json({ success: false, content: 'Failed to authenticate token.' });
+        return res.status(400).json({ success: false, message: 'Failed to authenticate token.' });
+      } else if (name.length < 1) {
+        return res.status(400).json({ success: false, message: 'Album name cannot be blank.' });
       } else {
         let result = knex(`albums`)
         .insert({
@@ -42,7 +44,8 @@ router.post('/new', (req, res, next) => {
           console.log(result);
           return res.status(200).json({
             success : true,
-            content : result
+            content : result,
+            message : `Album ${result[0].name} Created`
           });
         })
         .catch( (error) => {

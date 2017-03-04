@@ -29,7 +29,19 @@ const initialState = {
   myInfo: {profilePicture: '', firstName: '', lastName: '', handle: '', location: '', description: '', years_exp: ''},
   showModal: false,
   currentModal: "",
+  alert: '',
+  notification: {},
 }
+
+let alertStyle = {
+  position: "fixed",
+  width: "10%",
+  height: "100px",
+  top: "85%",
+  right: "3%",
+  background: "pink"
+}
+
 
 class App extends Component {
   constructor(props) {
@@ -197,15 +209,21 @@ class App extends Component {
           })
         })
         .then((response) => {
+          let that = this;
           var contentType = response.headers.get("content-type");
           if(contentType && contentType.indexOf("application/json") !== -1) {
             return response.json().then( function(json) {
               if (response.status !== 200) {
-                console.log(json.message); //if error occured
+                that.setState({alert : json.message});
+                setTimeout(function() {
+                  that.setState({alert: ''});
+                }, 3000);
               }
               else {
-                console.log(json.message);
-
+                that.setState({alert : json.message});
+                setTimeout(function() {
+                  that.setState({alert: ''});
+                }, 3000);
               }
             })
           }
@@ -350,17 +368,26 @@ class App extends Component {
       if(contentType && contentType.indexOf("application/json") !== -1) {
         return response.json().then(function(json) {
           if (response.status !== 200) {
-            console.log(json); //if error occured
+            that.setState({alert : json.message});
+            setTimeout(function() {
+              that.setState({alert: ''});
+            }, 3000);
           } else {
             let myAlbums = that.state.myAlbums;
             myAlbums.push(json.content[0]);
             that.setState({myAlbums: myAlbums});
+            that.setState({alert : json.message});
+            setTimeout(function() {
+              that.setState({alert: ''});
+            }, 3000);
+
           }
         })
       }
     })
     .catch((error) => {
       console.error(error);
+
     });
   }
 
@@ -520,7 +547,7 @@ class App extends Component {
 
     // this.setState({myInfo: newInfo})
     this.setState({myProfile: newInfo})
-    console.log('INFO CHANGE SETTING THE STATE: ', this.state.myProfile);
+    // console.log('INFO CHANGE SETTING THE STATE: ', this.state.myProfile);
   }
 
   onInfoSubmit = (myInfo) => {
@@ -541,6 +568,7 @@ class App extends Component {
       })
     })
     .then((response) => {
+      let that=this;
       var contentType = response.headers.get("content-type");
       if(contentType && contentType.indexOf("application/json") !== -1) {
         return response.json().then(function(json) {
@@ -549,6 +577,10 @@ class App extends Component {
           } else {
             console.log('JSON RETURN FROM SERVER:');
             console.log(json.message);
+            that.setState({alert : json.message});
+            setTimeout(function() {
+              that.setState({alert: ''});
+            }, 3000);
           }
         })
       }
@@ -598,11 +630,22 @@ class App extends Component {
       this.getAlbumPhotos(this.props.params.user_id, this.props.params.album_id);
     }
 
+    
+
     console.log("click on album, params------->", this.props.params);
   }
 
+
   render() {
     console.log("APP STATE ON RENDER: ", this.state);
+
+    let alertDiv = '';
+
+    if (this.state.alert !== '') {
+      alertDiv = "<div style={alertStyle}> {this.state.alert} </div>";
+      console.log('this runs');
+    }       
+    
     return (
       <MuiThemeProvider>
         <div>
@@ -631,7 +674,11 @@ class App extends Component {
               handleCloseModal: this.handleCloseModal.bind(this),
             })
           )}
+          
+          { this.state.alert !== '' ? <div style={alertStyle}> {this.state.alert} </div> : ''}
+          
         </div>
+
       </MuiThemeProvider>
     );
   }
