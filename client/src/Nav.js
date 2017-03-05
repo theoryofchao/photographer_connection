@@ -19,7 +19,6 @@ class Navigate extends Component {
       return (
         <div >
           <AppBar style={style} title="Focus"  iconElementLeft={<IconButton></IconButton>}>
-
             <Badge
               badgeContent={1}
               primary={true}
@@ -31,7 +30,6 @@ class Navigate extends Component {
                 label="My Profile"
                 style={style}
               />
-
               <FlatButton
                 href="/#/"
                 label="Logout"
@@ -44,7 +42,7 @@ class Navigate extends Component {
     } else {
       return (
         <div>
-          <AppBar style={style} title="Focus" >
+          <AppBar style={style} title="Focus" iconElementLeft={<IconButton></IconButton>}>
             <FlatButton
               href="/#/register"
               label="Register"

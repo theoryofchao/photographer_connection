@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchResult from './SearchResult.js'
 var Carousel = require('nuka-carousel');
+import { Link } from 'react-router';
 
 
 var styles = {
@@ -16,6 +17,7 @@ class Search extends Component {
   render() {
     return (
         <div>
+        <Link to="/">Home</Link>
          <Carousel style={styles} slidesToShow={5} cellAlign="center" slidesToScroll={5}>
           {this.props.searchResults.map((result, index) => {
             return <SearchResult key={index} result={result}/>
