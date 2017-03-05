@@ -19,8 +19,8 @@ class UserPhotoBin extends Component {
       <div className="albumSlider" style={{ height: '500px' }}>
         <h1> My Photos </h1>
         <Carousel style={parent}>
-        {this.props.photos.map((photo) => (
-            <img style={gridList} src={photo.file_location} role="presentation"/>
+        {this.props.photos.map((photo, index) => (
+            <img key={index} style={gridList} src={photo.file_location} role="presentation"/>
         ))}
         </Carousel>
     </div>
