@@ -232,7 +232,7 @@ router.get('/user/:user_id', (req, res, next) => {
   .innerJoin(`photos`, `albums.album_id`, `photos.album_id`)
   .where({
     user_id: user_id,
-    status: 1
+    "photos.status": 1
   })
   .timeout(1000)
   .then( (result) => {
