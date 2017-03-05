@@ -155,32 +155,45 @@ router.put('/edit', (req, res, next) => {
 });
 
 /* Delete Photo */
-router.delete('/delete', (req, res, next) => {
+router.post('/delete', (req, res, next) => {
+  const jwt = getJwt(req);
   const knex = getKnex(req);
-
-  //TODO: modify photo to input to file location
-
-  //TODO: check if photo belongs to that user
-  let user_id = req.session.user_id;
+  let token = req.body.token;
   let photo_id = req.body.photo_id;
   let currentTime = new Date();
 
-  let result = knex(`photos`)
-  .where({
-    photo_id: photo_id,
-  })
-  .update({
-    status: -1,
-    updated_at: currentTime
-  })
-  .then( (result) => {
-    console.log(result);
-    return res.status(200).json({'message' : 'Photo Deleted.'});
-  })
-  .catch( (error) => {
-    console.error(error);
-    return res.status(400).json({'message' : 'Photo Deletion Failed.'});
-  });
+  //TODO: modify photo to input to file location
+
+  if(token) {
+    jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
+      if (err) {
+        return res.status(400).json({ success: false, message: 'Failed to authenticate token.' });
+      } else {
+
+        //TODO: check if photo belongs to that user
+
+        let result = knex(`photos`)
+        .where({
+          photo_id: photo_id,
+        })
+        .update({
+          status: -1,
+          updated_at: currentTime
+        })
+        .then( (result) => {
+          console.log(result);
+          return res.status(200).json({'success': true, 'message' : 'Photo Deleted.'});
+        })
+        .catch( (error) => {
+          console.error(error);
+          return res.status(400).json({'success': false, 'message' : 'Photo Deletion Failed.'});
+        });
+      }
+    })
+  }
+  else {
+    return res.status(400).json({ success: false, message: 'Cannot upload photo if not authenticated.' });
+  }
 });
 
 /* Get featured photos */
@@ -211,7 +224,6 @@ router.get('/featured', (req, res, next) => {
 /* Get all photos from a user */
 router.get('/user/:user_id', (req, res, next) => {
   let user_id = req.params.user_id;
-  console.log(user_id);
   const knex = getKnex(req);
 
   knex
@@ -219,7 +231,8 @@ router.get('/user/:user_id', (req, res, next) => {
   .from(`albums`)
   .innerJoin(`photos`, `albums.album_id`, `photos.album_id`)
   .where({
-    user_id: user_id
+    user_id: user_id,
+    "photos.status": 1
   })
   .timeout(1000)
   .then( (result) => {
@@ -244,7 +257,8 @@ router.get('/user/:user_id/album/:album_id', (req, res, next) => {
   .innerJoin(`photos`, `albums.album_id`, `photos.album_id`)
   .where({
     "albums.album_id": album_id,
-    "albums.user_id": user_id
+    "albums.user_id": user_id,
+    "photos.status": 1
   })
   .timeout(1000)
   .then( (result) => {

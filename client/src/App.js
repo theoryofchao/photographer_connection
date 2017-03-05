@@ -33,6 +33,7 @@ const initialState = {
   myProfilePhotos: [],
   alert: '',
   notification: {},
+  photoToEdit: '',
 }
 
 let alertStyle = {
@@ -240,8 +241,51 @@ class App extends Component {
     });
   }
 
-  deletePhoto = () => {
-    alert('test');
+  deletePhoto = (photo_id, token) => {
+    let myProfilePhotos = this.state.myProfilePhotos;
+    fetch(`http://localhost:8080/photos/delete`, {
+      method: 'POST',
+      credentails: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        photo_id: photo_id,
+        token: token
+      })
+    })
+    .then((response) => {
+      var that = this;
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(function(json) {
+          if (response.status !== 200) {
+            that.setState({alert : json.message});
+            setTimeout(function() {
+              that.setState({alert: ''});
+            }, 3000);
+          } else {
+
+            for (let i = 0; i < myProfilePhotos.length; i++) {
+
+              if(myProfilePhotos[i].photo_id === photo_id) {
+                myProfilePhotos.splice(i, 1);
+                break;
+              }
+            }
+            that.setState({myProfilePhotos: myProfilePhotos});
+
+            that.setState({alert : json.message});
+            setTimeout(function() {
+              that.setState({alert: ''});
+            }, 3000);
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
 
