@@ -72,7 +72,7 @@ class UserInfo extends Component {
               </RadioButtonGroup>
                 <Link to={"/"}><FlatButton
                   style={{backgroundColor: "#b2b2b2"}}
-                  icon={<i class="material-icons">email</i>}
+                  icon={<i className="material-icons">email</i>}
                 /></Link>
             </div>
         </div>
