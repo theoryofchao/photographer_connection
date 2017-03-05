@@ -79,7 +79,7 @@ class MyGallery extends Component {
         {this.props.myProfilePhotos.length === 0 ? null :
         <div>
           {this.props.myProfilePhotos.map((photo, index) => {
-            return <div><img key={index} src={photo.file_location} role="presentation" /><button onClick={this.props.deletePhoto}>Delete</button></div>
+            return <div><img key={index} src={photo.file_location} role="presentation" /><button onClick={() => {this.props.deletePhoto(photo.photo_id, localStorage.token)}}>Delete</button></div>
           })}
         </div>
         }
