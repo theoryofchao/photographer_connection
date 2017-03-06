@@ -759,6 +759,7 @@ class App extends Component {
               handleShowAlbum: this.handleShowAlbum.bind(this),
               deletePhoto: this.deletePhoto.bind(this),
               resetUserParam: this.resetUserParam.bind(this)
+
             })
           )}
 
