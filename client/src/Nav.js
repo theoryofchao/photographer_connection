@@ -5,6 +5,14 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import Badge from 'material-ui/Badge';
 import IconButton from 'material-ui/IconButton';
 
+var navStyle = {
+  position: "fixed",
+  width: "100%",
+  height: "64px",
+  zIndex: "1000",
+  clear: "both"
+}
+
 var style = {
   backgroundColor: "#000",
   color: "#fff",
@@ -17,8 +25,8 @@ class Navigate extends Component {
   render() {
     if (this.props.userA) {
       return (
-        <div >
-          <AppBar style={style} title="Focus"  iconElementLeft={<IconButton></IconButton>}>
+        <div style={navStyle}>
+          <AppBar style={style} title="Focus" showMenuIconButton={false}>
             <Badge
               badgeContent={1}
               primary={true}

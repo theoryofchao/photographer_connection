@@ -8,6 +8,10 @@ var styles = {
   maxHeight: "211px",
 }
 
+let searchBarStyle = {
+  "margin-top": "46px"
+}
+
 class Search extends Component {
   mixins: [Carousel.ControllerMixin]
   componentWillMount() {
@@ -16,13 +20,13 @@ class Search extends Component {
 
   render() {
     return (
-        <div>
-        <Link to="/">Home</Link>
-         <Carousel style={styles} slidesToShow={5} cellAlign="center" slidesToScroll={5}>
-          {this.props.searchResults.map((result, index) => {
-            return <SearchResult key={index} result={result}/>
-          })}
-         </Carousel>
+        <div style={searchBarStyle}>
+          <Link to="/">Home</Link>
+          <Carousel style={styles} slidesToShow={5} cellAlign="center" slidesToScroll={5}>
+            {this.props.searchResults.map((result, index) => {
+              return <SearchResult key={index} result={result}/>
+            })}
+          </Carousel>
        </div>
     );
   }
