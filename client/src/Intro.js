@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 var coverImage = {
   heading: {
     display: "flex",
@@ -44,6 +43,8 @@ var coverImage = {
 class Intro extends Component {
   render() {
     return (
+
+    <div>
       <div style={coverImage.box.outer}>
         <div style={coverImage.box.inner}>
         <h1 style={coverImage.heading}>Why Focus?</h1>
@@ -55,6 +56,7 @@ class Intro extends Component {
             <li style={{padding: "50px 100px"}}><i className="fa fa-address-book-o fa-5x" aria-hidden="true" style={{padding: "0 0 20px 25px"}}></i><br />Book Your Shoot</li>
           </ul>
         </div>
+    </div>
 
         <h1 style={coverImage.heading}>Focus On Your Career</h1>
         <img style={coverImage.styles} src={coverImage.images.photo2} role="presentation" />

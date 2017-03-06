@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 
+
+var register = {
+  border: "solid 2px red",
+  width: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "25px",
+  margin: "auto"
+}
+
+var register2 = {
+  borderBottom: "solid 3px black",
+  width: "80%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "auto"
+}
+
 class Register extends Component {
 
   onFormSubmit = (e) => {
@@ -12,8 +32,10 @@ class Register extends Component {
 
   render() {
     return (
-      <Paper zDepth={4}>
+      <Paper zDepth={2} style={register}>
+
         <form onSubmit={this.onFormSubmit.bind(this)} >
+        <h1 style={register2}> Register With Focus </h1>
           <TextField
             name="email"
             type="email"
