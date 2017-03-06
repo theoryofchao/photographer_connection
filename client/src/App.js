@@ -718,11 +718,8 @@ class App extends Component {
       this.getAlbumPhotos(this.props.params.user_id, this.props.params.album_id);
     }
 
-    
-
     console.log("click on album, params------->", this.props.params);
   }
-
 
   render() {
     console.log("APP STATE ON RENDER: ", this.state);
@@ -732,8 +729,8 @@ class App extends Component {
     if (this.state.alert !== '') {
       alertDiv = "<div style={alertStyle}> {this.state.alert} </div>";
       console.log('this runs');
-    }       
-    
+    }
+
     return (
       <MuiThemeProvider>
         <div>
@@ -761,12 +758,12 @@ class App extends Component {
               handleOpenModal: this.handleOpenModal.bind(this),
               handleCloseModal: this.handleCloseModal.bind(this),
               handleShowAlbum: this.handleShowAlbum.bind(this),
-              deletePhoto: this.deletePhoto.bind(this)
+              deletePhoto: this.deletePhoto.bind(this),
             })
           )}
-          
+
           { this.state.alert !== '' ? <div style={alertStyle}> {this.state.alert} </div> : ''}
-          
+
         </div>
 
       </MuiThemeProvider>
