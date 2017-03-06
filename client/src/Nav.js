@@ -7,7 +7,7 @@ import IconButton from 'material-ui/IconButton';
 
 var style = {
   backgroundColor: "#000",
-  color: "#fff",
+  color: "#7EBF2D",
   display: "flex",
   alignItems: "center",
 }

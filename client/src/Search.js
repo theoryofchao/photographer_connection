@@ -16,14 +16,14 @@ class Search extends Component {
 
   render() {
     return (
-        <div>
+      <div>
         <Link to="/">Home</Link>
-         <Carousel style={styles} slidesToShow={5} cellAlign="center" slidesToScroll={5}>
+        <Carousel style={styles} slidesToShow={5} cellAlign="center" slidesToScroll={5}>
           {this.props.searchResults.map((result, index) => {
             return <SearchResult key={index} result={result} resetAlbumParam={this.props.resetAlbumParam}/>
           })}
-         </Carousel>
-       </div>
+        </Carousel>
+      </div>
     );
   }
 }

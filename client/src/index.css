@@ -11,3 +11,8 @@ body {
 .albumSlider .slider-decorator-2 {
   bottom: -160px !important;
 }
+
+#root {
+  background-color: #0D141A;
+  color: #7EBF2D;
+}

@@ -7,7 +7,7 @@ var main = {
   width: "100%",
   height: "100%",
   boxSizing: "border-box",
-  backgroundColor: "#6b7b93"
+  backgroundColor: "#0D141A"
 }
 
 var left = {
@@ -24,6 +24,15 @@ var right = {
   paddingLeft: "3%",
   verticalAlign: "top"
 }
+
+var floatingLabelFocusStyle = {
+  color: "blue"
+}
+
+var floatingLabelStyle = {
+  color: "green"
+}
+
 
 
 class MyInfo extends Component {
@@ -68,6 +77,8 @@ class MyInfo extends Component {
           <form style={right} onSubmit={this.onFormSubmit.bind(this)} >
             <h3><u>Update your info</u></h3>
             <TextField
+            floatingLabelFocusStyle={this.floatingLabelFocusStyle}
+            floatingLabelStyle={this.floatingLabelStyle}
               type="name"
               name="first_name"
               value={this.props.myProfile.first_name}
