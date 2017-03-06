@@ -38,11 +38,17 @@ const initialState = {
 
 let alertStyle = {
   position: "fixed",
-  width: "10%",
-  height: "100px",
-  top: "85%",
+  padding: "0px 25px",
+  height: "64px",
+  top: "87%",
   right: "3%",
-  background: "pink"
+  background: "green",
+  "text-align": "center",
+  "vertical-align": "middle",
+  "line-height": "64px",
+  "font-weight": "bold",
+  "border-radius": "15px",
+  color: "white"
 }
 
 
@@ -723,13 +729,7 @@ class App extends Component {
   }
 
   render() {
-    let alertDiv = '';
-
-    if (this.state.alert !== '') {
-      alertDiv = "<div style={alertStyle}> {this.state.alert} </div>";
-      console.log('this runs');
-    }
-
+    console.log("APP STATE ON RENDER: ", this.state);
     return (
       <MuiThemeProvider>
         <div>
@@ -764,6 +764,7 @@ class App extends Component {
           )}
 
           { this.state.alert !== '' ? <div style={alertStyle}> {this.state.alert} </div> : ''}
+          
 
         </div>
 
@@ -773,3 +774,5 @@ class App extends Component {
 }
 
 export default App;
+
+//<div style={alertStyle}>Photo inserted into Album Blah</div>          

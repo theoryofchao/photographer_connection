@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import TextField from 'material-ui/TextField'
+import TextField from 'material-ui/TextField';
 
 var main = {
   padding: "25px",
@@ -27,6 +27,12 @@ var right = {
 
 
 class MyInfo extends Component {
+  static defaultProps = {
+    center: {lat: 59.938043, lng: 30.337157},
+    zoom: 9,
+    greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
+  };
+
 
   onImageDrop(files) {
     this.props.handleProfileImageUpload(files[0]);
@@ -40,7 +46,6 @@ class MyInfo extends Component {
   }
 
   render() {
-
     return (
         <div style={main}>
           <h2 style={{textAlign: "center", margin: "0 0 10px 0"}}>Profile for {this.props.currentUser.email}</h2>
@@ -73,7 +78,7 @@ class MyInfo extends Component {
               value={this.props.myProfile.first_name}
               floatingLabelText="First Name"
               hintText="Enter Your First Name"
-              onChange={this.props.handleInfoChange}
+              onChange={this.props.handleInfoChange}goo
              /> <br />
             <TextField
               type="name"
@@ -117,7 +122,6 @@ class MyInfo extends Component {
              /> <br /><br />
             <input type="submit" value="Submit" />
           </form>
-
         </div>
     );
   }
