@@ -8,7 +8,7 @@ var parent = {
 
 var gridList = {
     objectFit: "contain",
-    maxHeight: "400px"
+    maxHeight: "400px",
 };
 
 class UserPhotoBin extends Component {
