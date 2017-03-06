@@ -9,7 +9,7 @@ var coverImage = {
     display: "flex",
     justifyContent: "center",
     border: "solid 3px black",
-    fontSize: "2em"
+    margin: 0
   },
   images: {
     photo: "http://glowparties.ca/wp-content/uploads/2015/05/photographer1.jpg",
@@ -19,10 +19,12 @@ var coverImage = {
   styles: {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    maxHeight: "740px"
+    maxHeight: "560px",
+    width: "50%"
   },
   space: {
-   padding: "25px 0"
+   padding: "25px 0",
+   textAlign: "center"
   },
   box: {
     inner: {
@@ -39,7 +41,7 @@ var coverImage = {
     display: "flex",
     flexDirection: "column",
     listStyleType: "none",
-    justifyContent: "flex-end",
+    justifyContent: "center",
     margin: "0 auto",
     padding: 0,
   },
@@ -82,6 +84,10 @@ var box = {
   width: "80%"
 }
 
+var button = {
+  width: "50%"
+}
+
 class FillerPhotoBin extends Component {
   componentWillMount() {
     this.props.onFeaturePhotos();
@@ -90,88 +96,123 @@ class FillerPhotoBin extends Component {
     let full_name = `${this.props.userProfile.first_name} ${this.props.userProfile.last_name}`;
     let profile_link = "/user-profile/" + this.props.userProfile.user_id;
       if (!this.props.userAuthenticated) {
-        return (
-          <div>
-            <div style={{border: "solid 1px black"}}>
+        if (!this.props.userInfo) {
+          return (
             <div>
-              <div style={coverImage.box.outer}>
-                <span style={coverImage.heading}>Why Focus?</span>
-                <div style={coverImage.box.inner}>
-                  <img style={coverImage.styles} src={coverImage.images.photo3} role="presentation" />
-                    <ul style={coverImage.box.list}>
-                      <li style={coverImage.space}><i className="fa fa-list fa-5x" aria-hidden="true" style={{padding: "0 0 20px 11px"}}></i><br /> Browse Artists</li>
-                      <li style={coverImage.space}><i className="fa fa-map-marker fa-5x" aria-hidden="true" style={{padding: "0 0 20px 30px"}}></i><br />Support Local</li>
-                      <li style={coverImage.space}><i className="fa fa-comments fa-5x" aria-hidden="true" style={{padding: "0 0 20px 18px"}}></i><br />Live Messaging</li>
-                      <li style={coverImage.space}><i className="fa fa-address-book-o fa-5x" aria-hidden="true" style={{padding: "0 0 20px 25px"}}></i><br />Book Your Shoot</li>
-                    </ul>
+            <h1 style={coverImage.heading}> Why Focus? </h1>
+              <div style={{border: "solid 1px black"}}>
+              <div>
+                <div style={coverImage.box.outer}>
+                  <div>
+                  <RaisedButton style={button} onClick={this.props.toggleUserInfoFalse}>I am looking for a photographer!</RaisedButton>
+                  <RaisedButton style={button} onClick={this.props.toggleUserInfoTrue}>I am a photographer looking to work!</RaisedButton>
+                  </div>
+                  <div style={coverImage.box.inner}>
+                      <ul style={coverImage.box.list}>
+                        <li style={coverImage.space}><i className="fa fa-list fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Browse Artists</span></li>
+                        <li style={coverImage.space}><i className="fa fa-map-marker fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Support Local</span></li>
+                        <li style={coverImage.space}><i className="fa fa-comments fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Live Messaging</span></li>
+                        <li style={coverImage.space}><i className="fa fa-address-book-o fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Book Your Shoot</span></li>
+                      </ul>
+                      <img style={coverImage.styles} src={coverImage.images.photo3} role="presentation" />
+                  </div>
                 </div>
               </div>
-            </div>
+             </div>
+              <Modal
+                isOpen={this.props.showModal}
+                contentLabel="Modal"
+                style={modalStyles}
+              >
+              <Card>
+                <Link to={profile_link} onClick={this.props.handleCloseModal}>
+                  <CardHeader
+                    title={full_name}
+                    subtitle={this.props.userProfile.location_string}
+                    avatar={this.props.userProfile.profile_picture}
+                    style={{backgroundColor: "#ddd"}}
+                  />
+                  </Link>
+                  <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+                    <img src={this.props.currentModal} role="presentation" />
+                </Card>
+              </Modal>
+              <div style={styles.root}>
+                {this.props.photos.map((photo, i) => (
+                  <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
+                ))}
+                </div>
+              </div>
+              )} else {
+                return (
+                  <div>
+                  <h1 style={coverImage.heading}> Why Focus? </h1>
+                    <RaisedButton style={button} onClick={this.props.toggleUserInfoFalse}>I am looking for a photographer!</RaisedButton>
+                    <RaisedButton style={button} onClick={this.props.toggleUserInfoTrue}>I am a photographer looking to work!</RaisedButton>
+                    <div style={coverImage.box.inner}>
+                    <img style={coverImage.styles} src={coverImage.images.photo2} role="presentation" />
+                    <ul style={coverImage.box.list}>
+                      <li style={coverImage.space}><i className="fa fa-calendar-check-o fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br /> Set Your Schedule</li>
+                      <li style={coverImage.space}><i className="fa fa-globe fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Work In Any City</li>
+                      <li style={coverImage.space}><i className="fa fa-bullhorn fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Showcase A Portfolio</li>
+                      <li style={coverImage.space}><i className="fa fa-line-chart fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Gain Experience</li>
+                      </ul>
+                    </div>
+                    <Modal
+                      isOpen={this.props.showModal}
+                      contentLabel="Modal"
+                      style={modalStyles}
+                      >
+                    <Card>
+                      <Link to={profile_link} onClick={this.props.handleCloseModal}>
+                      <CardHeader
+                        title={full_name}
+                        subtitle={this.props.userProfile.location_string}
+                        avatar={this.props.userProfile.profile_picture}
+                        style={{backgroundColor: "#ddd"}}
+                        />
+                      </Link>
+                      <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+                      <img src={this.props.currentModal} role="presentation" />
+                    </Card>
+                    </Modal>
+                    <div style={styles.root}>
+                      {this.props.photos.map((photo, i) => (
+                        <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              } else {
+                return (
+                  <div>
+                    <Modal
+                      isOpen={this.props.showModal}
+                      contentLabel="Modal"
+                      style={modalStyles}
+                      >
+                    <Card>
+                      <Link to={profile_link} onClick={this.props.handleCloseModal}>
+                        <CardHeader
+                          title={full_name}
+                          subtitle={this.props.userProfile.location_string}
+                          avatar={this.props.userProfile.profile_picture}
+                          style={{backgroundColor: "#ddd"}}
+                        />
+                        </Link>
+                        <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+                          <img src={this.props.currentModal} role="presentation" />
+                      </Card>
+                    </Modal>
+                    <div style={styles.root}>
+                      {this.props.photos.map((photo, i) => (
+                        <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              }
+            }
 
-            <span style={coverImage.heading}>Focus On Your Career</span>
-            <div style={coverImage.box.inner}>
-              <ul style={coverImage.box.list}>
-                <li style={coverImage.space}><i className="fa fa-calendar-check-o fa-5x" aria-hidden="true" style={{padding: "0 0 20px 28px"}}></i><br /> Set Your Schedule</li>
-                <li style={coverImage.space}><i className="fa fa-globe fa-5x" aria-hidden="true" style={{padding: "0 0 20px 33px"}}></i><br />Work In Any City</li>
-                <li style={coverImage.space}><i className="fa fa-bullhorn fa-5x" aria-hidden="true" style={{padding: "0 0 35px 30px"}}></i><br />Showcase A Portfolio</li>
-                <li style={coverImage.space}><i className="fa fa-line-chart fa-5x" aria-hidden="true" style={{padding: "0 0 20px 14px"}}></i><br />Gain Experience</li>
-              </ul>
-              <img style={coverImage.styles} src={coverImage.images.photo2} role="presentation" />
-            </div>
-            </div>
-        <Modal
-          isOpen={this.props.showModal}
-          contentLabel="Modal"
-          style={modalStyles}
-          >
-          <Card>
-            <Link to={profile_link} onClick={this.props.handleCloseModal}>
-              <CardHeader
-                title={full_name}
-                subtitle={this.props.userProfile.location_string}
-                avatar={this.props.userProfile.profile_picture}
-                style={{backgroundColor: "#ddd"}}
-              />
-              </Link>
-              <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
-                <img src={this.props.currentModal} role="presentation" />
-            </Card>
-          </Modal>
-          <div style={styles.root}>
-            {this.props.photos.map((photo, i) => (
-              <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
-            ))}
-            </div>
-          </div>
-      )} else {
-        return (
-          <div>
-            <Modal
-            isOpen={this.props.showModal}
-            contentLabel="Modal"
-            style={modalStyles}
-            >
-            <Card>
-              <Link to={profile_link} onClick={this.props.handleCloseModal}>
-                <CardHeader
-                  title={full_name}
-                  subtitle={this.props.userProfile.location_string}
-                  avatar={this.props.userProfile.profile_picture}
-                  style={{backgroundColor: "#ddd"}}
-                />
-                </Link>
-                <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
-                  <img src={this.props.currentModal} role="presentation" />
-              </Card>
-            </Modal>
-            <div style={styles.root}>
-              {this.props.photos.map((photo, i) => (
-                <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
-              ))}
-            </div>
-          </div>
-        )}
-      }
-    }
 
 export default FillerPhotoBin;
