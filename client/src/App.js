@@ -761,7 +761,7 @@ class App extends Component {
               handleOpenModal: this.handleOpenModal.bind(this),
               handleCloseModal: this.handleCloseModal.bind(this),
               handleShowAlbum: this.handleShowAlbum.bind(this),
-              deletePhoto: this.deletePhoto.bind(this)
+              deletePhoto: this.deletePhoto.bind(this),
             })
           )}
 

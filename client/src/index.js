@@ -15,7 +15,7 @@ import './index.css';
 
 ReactDOM.render((
   <Router history={hashHistory}>
-<Route path="intro" component={Intro} />
+    <Route path="intro" component={Intro} />
     <Route path="/" component={App}>
 
       <IndexRoute component={FillerPhotoBin} />
