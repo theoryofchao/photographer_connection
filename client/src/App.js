@@ -34,6 +34,7 @@ const initialState = {
   alert: '',
   notification: {},
   photoToEdit: '',
+  userInfo: false
 }
 
 let alertStyle = {
@@ -662,6 +663,7 @@ class App extends Component {
     })
   }
 
+
   handleOpenModal(album_id) {
     return function (e) {
       this.getAlbumById(album_id)
@@ -722,6 +724,14 @@ class App extends Component {
     }
   }
 
+  toggleUserInfoTrue() {
+    this.setState({userInfo: true})
+  }
+
+  toggleUserInfoFalse() {
+    this.setState({userInfo: false})
+  }
+
   render() {
     let alertDiv = '';
 
@@ -758,8 +768,9 @@ class App extends Component {
               handleCloseModal: this.handleCloseModal.bind(this),
               handleShowAlbum: this.handleShowAlbum.bind(this),
               deletePhoto: this.deletePhoto.bind(this),
-              resetUserParam: this.resetUserParam.bind(this)
-
+              resetUserParam: this.resetUserParam.bind(this),
+              toggleUserInfoTrue: this.toggleUserInfoTrue.bind(this),
+              toggleUserInfoFalse: this.toggleUserInfoFalse.bind(this)
             })
           )}
 

@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 
-// var borderStyles = {
-//   border: "solid 1px black",
-//   padding: "10px"
-// }
-
 var titleStyle = {
   display: "inline-block",
   textAlign: "center",
