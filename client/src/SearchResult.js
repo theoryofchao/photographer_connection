@@ -7,6 +7,7 @@ var styles = {
   border: "solid 2px black",
   padding: "10px",
   overflow: "auto",
+  margin: "10px",
 }
 
 var info = {

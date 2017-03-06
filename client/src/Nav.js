@@ -26,7 +26,7 @@ class Navigate extends Component {
     if (this.props.userA) {
       return (
         <div style={navStyle}>
-          <AppBar style={style} title="Focus" showMenuIconButton={false}>
+          <AppBar style={style} title="F o c u s" showMenuIconButton={false}>
             <Badge
               badgeContent={1}
               primary={true}
@@ -49,8 +49,8 @@ class Navigate extends Component {
        )
     } else {
       return (
-        <div>
-          <AppBar style={style} title="Focus" iconElementLeft={<IconButton></IconButton>}>
+        <div style={navStyle}>
+          <AppBar style={style} title="F o c u s" showMenuIconButton={false}>
             <FlatButton
               href="/#/register"
               label="Register"
