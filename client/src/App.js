@@ -36,6 +36,11 @@ const initialState = {
   photoToEdit: '',
 }
 
+let mainBody = {
+  position: "relative",
+  bottom: "15px"
+}
+
 let alertStyle = {
   position: "fixed",
   padding: "0px 25px",
@@ -734,7 +739,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults} resetAlbumParam={this.resetAlbumParam.bind(this)}/>
-          <br />
+          <div className="mainBody" style={mainBody}>
           {Children.map(this.props.children, child =>
             cloneElement(child, {
               ...this.props,
@@ -762,6 +767,7 @@ class App extends Component {
 
             })
           )}
+          </div>
 
           { this.state.alert !== '' ? <div style={alertStyle}> {this.state.alert} </div> : ''}
           

@@ -4,7 +4,8 @@ import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router';
 
 var styles = {
-  border: "solid 2px black",
+  border: "solid 1px #7EBF2D",
+  "border-radius": "5px",
   padding: "10px",
   overflow: "auto",
   margin: "10px",
@@ -16,7 +17,8 @@ var info = {
   float: "right",
   fontSize: "0.8em",
   margin: "0",
-  color: "#000"
+  color: "#7EBF2D",
+  fontWeight: "bold"
 }
 
 var floaty = {
@@ -27,8 +29,10 @@ var floaty = {
 var button = {
   display: "inline-block",
   position: "absolute",
-  right: "11px",
-  bottom: "11px"
+  right: "20px",
+  bottom: "20px",
+  backgroundColor: "#7EBF2D",
+  color: "#0D141A"
 }
 
 class SearchResult extends Component {

@@ -34,6 +34,11 @@ class Navigate extends Component {
               <NotificationsIcon />
             </Badge>
               <FlatButton
+                href="/#/"
+                label="Home"
+                style={style}
+              />
+              <FlatButton
                 href="/#/my-profile"
                 label="My Profile"
                 style={style}

@@ -58,7 +58,8 @@ var styles = {
     maxHeight: "250px",
     objectFit: "contain",
     border: "solid 2px grey",
-    padding: "2px"
+    padding: "2px",
+    backgroundColor: "white"
   },
 };
 
