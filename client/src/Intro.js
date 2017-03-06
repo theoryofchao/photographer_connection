@@ -43,7 +43,6 @@ var coverImage = {
 class Intro extends Component {
   render() {
     return (
-
     <div>
       <div style={coverImage.box.outer}>
         <div style={coverImage.box.inner}>
