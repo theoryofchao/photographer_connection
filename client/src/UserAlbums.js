@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import FlatButton from 'material-ui/FlatButton';
 
 var style = {
   display: "inline-block",
@@ -15,8 +16,8 @@ class UserAlbums extends Component {
   render() {
     let url = `user-profile/${this.props.user_id}/album/${this.props.album.album_id}`;
     return (
-      <Link to={url} className="albumButton" style={style}>
-        {this.props.album.name}
+      <Link to={url}>
+        <FlatButton label={this.props.album.name}/>
       </Link>
     );
   }
