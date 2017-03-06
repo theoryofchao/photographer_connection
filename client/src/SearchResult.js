@@ -47,7 +47,7 @@ class SearchResult extends Component {
               <p style={info}>{this.props.result.last_name}</p><br /><br />
               <p style={info}>{this.props.result.location_string}</p><br />
               <Link to={profileLink}>
-                <FlatButton backgroundColor={"#babbbc"}style={button} label="Profile" />
+                <FlatButton backgroundColor={"#babbbc"} onClick={this.props.resetAlbumParam} style={button} label="Profile" />
               </Link>
             </div>
         </div>

@@ -360,7 +360,6 @@ class App extends Component {
             that.setState({userProfile: json[0],
                           userParam: userId,
                          });
-            console.log(that.state);
           }
         })
       }
@@ -387,7 +386,6 @@ class App extends Component {
             console.log(json.message); //if error occured
           } else {
             that.setState({myProfile: json[0]});
-            console.log(that.state);
           }
         })
       }
@@ -461,7 +459,6 @@ class App extends Component {
             console.log(json.message); //if error occured
           } else {
             that.setState({myAlbums: json});
-            console.log(that.state)
           }
         })
       }
@@ -488,7 +485,6 @@ class App extends Component {
             console.log(json.message); //if error occured
           } else {
             that.setState({photos: json});
-            console.log(that.state);
           }
         })
       }
@@ -570,7 +566,6 @@ class App extends Component {
             console.log(json.message); //if error occured
           } else {
             that.setState({userAlbums: json});
-            console.log(that.state)
           }
         })
       }
@@ -688,6 +683,14 @@ class App extends Component {
     }
   }
 
+  resetAlbumParam() {
+    this.setState({albumParam: ''});
+  }
+
+  resetUserParam() {
+    this.setState({userParam: ''});
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       let newCurrentUser = {user_id: localStorage.user_id, email: localStorage.email}
@@ -710,20 +713,16 @@ class App extends Component {
   componentWillUpdate(nextProps, nextState) {
     if (this.props.params.user_id && this.props.params.user_id !== this.state.userParam) {
       this.getUserProfile(this.props.params.user_id);
-      this.getUserPhotos(this.props.params.user_id);
       this.getUserAlbums(this.props.params.user_id);
+      this.getUserPhotos(this.props.params.user_id);
     }
 
     if (this.props.params.album_id && this.props.params.album_id !== this.state.albumParam) {
       this.getAlbumPhotos(this.props.params.user_id, this.props.params.album_id);
     }
-
-    console.log("click on album, params------->", this.props.params);
   }
 
   render() {
-    console.log("APP STATE ON RENDER: ", this.state);
-
     let alertDiv = '';
 
     if (this.state.alert !== '') {
@@ -734,7 +733,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults}/>
+          <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults} resetAlbumParam={this.resetAlbumParam.bind(this)}/>
           <br />
           {Children.map(this.props.children, child =>
             cloneElement(child, {
@@ -759,6 +758,7 @@ class App extends Component {
               handleCloseModal: this.handleCloseModal.bind(this),
               handleShowAlbum: this.handleShowAlbum.bind(this),
               deletePhoto: this.deletePhoto.bind(this),
+              resetUserParam: this.resetUserParam.bind(this)
             })
           )}
 

@@ -20,7 +20,7 @@ class Search extends Component {
         <Link to="/">Home</Link>
          <Carousel style={styles} slidesToShow={5} cellAlign="center" slidesToScroll={5}>
           {this.props.searchResults.map((result, index) => {
-            return <SearchResult key={index} result={result}/>
+            return <SearchResult key={index} result={result} resetAlbumParam={this.props.resetAlbumParam}/>
           })}
          </Carousel>
        </div>
