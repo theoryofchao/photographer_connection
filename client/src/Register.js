@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
-<<<<<<< HEAD
 import FlatButton from 'material-ui/FlatButton';
 
 var mainBody = {
-=======
-// import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-let mainBody = {
->>>>>>> 7e22e1b0986886a97a89b89e6f20833348520536
   height: "780px",
   background: 'linear-gradient( 180deg, #1a2733, #668fb2 )'
 }
 
 var register = {
-<<<<<<< HEAD
   border: "solid 4px #7EBF2D",
-=======
-  border: "solid 1px black",
->>>>>>> 7e22e1b0986886a97a89b89e6f20833348520536
   width: "50%",
   display: "flex",
   alignItems: "center",
