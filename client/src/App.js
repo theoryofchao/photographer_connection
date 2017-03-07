@@ -38,6 +38,10 @@ const initialState = {
   menuItemValue: null
 }
 
+let defaultBackground = {
+  backgroundColor: "#668fb2"
+}
+
 let mainBody = {
   position: "relative",
   bottom: "20px"
@@ -758,7 +762,7 @@ class App extends Component {
     console.log("APP STATE ON RENDER: ", this.state);
     return (
       <MuiThemeProvider>
-        <div>
+        <div style={defaultBackground}>
           <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults} resetAlbumParam={this.resetAlbumParam.bind(this)}/>
           <div className="mainBody" style={mainBody}>
           {Children.map(this.props.children, child =>

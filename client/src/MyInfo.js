@@ -9,7 +9,7 @@ var main = {
   width: "100%",
   height: "100%",
   boxSizing: "border-box",
-  background: 'linear-gradient( 180deg, #1a2733, #111a22 )',
+  backgroundColor: '#1a2733',
   color: 'white'
 }
 
