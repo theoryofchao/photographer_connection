@@ -34,7 +34,8 @@ const initialState = {
   alert: '',
   notification: {},
   photoToEdit: '',
-  userInfo: false
+  userInfo: false,
+  menuItemValue: null
 }
 
 let mainBody = {
@@ -702,6 +703,7 @@ class App extends Component {
 
   resetAlbumParam() {
     this.setState({albumParam: ''});
+    this.setState({menuItemValue: null})
   }
 
   resetUserParam() {
@@ -737,6 +739,7 @@ class App extends Component {
     if (this.props.params.album_id && this.props.params.album_id !== this.state.albumParam) {
       this.getAlbumPhotos(this.props.params.user_id, this.props.params.album_id);
     }
+
   }
 
   toggleUserInfoTrue() {
@@ -745,6 +748,10 @@ class App extends Component {
 
   toggleUserInfoFalse() {
     this.setState({userInfo: false})
+  }
+
+  menuItemChange(event, index, value) {
+    this.setState({menuItemValue: value});
   }
 
   render() {
@@ -779,7 +786,8 @@ class App extends Component {
               deletePhoto: this.deletePhoto.bind(this),
               resetUserParam: this.resetUserParam.bind(this),
               toggleUserInfoTrue: this.toggleUserInfoTrue.bind(this),
-              toggleUserInfoFalse: this.toggleUserInfoFalse.bind(this)
+              toggleUserInfoFalse: this.toggleUserInfoFalse.bind(this),
+              menuItemChange: this.menuItemChange.bind(this)
             })
           )}
           </div>
