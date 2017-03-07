@@ -8,7 +8,6 @@ var coverImage = {
   heading: {
     display: "flex",
     justifyContent: "center",
-    border: "solid 3px black",
     margin: 0
   },
   images: {
@@ -79,10 +78,10 @@ var modalStyles = {
   }
 }
 
-var box = {
-  backgroundColor: "#000",
-  width: "80%"
-}
+// var box = {
+//   backgroundColor: "#000",
+//   width: "80%"
+// }
 
 var button = {
   width: "50%"
@@ -113,6 +112,7 @@ class FillerPhotoBin extends Component {
                         <li style={coverImage.space}><i className="fa fa-map-marker fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Support Local</span></li>
                         <li style={coverImage.space}><i className="fa fa-comments fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Live Messaging</span></li>
                         <li style={coverImage.space}><i className="fa fa-address-book-o fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Book Your Shoot</span></li>
+                        <RaisedButton label="Learn More" primary={true} />
                       </ul>
                       <img style={coverImage.styles} src={coverImage.images.photo3} role="presentation" />
                   </div>
@@ -156,7 +156,8 @@ class FillerPhotoBin extends Component {
                       <li style={coverImage.space}><i className="fa fa-globe fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Work In Any City</li>
                       <li style={coverImage.space}><i className="fa fa-bullhorn fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Showcase A Portfolio</li>
                       <li style={coverImage.space}><i className="fa fa-line-chart fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Gain Experience</li>
-                      </ul>
+                      <RaisedButton label="Learn More" secondary={true}  />
+                    </ul>
                     </div>
                     <Modal
                       isOpen={this.props.showModal}
