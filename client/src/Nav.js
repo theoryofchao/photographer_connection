@@ -57,6 +57,11 @@ class Navigate extends Component {
         <div style={navStyle}>
           <AppBar style={style} title="F o c u s" showMenuIconButton={false}>
             <FlatButton
+              href="/#/"
+              label="Home"
+              style={style}
+            />
+            <FlatButton
               href="/#/register"
               label="Register"
               style={style}
