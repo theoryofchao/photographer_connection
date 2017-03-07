@@ -99,7 +99,11 @@ class FillerPhotoBin extends Component {
   componentWillMount() {
     this.props.onFeaturePhotos();
   }
+
+
+
   render() {
+    let shuffledPhotos = this.props.shuffleArray(this.props.photos);
     let full_name = `${this.props.userProfile.first_name} ${this.props.userProfile.last_name}`;
     let profile_link = "/user-profile/" + this.props.userProfile.user_id;
       if (!this.props.userAuthenticated) {
@@ -148,7 +152,7 @@ class FillerPhotoBin extends Component {
                 </Card>
               </Modal>
               <div style={styles.root}>
-                {this.props.photos.map((photo, i) => (
+                {shuffledPhotos.map((photo, i) => (
                   <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
                 ))}
                 </div>
@@ -190,7 +194,7 @@ class FillerPhotoBin extends Component {
                     </Card>
                     </Modal>
                     <div style={styles.root}>
-                      {this.props.photos.map((photo, i) => (
+                      {shuffledPhotos.map((photo, i) => (
                         <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
                       ))}
                     </div>
@@ -220,7 +224,7 @@ class FillerPhotoBin extends Component {
                       </Card>
                     </Modal>
                     <div style={styles.root}>
-                      {this.props.photos.map((photo, i) => (
+                      {shuffledPhotos.map((photo, i) => (
                         <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
                       ))}
                     </div>

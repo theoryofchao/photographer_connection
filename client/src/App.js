@@ -35,7 +35,7 @@ const initialState = {
   notification: {},
   photoToEdit: '',
   userInfo: false,
-  menuItemValue: null
+  menuItemValue: null,
 }
 
 var defaultBackground = {
@@ -766,6 +766,16 @@ class App extends Component {
     this.setState({menuItemValue: value});
   }
 
+  shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+    return arr;
+  }
+
   render() {
     console.log("APP STATE ON RENDER: ", this.state);
     return (
@@ -799,7 +809,8 @@ class App extends Component {
               resetUserParam: this.resetUserParam.bind(this),
               toggleUserInfoTrue: this.toggleUserInfoTrue.bind(this),
               toggleUserInfoFalse: this.toggleUserInfoFalse.bind(this),
-              menuItemChange: this.menuItemChange.bind(this)
+              menuItemChange: this.menuItemChange.bind(this),
+              shuffleArray: this.shuffleArray.bind(this)
             })
           )}
           </div>
