@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField';
+import { Link } from 'react-router';
+import FlatButton from 'material-ui/FlatButton';
 
 var main = {
   padding: "25px",
@@ -47,9 +49,15 @@ class MyInfo extends Component {
   }
 
   render() {
+    let url = `user-profile/${this.props.myProfile.user_id}`
     return (
         <div style={main}>
-          <h2 style={{textAlign: "center", margin: "0 0 10px 0"}}>Profile for {this.props.currentUser.email}</h2>
+          <div style={{textAlign: "center"}}>
+            <h2 style={{textAlign: "center", margin: "0 20px 10px 0", display: "inline-block"}}>{this.props.myProfile.first_name} {this.props.myProfile.last_name}</h2>
+            <Link to={url} style={{display: "inline-block"}}>
+              <FlatButton backgroundColor="#7EBF2D" hoverColor="#354e63" rippleColor="#7EBF2D" label="View your public profile"/>
+            </Link>
+          </div>
           <div style={left}>
             <div className="FileUpload">
               <Dropzone
