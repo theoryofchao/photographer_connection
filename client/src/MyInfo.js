@@ -78,7 +78,7 @@ class MyInfo extends Component {
               value={this.props.myProfile.first_name}
               floatingLabelText="First Name"
               hintText="Enter Your First Name"
-              onChange={this.props.handleInfoChange}goo
+              onChange={this.props.handleInfoChange}
              /> <br />
             <TextField
               type="name"

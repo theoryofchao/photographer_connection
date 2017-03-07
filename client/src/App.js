@@ -210,10 +210,13 @@ class App extends Component {
           newProfileImage.profile_picture = response.body.secure_url;
           this.setState({myProfile: newProfileImage});
         } else {
+          let that = this;
           this.setState({
             uploadedFileCloudinaryUrl: response.body.secure_url
           });
-          // window.setTimeout(this.setState({uploadedFileCloudinaryUrl: initialState.uploadedFileCloudinaryUrl}), 10000);
+          setTimeout(function() {
+            that.setState({uploadedFileCloudinaryUrl: initialState.uploadedFileCloudinaryUrl});
+          }, 5000);
         }
         //fetch to create item in database
         fetch(url, {
