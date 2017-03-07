@@ -31,15 +31,13 @@ var iconStyle = {
   color: "#fff"
 }
 
-//showMenuIconButton={false}
-
 class Navigate extends Component {
 
   render() {
     if (this.props.userA) {
       return (
         <div style={navStyle}>
-          <AppBar style={style} title="&nbsp;&nbsp;F o c u s" iconElementLeft={<a href="/#/"><img height="50px" src="aperature.png"/></a>}>
+          <AppBar style={style} title="&nbsp;&nbsp;F o c u s" iconElementLeft={<a href="/#/"><img height="50px" src="aperature.png" role="presentation"/></a>}>
             <Badge
               badgeContent={1}
               primary={true}
@@ -69,7 +67,7 @@ class Navigate extends Component {
     } else {
       return (
         <div style={navStyle}>
-          <AppBar style={style} title="F o c u s" showMenuIconButton={false}>
+          <AppBar style={style} title="&nbsp;&nbsp;F o c u s" iconElementLeft={<a href="/#/"><img height="50px" src="aperature.png" role="presentation"/></a>}>
             <FlatButton
               href="/#/"
               label="Home"

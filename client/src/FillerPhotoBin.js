@@ -18,7 +18,6 @@ var coverImage = {
     margin: 0,
     color: "white",
     padding: "15px",
-    textDecoration: "underline"
   },
   images: {
     photo2: "http://vinamy.com/wp-content/uploads/2014/05/photography-masterclass-book-review.jpg",
