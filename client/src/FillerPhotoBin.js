@@ -119,8 +119,8 @@ class FillerPhotoBin extends Component {
               <div>
                 <div style={coverImage.box.outer}>
                   <div>
-                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.3em"}}>I am looking for a photographer!</span></RaisedButton>
-                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
+                  <RaisedButton backgroundColor="#344d65" rippleStyle={{color: "#7EBF2D"}} style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.3em"}}>I am looking for a photographer!</span></RaisedButton>
+                  <RaisedButton backgroundColor="#344d65" rippleStyle={{color: "#7EBF2D"}} style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
                   </div>
                   <div style={coverImage.box.inner}>
                       <ul style={coverImage.box.list}>
@@ -166,8 +166,8 @@ class FillerPhotoBin extends Component {
                 return (
                   <div style={coverImage.main}>
                   <h1 style={coverImage.heading}> Why Focus? </h1>
-                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.3em"}}>I am looking for a photographer!</span></RaisedButton>
-                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
+                    <RaisedButton backgroundColor="#344d65" rippleStyle={{color: "#7EBF2D"}} style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.3em"}}>I am looking for a photographer!</span></RaisedButton>
+                    <RaisedButton backgroundColor="#344d65" rippleStyle={{color: "#7EBF2D"}} style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
                     <div style={coverImage.box.inner}>
                     <img style={coverImage.styles} src={coverImage.images.photo2} role="presentation" />
                     <ul style={coverImage.box.list}>

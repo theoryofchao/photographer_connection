@@ -31,7 +31,6 @@ var button = {
   position: "absolute",
   right: "20px",
   bottom: "20px",
-  backgroundColor: "#7EBF2D",
   color: "#0D141C"
 }
 
@@ -52,7 +51,7 @@ class SearchResult extends Component {
               <p style={info}>{this.props.result.last_name}</p><br /><br />
               <p style={info}>{this.props.result.location_string}</p><br />
               <Link to={profileLink}>
-                <FlatButton backgroundColor={"#babbbc"} onClick={this.props.resetAlbumParam} style={button} label="Profile" />
+                <FlatButton hoverColor="#354e63" backgroundColor="#7EBF2D" onClick={this.props.resetAlbumParam} style={button} label="Profile" />
               </Link>
             </div>
         </div>
@@ -61,4 +60,3 @@ class SearchResult extends Component {
 }
 
 export default SearchResult;
-

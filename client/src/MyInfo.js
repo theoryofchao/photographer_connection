@@ -28,6 +28,22 @@ var right = {
   verticalAlign: "top"
 }
 
+var hintStyle = {
+  color: "#B1B1B1"
+}
+
+var floatingLabelStyle = {
+  color: "#fff"
+}
+
+var floatingLabelFocusStyle = {
+  color: "#00BCD4"
+}
+
+var formText = {
+  color: "#7EBF2D"
+}
+
 
 class MyInfo extends Component {
   static defaultProps = {
@@ -88,6 +104,10 @@ class MyInfo extends Component {
               floatingLabelText="First Name"
               hintText="Enter Your First Name"
               onChange={this.props.handleInfoChange}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              inputStyle={formText}
+              hintStyle={hintStyle}
              /> <br />
             <TextField
               type="name"
@@ -96,6 +116,10 @@ class MyInfo extends Component {
               floatingLabelText="Last Name"
               hintText="Enter Your Last Name"
               onChange={this.props.handleInfoChange}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              inputStyle={formText}
+              hintStyle={hintStyle}
             /> <br />
             <TextField
               type="name"
@@ -104,6 +128,10 @@ class MyInfo extends Component {
               floatingLabelText="Handle"
               hintText="Enter Your Unique Handle"
               onChange={this.props.handleInfoChange}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              inputStyle={formText}
+              hintStyle={hintStyle}
              /> <br />
             <TextField
               type="location"
@@ -112,6 +140,10 @@ class MyInfo extends Component {
               floatingLabelText="Location"
               hintText="Enter Your Location"
               onChange={this.props.handleInfoChange}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              inputStyle={formText}
+              hintStyle={hintStyle}
             /> <br />
             <TextField
               type="summary"
@@ -120,6 +152,10 @@ class MyInfo extends Component {
               floatingLabelText="About Me"
               multiLine={true}
               onChange={this.props.handleInfoChange}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              textareaStyle={formText}
+              hintStyle={hintStyle}
              /> <br />
             <TextField
               type="number"
@@ -128,6 +164,10 @@ class MyInfo extends Component {
               floatingLabelText="How long have you been shooting?"
               hintText="No. of years"
               onChange={this.props.handleInfoChange}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              inputStyle={formText}
+              hintStyle={hintStyle}
              /> <br /><br />
             <input type="submit" value="Submit" />
           </form>
