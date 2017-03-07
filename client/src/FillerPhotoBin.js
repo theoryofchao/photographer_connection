@@ -12,7 +12,6 @@ var coverImage = {
   background: {
     backgroundColor: '#1a2733'
   },
-
   heading: {
     display: "flex",
     justifyContent: "center",
@@ -22,7 +21,6 @@ var coverImage = {
     textDecoration: "underline"
   },
   images: {
-    photo: "http://glowparties.ca/wp-content/uploads/2015/05/photographer1.jpg",
     photo2: "http://vinamy.com/wp-content/uploads/2014/05/photography-masterclass-book-review.jpg",
     photo3: "https://d1zpvjny0s6omk.cloudfront.net/media/fileupload/2015/09/17/drew%20clayton.jpg"
   },
@@ -90,11 +88,6 @@ var modalStyles = {
   }
 }
 
-// var box = {
-//   backgroundColor: "#000",
-//   width: "80%"
-// }
-
 var button = {
   width: "50%",
   border: "1px solid black",
@@ -114,7 +107,7 @@ class FillerPhotoBin extends Component {
         if (!this.props.userInfo) {
           return (
             <div style={coverImage.main}>
-            <h1 style={coverImage.heading}> Why Focus? </h1>
+            <em><h1 style={coverImage.heading}> Why &nbsp;<span style={{ color: "#7EBF2D"}}> Focus</span> ?</h1></em>
               <div >
               <div>
                 <div style={coverImage.box.outer}>
@@ -155,7 +148,6 @@ class FillerPhotoBin extends Component {
                     <img src={this.props.currentModal} role="presentation" />
                 </Card>
               </Modal>
-              <h1 style={coverImage.heading}>Recent Photos</h1>
               <div style={styles.root}>
                 {this.props.photos.map((photo, i) => (
                   <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
@@ -165,9 +157,9 @@ class FillerPhotoBin extends Component {
               )} else {
                 return (
                   <div style={coverImage.main}>
-                  <h1 style={coverImage.heading}> Why Focus? </h1>
+                  <em><h1 style={coverImage.heading}> Why &nbsp;<span style={{ color: "#7EBF2D"}}> Focus</span> ?</h1></em>
                     <RaisedButton backgroundColor="#344d65" rippleStyle={{color: "#7EBF2D"}} style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.3em"}}>I am looking for a photographer!</span></RaisedButton>
-                    <RaisedButton backgroundColor="#344d65" rippleStyle={{color: "#7EBF2D"}} style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
+                    <RaisedButton backgroundColor="#344d65" rippleStyle={{color: "#7EBF2D"}}  style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
                     <div style={coverImage.box.inner}>
                     <img style={coverImage.styles} src={coverImage.images.photo2} role="presentation" />
                     <ul style={coverImage.box.list}>
@@ -198,7 +190,6 @@ class FillerPhotoBin extends Component {
                       <img src={this.props.currentModal} role="presentation" />
                     </Card>
                     </Modal>
-                    <h1 style={coverImage.heading}>Recent Photos</h1>
                     <div style={styles.root}>
                       {this.props.photos.map((photo, i) => (
                         <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
@@ -229,7 +220,6 @@ class FillerPhotoBin extends Component {
                           <img src={this.props.currentModal} role="presentation" />
                       </Card>
                     </Modal>
-                    <h1 style={coverImage.heading}>Recent Photos</h1>
                     <div style={styles.root}>
                       {this.props.photos.map((photo, i) => (
                         <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>

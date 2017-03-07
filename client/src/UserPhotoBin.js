@@ -3,13 +3,13 @@ var Carousel = require('nuka-carousel');
 
 var parent = {
   textAlign: "center",
-  height: "300px"
+  height: "300px",
 };
 
 var gridList = {
     objectFit: "contain",
     maxHeight: "400px",
-    backgroundColor: "white"
+    backgroundColor: "rgba(255,255,255,0)"
 };
 
 class UserPhotoBin extends Component {
