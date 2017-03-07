@@ -4,6 +4,8 @@ import DatePicker from 'material-ui/DatePicker';
 import FlatButton from 'material-ui/FlatButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import { Link } from 'react-router';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 var style = {
   backgroundColor: "lightgrey",
@@ -67,6 +69,16 @@ class UserInfo extends Component {
             <div style={{paddingLeft: "20px"}}>
               <h4 style={{margin: "9px"}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
               <DatePicker hintText="Select A Date" />
+              <SelectField
+                  floatingLabelText="Frequency"
+                  value="Choose A Package"
+                >
+                  <MenuItem primaryText="Custom width" />
+                  <MenuItem primaryText="Every Night" />
+                  <MenuItem primaryText="Weeknights" />
+                  <MenuItem primaryText="Weekends" />
+                  <MenuItem primaryText="Weekly" />
+              </SelectField>
               <RadioButtonGroup name="shipSpeed" defaultSelected="Light">
                 <RadioButton
                   value="Light"
@@ -83,9 +95,9 @@ class UserInfo extends Component {
                   style={{backgroundColor: "#b2b2b2"}}
                   icon={<i className="material-icons">email</i>}
                 /></Link>
+
             </div>
         </div>
-
     );
   }
 }
