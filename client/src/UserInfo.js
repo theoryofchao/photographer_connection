@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 var style = {
   paddingTop: "20px",
-background: 'linear-gradient( 180deg, #1a2733, #668fb2 30%, #1a2733)',
+  backgroundColor: '#32485B',
 // backgroundColor: "#344d65",
   height: "200px",
   display: "flex",
@@ -18,7 +18,7 @@ background: 'linear-gradient( 180deg, #1a2733, #668fb2 30%, #1a2733)',
 
 var avatarStyle = {
   // backgroundColor: "#233443",
-  background: 'linear-gradient( 180deg, #32485B, #638BAE 30%, #21303E)',
+  backgroundColor: '#32485B',//'linear-gradient( 180deg, #32485B, #638BAE 30%, #21303E)',
   height: "200px",
   display: "flex",
   flexDirection: "row",
@@ -28,7 +28,8 @@ var avatarStyle = {
 
 var info = {
   listStyleType: "none",
-  padding: "20px"
+  padding: "20px",
+  color: 'white'
 }
 
 var description = {
@@ -36,7 +37,8 @@ var description = {
     display: "flex",
     width: "20%",
     padding: "50px",
-    border: "dotted 2px #b2b2b2"
+    border: "dotted 2px #b2b2b2",
+    color: 'white'
 }
 
 var consultation = {
@@ -71,15 +73,16 @@ class UserInfo extends Component {
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>
             <div style={consultation}>
-              <h4 style={{margin: "9px"}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
+              <h4 style={{margin: "9px", color: 'white'}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
               <DatePicker
               hintText="Select A Date"
-              hintStyle={{color: "red"}}
+              hintStyle={{color: "#B1B1B1"}}
+              inputStyle={{color: "#7EBF2D"}}
               />
               <SelectField
-                  style={{color: "red"}}
+                  labelStyle={{color: "#7EBF2D"}}
                   hintText="Choose Your Shoot"
-                  hintStyle={{color: "red"}}
+                  hintStyle={{color: "#B1B1B1"}}
                   value={this.props.menuItemValue}
                   onChange={this.props.menuItemChange}
                 >
