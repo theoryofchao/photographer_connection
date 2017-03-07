@@ -20,6 +20,17 @@ var style = {
   alignItems: "center",
 }
 
+var badgeStyle = {
+  top: "7px",
+  right: "7px",
+  width: "20px",
+  height: "20px",
+}
+
+var iconStyle = {
+  color: "#fff"
+}
+
 class Navigate extends Component {
 
   render() {
@@ -30,8 +41,9 @@ class Navigate extends Component {
             <Badge
               badgeContent={1}
               primary={true}
+              badgeStyle={badgeStyle}
             >
-              <NotificationsIcon />
+            <NotificationsIcon style={iconStyle}/>
             </Badge>
               <FlatButton
                 href="/#/"
