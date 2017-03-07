@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 
+let mainBody = {
+  height: "780px",
+  background: 'linear-gradient( 180deg, #1a2733, #668fb2 )'
+}
+
 var loginStyle = {
-  border: "solid 2px red",
+  border: "solid 1px black",
   width: "50%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   padding: "45px",
   margin: "auto"
+  
 }
 
 var heading = {
@@ -43,29 +49,30 @@ class Login extends Component {
 
   render() {
     return (
-      <Paper zDepth={4} style={loginStyle}>
-        <form onSubmit={this.onFormSubmit}>
-          <h1 style={heading}> Login </h1>
+      <div style={mainBody}>
+        <Paper zDepth={4} style={loginStyle}>
+          <form onSubmit={this.onFormSubmit}>
+            <h1 style={heading}> Login </h1>
+              <TextField
+                fullWidth={true}
+                type="email"
+                name="email"
+                floatingLabelText="E-mail"
+                hintText="Enter Your E-mail Address"
+                onChange={this.props.handleLoginChange}
+               />
             <TextField
               fullWidth={true}
-              type="email"
-              name="email"
-              floatingLabelText="E-mail"
-              hintText="Enter Your E-mail Address"
+              type="password"
+              name="password"
+              floatingLabelText="Password"
+              hintText="Enter Your Password"
               onChange={this.props.handleLoginChange}
-             />
-          <TextField
-            fullWidth={true}
-            type="password"
-            name="password"
-            floatingLabelText="Password"
-            hintText="Enter Your Password"
-            onChange={this.props.handleLoginChange}
-          />
-          <input style={button} type="submit" value="Submit" />
-      </form>
-    </Paper>
-
+            />
+            <input style={button} type="submit" value="Submit" />
+          </form>
+        </Paper>
+      </div>
     );
   }
 }

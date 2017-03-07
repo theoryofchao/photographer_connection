@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import MyAlbum from './MyAlbum.js';
 
 var padding = {
+  color: 'white',
   padding: "15px 30px",
   background: 'linear-gradient( 180deg, #111a22, #1a2733 )',
 }
@@ -16,6 +17,7 @@ var form = {
 }
 
 var formh3 = {
+  color: 'white',
   marginBottom: "0",
   marginTop: "0"
 }

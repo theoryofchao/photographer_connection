@@ -5,10 +5,18 @@ import {Card, CardHeader } from 'material-ui/Card';
 import { Link } from 'react-router';
 
 var coverImage = {
+  main: {
+    backgroundColor: '#1a2733'
+  },
+  background: {
+    backgroundColor: '#1a2733'
+  },
+
   heading: {
     display: "flex",
     justifyContent: "center",
-    margin: 0
+    margin: 0,
+    color: "white"
   },
   images: {
     photo: "http://glowparties.ca/wp-content/uploads/2015/05/photographer1.jpg",
@@ -27,8 +35,8 @@ var coverImage = {
   },
   box: {
     inner: {
-      backgroundColor: "#fff",
-      color: "#4e4e4f",
+      backgroundColor: "#1a2733",
+      color: "white",
       display: "flex",
       flexDirection: "row",
     },
@@ -85,7 +93,11 @@ var modalStyles = {
 // }
 
 var button = {
-  width: "50%"
+  width: "50%",
+  border: "1px solid black",
+  margin: "0%",
+  borderRadius: "15px",
+  color: "white"
 }
 
 class FillerPhotoBin extends Component {
@@ -98,14 +110,14 @@ class FillerPhotoBin extends Component {
       if (!this.props.userAuthenticated) {
         if (!this.props.userInfo) {
           return (
-            <div>
+            <div style={coverImage.main}>
             <h1 style={coverImage.heading}> Why Focus? </h1>
-              <div style={{border: "solid 1px black"}}>
+              <div >
               <div>
                 <div style={coverImage.box.outer}>
                   <div>
-                  <RaisedButton style={button} onClick={this.props.toggleUserInfoFalse}>I am looking for a photographer!</RaisedButton>
-                  <RaisedButton style={button} onClick={this.props.toggleUserInfoTrue}>I am a photographer looking to work!</RaisedButton>
+                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.5em"}}>I am looking for a photographer!</span></RaisedButton>
+                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.5em"}}>I am a photographer looking to work!</span></RaisedButton>
                   </div>
                   <div style={coverImage.box.inner}>
                       <ul style={coverImage.box.list}>
@@ -146,10 +158,10 @@ class FillerPhotoBin extends Component {
               </div>
               )} else {
                 return (
-                  <div>
+                  <div style={coverImage.main}>
                   <h1 style={coverImage.heading}> Why Focus? </h1>
-                    <RaisedButton style={button} onClick={this.props.toggleUserInfoFalse}>I am looking for a photographer!</RaisedButton>
-                    <RaisedButton style={button} onClick={this.props.toggleUserInfoTrue}>I am a photographer looking to work!</RaisedButton>
+                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}>I am looking for a photographer!</RaisedButton>
+                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}>I am a photographer looking to work!</RaisedButton>
                     <div style={coverImage.box.inner}>
                     <img style={coverImage.styles} src={coverImage.images.photo2} role="presentation" />
                     <ul style={coverImage.box.list}>
