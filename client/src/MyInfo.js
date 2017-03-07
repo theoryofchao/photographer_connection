@@ -44,6 +44,14 @@ var formText = {
   color: "#7EBF2D"
 }
 
+var button = {
+  padding: "15px",
+  backgroundColor: "#0e2d49",
+  color: "#7EBF2D",
+  borderRadius: "25px",
+  fontSize: "0.9em",
+}
+
 
 class MyInfo extends Component {
   static defaultProps = {
@@ -162,7 +170,7 @@ class MyInfo extends Component {
               type="number"
               name="years_exp"
               value={this.props.myProfile.years_exp}
-              floatingLabelText="How long have you been shooting?"
+              floatingLabelText="Years of experience"
               hintText="No. of years"
               onChange={this.props.handleInfoChange}
               floatingLabelStyle={floatingLabelStyle}
@@ -170,7 +178,7 @@ class MyInfo extends Component {
               inputStyle={formText}
               hintStyle={hintStyle}
              /> <br /><br />
-            <input type="submit" value="Submit" />
+            <input style={button} type="submit" value="Update" />
           </form>
         </div>
     );

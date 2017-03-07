@@ -9,6 +9,13 @@ var titleStyle = {
   veritcalAlign: "top"
 }
 
+var button = {
+  padding: "8px",
+  backgroundColor: "#0e2d49",
+  color: "#7EBF2D",
+  fontSize: "0.8em",
+}
+
 class MyAlbum extends Component {
 
   onImageDrop(files) {
@@ -27,7 +34,7 @@ class MyAlbum extends Component {
           <h3>{this.props.album.name}</h3>
           <p>Drop an image or click to select a file to upload.</p>
         </Dropzone>
-        <button onClick={this.props.handleShowAlbum(this.props.album)}>Show</button>
+        <button style={button} onClick={this.props.handleShowAlbum(this.props.album)}>Show</button>
       </div>
     );
   }
