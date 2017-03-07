@@ -36,11 +36,17 @@ var description = {
     border: "dotted 2px #b2b2b2"
 }
 
+var consultation = {
+  paddingLeft: "100px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column"
+}
+
 function genNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
-
-
 
 class UserInfo extends Component {
   render() {
@@ -61,20 +67,24 @@ class UserInfo extends Component {
               <span>Contact: {this.props.userProfile.email}</span><br /><br />
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>
-            <div style={{paddingLeft: "20px"}}>
+            <div style={consultation}>
               <h4 style={{margin: "9px"}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
-              <DatePicker hintText="Select A Date" />
+              <DatePicker
+              hintText="Select A Date"
+              hintStyle={{color: "red"}}
+              />
               <SelectField
+                  style={{color: "red"}}
                   hintText="Choose Your Shoot"
+                  hintStyle={{color: "red"}}
                   value={this.props.menuItemValue}
-                  style={{width: "100%"}}
                   onChange={this.props.menuItemChange}
                 >
-                  <MenuItem value={1} primaryText={"Single Shoot: $" + genNum(50, 100) + "/Hr"}  />
-                  <MenuItem value={2} primaryText={"Couples: $" + genNum(100, 125) + "/Hr"} />
-                  <MenuItem value={3} primaryText={"Events: $" + genNum(100, 200) + "/Hr"} />
-                  <MenuItem value={4} primaryText={"Commercial: $" + genNum(150, 400) + "/Hr"} />
-                  <MenuItem value={5} primaryText={"Weddings: From $" + genNum(750, 1500)} />
+                  <MenuItem value={1} primaryText={"Single Shoot: $" + genNum(21, 29) + "/Hr"}  />
+                  <MenuItem value={2} primaryText={"Couples: $" + genNum(41, 49) + "/Hr"} />
+                  <MenuItem value={3} primaryText={"Events: $" + genNum(101, 119) + "/Hr"} />
+                  <MenuItem value={4} primaryText={"Commercial: $" + genNum(150, 159) + "/Hr"} />
+                  <MenuItem value={5} primaryText={"Weddings: $" + genNum(1220, 1299)} />
               </SelectField>
                 <Link to={"/"}><FlatButton
                   style={{backgroundColor: "#b2b2b2"}}
