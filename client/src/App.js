@@ -39,7 +39,7 @@ const initialState = {
 
 let mainBody = {
   position: "relative",
-  bottom: "15px"
+  bottom: "20px"
 }
 
 let alertStyle = {
