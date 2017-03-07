@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 var styles = {
   border: "solid 1px #7EBF2D",
-  "border-radius": "5px",
+  borderRadius: "5px",
   padding: "10px",
   overflow: "auto",
   margin: "10px",

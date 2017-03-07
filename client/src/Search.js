@@ -12,7 +12,7 @@ var styles = {
 
 let searchBarStyle = {
   backgroundColor: '#0D141A',
-  "padding-top": "65px",
+  paddingTop: "65px",
 }
 
 class Search extends Component {

@@ -13,6 +13,15 @@ var style = {
   justifyContent: "flex-start"
 }
 
+var avatarStyle = {
+  backgroundColor: "lightgrey",
+  height: "200px",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "flex-start",
+  padding: "30px"
+}
+
 var info = {
   listStyleType: "none",
   padding: "20px"
@@ -45,7 +54,7 @@ class UserInfo extends Component {
             <Avatar
               src={profile_picture_url}
               size={175}
-              style={style}
+              style={avatarStyle}
             />
             <div style={info}>
               <span>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
