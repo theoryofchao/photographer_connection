@@ -15,7 +15,7 @@ var info = {
   display: "inline-block",
   textDecoration: "none",
   float: "right",
-  fontSize: "0.8em",
+  fontSize: "1em",
   margin: "0",
   color: "#7EBF2D",
   fontWeight: "bold"
