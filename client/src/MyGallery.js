@@ -27,11 +27,12 @@ var upload = {
   width: "50%"
 }
 
-// var titleStyle = {
-//   display: "inline-block",
-//   textAlign: "center",
-//   color: "red"
-// }
+var button = {
+  padding: "8px",
+  backgroundColor: "#0e2d49",
+  color: "#7EBF2D",
+  fontSize: "0.8em",
+}
 
 class MyGallery extends Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class MyGallery extends Component {
           <form onSubmit={this.onFormSubmit.bind(this)}>
             <TextField type="string" name="name" floatingLabelText="Album Name" hintText="Name your album"  ref={(input) => this.nameInput = input}/><br />
             <TextField type="string" name="description" floatingLabelText="Description" hintText="Enter a description"  ref={(input) => this.descriptionInput = input}/><br /><br />
-            <input type="submit" value="Create Album" />
+            <input style={button} type="submit" value="Create Album" />
           </form>
         </div>
         <div>
@@ -93,13 +94,3 @@ class MyGallery extends Component {
 }
 
 export default MyGallery;
-
-// <div className="FileUpload" style={titleStyle}>
-//           <Dropzone
-//             multiple={true}
-//             accept="image/*"
-//             onDrop={this.onImageDrop.bind(this)}>
-//             <h3>Gallery</h3>
-//             <p>Drop an image or click to select a file to upload.</p>
-//           </Dropzone>
-//         </div>

@@ -38,16 +38,16 @@ const initialState = {
   menuItemValue: null
 }
 
-let defaultBackground = {
-  backgroundColor: "#668fb2"
+var defaultBackground = {
+  backgroundColor: "#1a2733"
 }
 
-let mainBody = {
+var mainBody = {
   position: "relative",
   bottom: "20px"
 }
 
-let alertStyle = {
+var alertStyle = {
   position: "fixed",
   padding: "0px 25px",
   height: "64px",
@@ -62,6 +62,14 @@ let alertStyle = {
   color: "white"
 }
 
+var footer = {
+  fontSize: "0.75em",
+  color: "white",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  alignSelf: "flex-start"
+}
 
 class App extends Component {
   constructor(props) {
@@ -798,7 +806,7 @@ class App extends Component {
 
           { this.state.alert !== '' ? <div style={alertStyle}> {this.state.alert} </div> : ''}
 
-
+          <span style={footer}>&copy; 2017 Focus</span><br />
         </div>
 
       </MuiThemeProvider>

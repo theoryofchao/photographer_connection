@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 
 var coverImage = {
   main: {
-    backgroundColor: '#1a2733'
+    backgroundColor: '#1a2733',
   },
   background: {
     backgroundColor: '#1a2733'
@@ -61,14 +61,14 @@ var styles = {
     display: 'flex',
     flexWrap: "wrap",
     justifyContent: 'center',
-    background: 'linear-gradient( 180deg, #1a2733, #668fb2 )',
-    padding: "40px 10px"
+    padding: "40px 10px",
+    border: "dotted 6px white",
+    marginTop: "30px"
   },
   gridList: {
     maxHeight: "250px",
     objectFit: "contain",
     border: "solid 1px black",
-
     margin: "5px",
     backgroundColor: "white"
   },
@@ -121,7 +121,7 @@ class FillerPhotoBin extends Component {
                         <li style={coverImage.space}><i className="fa fa-map-marker fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Support Local</span></li>
                         <li style={coverImage.space}><i className="fa fa-comments fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Live Messaging</span></li>
                         <li style={coverImage.space}><i className="fa fa-address-book-o fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Book Your Shoot</span></li>
-                        <FlatButton href="/register" label="Learn More" hoverColor="#7EBF2D" style={{color: "#fff"}}/>
+                        <FlatButton href="/#/register" label="Learn More" hoverColor="#7EBF2D" style={{color: "#fff"}}/>
                       </ul>
                       <img style={coverImage.styles} src={coverImage.images.photo3} role="presentation" />
                   </div>
@@ -167,7 +167,7 @@ class FillerPhotoBin extends Component {
                       <li style={coverImage.space}><i className="fa fa-globe fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Work In Any City</li>
                       <li style={coverImage.space}><i className="fa fa-bullhorn fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Showcase A Portfolio</li>
                       <li style={coverImage.space}><i className="fa fa-line-chart fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Gain Experience</li>
-                      <FlatButton href="/register" label="Learn More" hoverColor="#7EBF2D" style={{color: "#fff"}} />
+                      <FlatButton href="/#/register" label="Learn More" hoverColor="#7EBF2D" style={{color: "#fff"}} />
                     </ul>
                     </div>
                     <Modal
