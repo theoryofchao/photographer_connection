@@ -132,19 +132,19 @@ class FillerPhotoBin extends Component {
                 contentLabel="Modal"
                 style={modalStyles}
               >
-              <Card>
-                <Link to={profile_link} onClick={this.props.handleCloseModal}>
-                  <CardHeader
-                    title={full_name}
-                    subtitle={this.props.userProfile.location_string}
-                    avatar={this.props.userProfile.profile_picture}
-                    style={{ backgroundColor: "#0d141a"}}
-                    titleColor="#fff"
-                    subtitleColor="#fff"
-                  />
+                <Card>
+                  <Link to={profile_link} onClick={this.props.handleCloseModal}>
+                    <CardHeader
+                      title={full_name}
+                      subtitle={this.props.userProfile.location_string}
+                      avatar={this.props.userProfile.profile_picture}
+                      style={{ backgroundColor: "#0d141a"}}
+                      titleColor="#fff"
+                      subtitleColor="#fff"
+                    />
                   </Link>
                   <RaisedButton style={{display: "block"}} backgroundColor={"#7ebf2d"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
-                    <img src={this.props.currentModal} role="presentation" />
+                    <img style={{maxHeight: "475px"}} src={this.props.currentModal} role="presentation" />
                 </Card>
               </Modal>
               <div style={styles.root}>
