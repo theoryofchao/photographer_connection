@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 // import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
+let mainBody = {
+  height: "780px",
+  background: 'linear-gradient( 180deg, #1a2733, #668fb2 )'
+}
 
 var register = {
-  border: "solid 2px red",
+  border: "solid 1px black",
   width: "50%",
   display: "flex",
   alignItems: "center",
@@ -46,41 +49,44 @@ class Register extends Component {
   render() {
     return (
 
-      <Paper zDepth={2} style={register}>
-        <form onSubmit={this.onFormSubmit.bind(this)} >
-          <h1 style={heading}> Register With Focus </h1>
-            <TextField
-              name="email"
-              type="email"
-              fullWidth={true}
-              value={this.props.registration.email}
-              hintText="Enter Your E-mail...."
-              floatingLabelText="Your E-mail"
-              onChange={this.props.handleRegistrationChange}
-            />
-            <TextField
-              name="password"
-              type="password"
-              fullWidth={true}
-              value={this.props.registration.password}
-              hintText="Enter Your New Password"
-              floatingLabelText="Enter A Password"
-              onChange={this.props.handleRegistrationChange}
-            />
-            <TextField
-              name="password-confirm"
-              type="password"
-              fullWidth={true}
-              value={this.props.registration.passwordConfirmation}
-              hintText="Confirm Your Password"
-              floatingLabelText="Please Confirm Your Password"
-              onChange={this.props.handleRegistrationChange}
+
+      <div style={mainBody}>
+        <Paper zDepth={2} style={register}>
+          <form onSubmit={this.onFormSubmit.bind(this)} >
+            <h1 style={heading}> Register With Focus </h1>
+              <TextField
+                name="email"
+                type="email"
+                fullWidth={true}
+                value={this.props.registration.email}
+                hintText="Enter Your E-mail...."
+                floatingLabelText="Your E-mail"
+                onChange={this.props.handleRegistrationChange}
               />
-              <br />
-              <br />
-            <input style={button} type="submit" value="Submit" />
-        </form>
-      </Paper>
+              <TextField
+                name="password"
+                type="password"
+                fullWidth={true}
+                value={this.props.registration.password}
+                hintText="Enter Your New Password"
+                floatingLabelText="Enter A Password"
+                onChange={this.props.handleRegistrationChange}
+              />
+              <TextField
+                name="password-confirm"
+                type="password"
+                fullWidth={true}
+                value={this.props.registration.passwordConfirmation}
+                hintText="Confirm Your Password"
+                floatingLabelText="Please Confirm Your Password"
+                onChange={this.props.handleRegistrationChange}
+                />
+                <br />
+                <br />
+              <input style={button} type="submit" value="Submit" />
+          </form>
+        </Paper>
+      </div>
     );
   }
 }

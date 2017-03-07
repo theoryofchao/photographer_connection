@@ -7,7 +7,9 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
 var style = {
-  backgroundColor: "lightgrey",
+  paddingTop: "20px",
+background: 'linear-gradient( 180deg, #1a2733, #668fb2 30%, #1a2733)',
+// backgroundColor: "#344d65",
   height: "200px",
   display: "flex",
   flexDirection: "row",
@@ -15,7 +17,8 @@ var style = {
 }
 
 var avatarStyle = {
-  backgroundColor: "lightgrey",
+  // backgroundColor: "#233443",
+  background: 'linear-gradient( 180deg, #32485B, #638BAE 30%, #21303E)',
   height: "200px",
   display: "flex",
   flexDirection: "row",

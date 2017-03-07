@@ -5,7 +5,8 @@ import { Link } from 'react-router';
 import FlatButton from 'material-ui/FlatButton';
 
 var style = {
-  padding: "10px"
+  padding: "75px 10px 10px 10px",
+  background: 'linear-gradient( 180deg, #1a2733, #668fb2 )',
 }
 
 var albumButton = {

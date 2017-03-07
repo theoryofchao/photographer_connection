@@ -6,7 +6,7 @@ import MyAlbum from './MyAlbum.js';
 var padding = {
   color: 'white',
   padding: "15px 30px",
-  background: 'linear-gradient( 180deg, #111a22, #1a2733 )',
+  background: 'linear-gradient( 180deg, #1a2733, #668fb2 )',
 }
 
 var form = {
