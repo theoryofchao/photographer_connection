@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
+import FlatButton from 'material-ui/FlatButton';
 
-let mainBody = {
+var mainBody = {
   height: "780px",
   background: 'linear-gradient( 180deg, #1a2733, #668fb2 )'
 }
 
 var loginStyle = {
-  border: "solid 1px black",
-  width: "50%",
+  border: "solid 4px #7EBF2D",
+  width: "40%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   padding: "45px",
   margin: "auto"
-  
 }
 
 var heading = {
@@ -29,8 +29,8 @@ var heading = {
 
 var button = {
   padding: "15px",
-  backgroundColor: "black",
-  color: "red",
+  backgroundColor: "#0e2d49",
+  color: "#7EBF2D",
   borderRadius: "25px",
   fontSize: "0.9em",
   display: "flex",
@@ -70,6 +70,12 @@ class Login extends Component {
               onChange={this.props.handleLoginChange}
             />
             <input style={button} type="submit" value="Submit" />
+              <h5 style={{borderTop: "solid 2px black"}}>If you havent' signed up with Focus, please <FlatButton
+                style={{backgroundColor: "#e8ecf2"}}
+                href="/#/register"
+                >
+                click here!
+              </FlatButton></h5>
           </form>
         </Paper>
       </div>

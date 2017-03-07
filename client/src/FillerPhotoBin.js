@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardHeader } from 'material-ui/Card';
 import { Link } from 'react-router';
@@ -16,7 +17,9 @@ var coverImage = {
     display: "flex",
     justifyContent: "center",
     margin: 0,
-    color: "white"
+    color: "white",
+    padding: "15px",
+    textDecoration: "underline"
   },
   images: {
     photo: "http://glowparties.ca/wp-content/uploads/2015/05/photographer1.jpg",
@@ -78,12 +81,12 @@ var modalStyles = {
     padding: "50px 100px",
   },
   content: {
-    backgroundColor: "(255, 255, 255, 0.75)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
     boxShadow: "5px 5px 5px #888",
+    background: 'linear-gradient( 180deg, #1a2733, #668fb2 )'
   }
 }
 
@@ -97,7 +100,7 @@ var button = {
   border: "1px solid black",
   margin: "0%",
   borderRadius: "15px",
-  color: "white"
+  color: "#fff"
 }
 
 class FillerPhotoBin extends Component {
@@ -116,8 +119,8 @@ class FillerPhotoBin extends Component {
               <div>
                 <div style={coverImage.box.outer}>
                   <div>
-                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.5em"}}>I am looking for a photographer!</span></RaisedButton>
-                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.5em"}}>I am a photographer looking to work!</span></RaisedButton>
+                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.3em"}}>I am looking for a photographer!</span></RaisedButton>
+                  <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
                   </div>
                   <div style={coverImage.box.inner}>
                       <ul style={coverImage.box.list}>
@@ -125,7 +128,7 @@ class FillerPhotoBin extends Component {
                         <li style={coverImage.space}><i className="fa fa-map-marker fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Support Local</span></li>
                         <li style={coverImage.space}><i className="fa fa-comments fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Live Messaging</span></li>
                         <li style={coverImage.space}><i className="fa fa-address-book-o fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Book Your Shoot</span></li>
-                        <RaisedButton label="Learn More" primary={true} />
+                        <FlatButton href="/register" label="Learn More" hoverColor="#7EBF2D" style={{color: "#fff"}}/>
                       </ul>
                       <img style={coverImage.styles} src={coverImage.images.photo3} role="presentation" />
                   </div>
@@ -143,13 +146,16 @@ class FillerPhotoBin extends Component {
                     title={full_name}
                     subtitle={this.props.userProfile.location_string}
                     avatar={this.props.userProfile.profile_picture}
-                    style={{backgroundColor: "#ddd"}}
+                    style={{ backgroundColor: "#0d141a"}}
+                    titleColor="#fff"
+                    subtitleColor="#fff"
                   />
                   </Link>
-                  <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+                  <RaisedButton style={{display: "block"}} backgroundColor={"#7ebf2d"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
                     <img src={this.props.currentModal} role="presentation" />
                 </Card>
               </Modal>
+              <h1 style={coverImage.heading}>Recent Photos</h1>
               <div style={styles.root}>
                 {this.props.photos.map((photo, i) => (
                   <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
@@ -160,8 +166,8 @@ class FillerPhotoBin extends Component {
                 return (
                   <div style={coverImage.main}>
                   <h1 style={coverImage.heading}> Why Focus? </h1>
-                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}>I am looking for a photographer!</RaisedButton>
-                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}>I am a photographer looking to work!</RaisedButton>
+                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoFalse}><span style={{color: "white", fontSize: "1.3em"}}>I am looking for a photographer!</span></RaisedButton>
+                    <RaisedButton backgroundColor="#344d65" style={button} onClick={this.props.toggleUserInfoTrue}><span style={{color: "white", fontSize: "1.3em"}}>I am a photographer looking to work!</span></RaisedButton>
                     <div style={coverImage.box.inner}>
                     <img style={coverImage.styles} src={coverImage.images.photo2} role="presentation" />
                     <ul style={coverImage.box.list}>
@@ -169,7 +175,7 @@ class FillerPhotoBin extends Component {
                       <li style={coverImage.space}><i className="fa fa-globe fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Work In Any City</li>
                       <li style={coverImage.space}><i className="fa fa-bullhorn fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Showcase A Portfolio</li>
                       <li style={coverImage.space}><i className="fa fa-line-chart fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}}></i><br />Gain Experience</li>
-                      <RaisedButton label="Learn More" secondary={true}  />
+                      <FlatButton href="/register" label="Learn More" hoverColor="#7EBF2D" style={{color: "#fff"}} />
                     </ul>
                     </div>
                     <Modal
@@ -183,13 +189,16 @@ class FillerPhotoBin extends Component {
                         title={full_name}
                         subtitle={this.props.userProfile.location_string}
                         avatar={this.props.userProfile.profile_picture}
-                        style={{backgroundColor: "#ddd"}}
+                        style={{backgroundColor: "#0d141a"}}
+                        titleColor="#fff"
+                        subtitleColor="#fff"
                         />
                       </Link>
-                      <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+                      <RaisedButton style={{display: "block"}} backgroundColor={"#7ebf2d"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
                       <img src={this.props.currentModal} role="presentation" />
                     </Card>
                     </Modal>
+                    <h1 style={coverImage.heading}>Recent Photos</h1>
                     <div style={styles.root}>
                       {this.props.photos.map((photo, i) => (
                         <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>
@@ -211,13 +220,16 @@ class FillerPhotoBin extends Component {
                           title={full_name}
                           subtitle={this.props.userProfile.location_string}
                           avatar={this.props.userProfile.profile_picture}
-                          style={{backgroundColor: "#ddd"}}
+                          style={{backgroundColor: "#0d141a"}}
+                          titleColor="#fff"
+                          subtitleColor="#fff"
                         />
                         </Link>
-                        <RaisedButton style={{display: "block"}} backgroundColor={"#e06464"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
+                        <RaisedButton style={{display: "block"}} backgroundColor={"#7ebf2d"} onClick={this.props.handleCloseModal} label="Close" fullWidth={true} />
                           <img src={this.props.currentModal} role="presentation" />
                       </Card>
                     </Modal>
+                    <h1 style={coverImage.heading}>Recent Photos</h1>
                     <div style={styles.root}>
                       {this.props.photos.map((photo, i) => (
                         <img key={i} onClick={this.props.handleOpenModal(photo.album_id)} style={styles.gridList} src={photo.file_location} role="presentation"/>

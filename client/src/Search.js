@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchResult from './SearchResult.js'
 var Carousel = require('nuka-carousel');
-import { Link } from 'react-router';
+
 
 let searchBarStyle = {
   background: '#111a22',

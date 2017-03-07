@@ -3,7 +3,7 @@ import {AppBar} from 'material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import Badge from 'material-ui/Badge';
-import IconButton from 'material-ui/IconButton';
+
 
 var navStyle = {
   position: "fixed",
