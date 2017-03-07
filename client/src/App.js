@@ -213,6 +213,7 @@ class App extends Component {
           this.setState({
             uploadedFileCloudinaryUrl: response.body.secure_url
           });
+          // window.setTimeout(this.setState({uploadedFileCloudinaryUrl: initialState.uploadedFileCloudinaryUrl}), 10000);
         }
         //fetch to create item in database
         fetch(url, {
@@ -781,7 +782,7 @@ class App extends Component {
           </div>
 
           { this.state.alert !== '' ? <div style={alertStyle}> {this.state.alert} </div> : ''}
-          
+
 
         </div>
 
@@ -792,4 +793,4 @@ class App extends Component {
 
 export default App;
 
-//<div style={alertStyle}>Photo inserted into Album Blah</div>          
+//<div style={alertStyle}>Photo inserted into Album Blah</div>
