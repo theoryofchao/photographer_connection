@@ -53,14 +53,15 @@ var styles = {
     display: 'flex',
     flexWrap: "wrap",
     justifyContent: 'center',
-    backgroundColor: "lightgrey",
+    background: 'linear-gradient( 180deg, #1a2733, #668fb2 )',
     padding: "40px 10px"
   },
   gridList: {
     maxHeight: "250px",
     objectFit: "contain",
-    border: "solid 2px grey",
-    padding: "2px",
+    border: "solid 1px black",
+
+    margin: "5px",
     backgroundColor: "white"
   },
 };

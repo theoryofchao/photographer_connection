@@ -32,7 +32,7 @@ var button = {
   right: "20px",
   bottom: "20px",
   backgroundColor: "#7EBF2D",
-  color: "#0D141A"
+  color: "#0D141C"
 }
 
 class SearchResult extends Component {

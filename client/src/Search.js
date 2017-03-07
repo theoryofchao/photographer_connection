@@ -3,16 +3,15 @@ import SearchResult from './SearchResult.js'
 var Carousel = require('nuka-carousel');
 import { Link } from 'react-router';
 
+let searchBarStyle = {
+  background: '#111a22',
+  "padding-top": "65px",
+}
 
 var styles = {
   maxHeight: "211px",
   overflow: "hidden",
-  backgroundColor: '#0D141A'
-}
-
-let searchBarStyle = {
-  backgroundColor: '#0D141A',
-  "padding-top": "65px",
+  background: 'linear-gradient( 180deg, #111a22, #1a2733 )'
 }
 
 class Search extends Component {
