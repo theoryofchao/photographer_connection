@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 let searchBarStyle = {
   background: '#111a22',
-  "padding-top": "65px",
+  paddingTop: "65px",
 }
 
 var styles = {
