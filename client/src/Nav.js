@@ -69,7 +69,6 @@ class Navigate extends Component {
             <FlatButton
               href="/#/login"
               label="Login"
-              onClick={(e)=>{this.props.onLogoutClick()}}
               style={style}
           />
           </AppBar>

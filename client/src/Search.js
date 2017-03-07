@@ -28,6 +28,8 @@ class Search extends Component {
               return <SearchResult key={index} result={result} resetAlbumParam={this.props.resetAlbumParam}/>
             })}
           </Carousel>
+          <div style={{margin: "20px"}}>
+          </div>
        </div>
     );
   }
