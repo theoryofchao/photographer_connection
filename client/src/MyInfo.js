@@ -150,6 +150,7 @@ class MyInfo extends Component {
               name="summary"
               value={this.props.myProfile.summary}
               floatingLabelText="About Me"
+              hintText="Write a description about yourself"
               multiLine={true}
               onChange={this.props.handleInfoChange}
               floatingLabelStyle={floatingLabelStyle}

@@ -27,6 +27,22 @@ var upload = {
   width: "50%"
 }
 
+var hintStyle = {
+  color: "#B1B1B1"
+}
+
+var floatingLabelStyle = {
+  color: "#fff"
+}
+
+var floatingLabelFocusStyle = {
+  color: "#00BCD4"
+}
+
+var formText = {
+  color: "#7EBF2D"
+}
+
 // var titleStyle = {
 //   display: "inline-block",
 //   textAlign: "center",
@@ -56,18 +72,39 @@ class MyGallery extends Component {
       <div style={padding}>
         <h2>Your Albums</h2>
         {this.props.myAlbums.map((album, index) => {
-          return <MyAlbum key={index} album={album}
-                    handlePhotoUpload={this.props.handlePhotoUpload}
-                    handleImageUpload={this.props.handleImageUpload}
-                    uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
-                    handleShowAlbum={this.props.handleShowAlbum}
-                  />
+          return (
+            <MyAlbum key={index} album={album}
+              handlePhotoUpload={this.props.handlePhotoUpload}
+              handleImageUpload={this.props.handleImageUpload}
+              uploadedFileCloudinaryUrl={this.props.uploadedFileCloudinaryUrl}
+              handleShowAlbum={this.props.handleShowAlbum}
+            />)
         })}
         <div style={form} className="form">
           <h3 style={formh3}><u>Add Album</u></h3>
           <form onSubmit={this.onFormSubmit.bind(this)}>
-            <TextField type="string" name="name" floatingLabelText="Album Name" hintText="Name your album"  ref={(input) => this.nameInput = input}/><br />
-            <TextField type="string" name="description" floatingLabelText="Description" hintText="Enter a description"  ref={(input) => this.descriptionInput = input}/><br /><br />
+            <TextField
+              type="string"
+              name="name"
+              floatingLabelText="Album Name"
+              hintText="Name your album"
+              ref={(input) => this.nameInput = input}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              inputStyle={formText}
+              hintStyle={hintStyle}
+            /><br />
+            <TextField
+              type="string"
+              name="description"
+              floatingLabelText="Description"
+              hintText="Enter a description"
+              ref={(input) => this.descriptionInput = input}
+              floatingLabelStyle={floatingLabelStyle}
+              floatingLabelFocusStyle={floatingLabelFocusStyle}
+              inputStyle={formText}
+              hintStyle={hintStyle}
+            /><br /><br />
             <input type="submit" value="Create Album" />
           </form>
         </div>
