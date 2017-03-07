@@ -28,6 +28,7 @@ var coverImage = {
   outer: {
     position: "inline-block",
     width: "100%",
+    
   },
   list: {
     display: "flex",
@@ -56,7 +57,7 @@ class Intro extends Component {
             <li style={coverImage.space}><i className="fa fa-address-book-o fa-5x" aria-hidden="true" style={{padding: "0 0 20px 25px"}}></i><br />Book Your Shoot</li>
           </ul>
         </div>
-    </div>
+      </div>
 
 
       <h1 style={coverImage.heading}>Focus On Your Career</h1>
