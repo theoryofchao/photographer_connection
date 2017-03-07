@@ -7,7 +7,8 @@ var main = {
   width: "100%",
   height: "100%",
   boxSizing: "border-box",
-  backgroundColor: "#6b7b93"
+  background: 'linear-gradient( 180deg, #1a2733, #111a22 )',
+  color: 'white'
 }
 
 var left = {
@@ -64,7 +65,7 @@ class MyInfo extends Component {
               {this.props.myProfile.profile_picture === '' ? null :
               <div>
                 <p>{this.props.uploadedFile}</p>
-                <img style={{border: "solid 3px black", maxWidth: "75%", maxHeight: "75%"}}src={this.props.myProfile.profile_picture} role="presentation" />
+                <img style={{maxWidth: "75%", maxHeight: "75%"}}src={this.props.myProfile.profile_picture} role="presentation" />
               </div>}
             </div>
           </div>

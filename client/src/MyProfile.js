@@ -19,9 +19,6 @@ class MyProfile extends Component {
             onInfoSubmit={this.props.onInfoSubmit}
           />
 
-          
-
-          <br />
           <MyGallery
             handlePhotoUpload={this.props.handlePhotoUpload}
             handleImageUpload={this.props.handleImageUpload}
