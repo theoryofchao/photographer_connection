@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Avatar from 'material-ui/Avatar';
 import DatePicker from 'material-ui/DatePicker';
 import FlatButton from 'material-ui/FlatButton';
-import { Link } from 'react-router';
+import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import Dialog from 'material-ui/Dialog';
 
 var style = {
   paddingTop: "20px",
   backgroundColor: '#32485B',
-// backgroundColor: "#344d65",
   height: "200px",
   display: "flex",
   flexDirection: "row",
@@ -17,7 +17,6 @@ var style = {
 }
 
 var avatarStyle = {
-  // backgroundColor: "#233443",
   backgroundColor: '#32485B',
   height: "200px",
   width: "200px",
@@ -50,14 +49,25 @@ var consultation = {
   flexDirection: "column"
 }
 
-function genNum(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+// function genNum(min, max) {
+//   return Math.floor(Math.random() * (max - min) + min);
+// } ***function worked, but was invoked on any event change, thus problematic
 
 class UserInfo extends Component {
   render() {
-  let profile_picture_url = this.props.userProfile.profile_picture ? this.props.userProfile.profile_picture : "https://img.clipartfest.com/ae3134c8983b10e4b65d9777294cec41_profile-icon-clip-art-profile-icon-clipart_300-300.png";
-
+  var profile_picture_url = this.props.userProfile.profile_picture ? this.props.userProfile.profile_picture : "https://img.clipartfest.com/ae3134c8983b10e4b65d9777294cec41_profile-icon-clip-art-profile-icon-clipart_300-300.png";
+  var actions = [
+    <FlatButton
+      label="Cancel"
+      primary={true}
+      onTouchTap={this.props.handleAlertClose}
+    />,
+    <FlatButton
+      label="Send"
+      primary={true}
+      onTouchTap={this.props.handleAlertClose}
+    />,
+  ];
     return (
         <div style={style}>
             <Avatar
@@ -86,17 +96,23 @@ class UserInfo extends Component {
                   value={this.props.menuItemValue}
                   onChange={this.props.menuItemChange}
                 >
-                  <MenuItem value={1} primaryText={"Single Shoot: $" + genNum(21, 29) + "/Hr"}  />
-                  <MenuItem value={2} primaryText={"Couples: $" + genNum(41, 49) + "/Hr"} />
-                  <MenuItem value={3} primaryText={"Events: $" + genNum(101, 119) + "/Hr"} />
-                  <MenuItem value={4} primaryText={"Commercial: $" + genNum(150, 159) + "/Hr"} />
-                  <MenuItem value={5} primaryText={"Weddings: $" + genNum(1220, 1299)} />
+                  <MenuItem value={1} primaryText={"Single Shoot: $21/Hr"}  />
+                  <MenuItem value={2} primaryText={"Couples: $41/Hr"} />
+                  <MenuItem value={3} primaryText={"Events: $97/Hr"} />
+                  <MenuItem value={4} primaryText={"Commercial: $150/Hr"} />
+                  <MenuItem value={5} primaryText={"Weddings: approx-$1400"} />
               </SelectField>
-                <Link to={"/"}><FlatButton
-
-                  icon={<i className="fa fa-envelope-o fa-2x" aria-hidden="true"></i>}
-                /></Link>
-
+              <div>
+                <RaisedButton backgroundColor="#32485B" label={<i style={{color: "white"}} className="fa fa-envelope-o fa-2x" aria-hidden="true"></i>} onTouchTap={this.props.handleAlertOpen} />
+                <Dialog
+                  actions={actions}
+                  modal={false}
+                  open={this.props.alertOpen}
+                  onRequestClose={this.props.handleAlertClose}
+                >
+                  Send an email to {this.props.userProfile.first_name} {this.props.userProfile.last_name}?
+                </Dialog>
+              </div>
             </div>
         </div>
     );

@@ -37,6 +37,7 @@ const initialState = {
   photoToEdit: '',
   userInfo: false,
   menuItemValue: null,
+  alertOpen: false,
 }
 
 var defaultBackground = {
@@ -772,6 +773,14 @@ class App extends Component {
     this.setState({userInfo: false})
   }
 
+  handleAlertOpen() {
+    this.setState({alertOpen: true});
+  };
+
+  handleAlertClose() {
+    this.setState({alertOpen: false});
+  };
+
   menuItemChange(event, index, value) {
     this.setState({menuItemValue: value});
   }
@@ -820,7 +829,9 @@ class App extends Component {
               toggleUserInfoTrue: this.toggleUserInfoTrue.bind(this),
               toggleUserInfoFalse: this.toggleUserInfoFalse.bind(this),
               menuItemChange: this.menuItemChange.bind(this),
-              shuffleArray: this.shuffleArray.bind(this)
+              shuffleArray: this.shuffleArray.bind(this),
+              handleAlertOpen: this.handleAlertOpen.bind(this),
+              handleAlertClose: this.handleAlertClose.bind(this),
             })
           )}
           </div>
