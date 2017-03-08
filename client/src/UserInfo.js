@@ -42,6 +42,16 @@ var description = {
     color: 'white'
 }
 
+var review = {
+    alignItems: "center",
+    display: "flex",
+    width: "15%",
+    marginLeft: "100px",
+    padding: "50px",
+    border: "dotted 2px #b2b2b2",
+    color: 'white'
+}
+
 var consultation = {
   paddingLeft: "100px",
   display: "flex",
@@ -104,8 +114,12 @@ class UserInfo extends Component {
 
                   icon={<i className="fa fa-envelope-o fa-2x" aria-hidden="true"></i>}
                 /></Link>
-
             </div>
+            <p style={review}>
+                Excellent photographer!<br/>
+                Would buy again!<br/>
+                Banana Potato
+            </p>
         </div>
     );
   }
