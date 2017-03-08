@@ -48,6 +48,8 @@ var button = {
   backgroundColor: "#0e2d49",
   color: "#7EBF2D",
   fontSize: "0.8em",
+  margin: "0 auto",
+  display: "block"
 }
 
 
@@ -119,10 +121,10 @@ class MyGallery extends Component {
           </div>}
         </div>
         {this.props.myProfilePhotos.length === 0 ? null :
-        <div>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
           {this.props.myProfilePhotos.map((photo, index) => {
         //    return <div><img key={index} src={photo.file_location} role="presentation" /><button onClick={() => {this.props.deletePhoto(photo.photo_id, localStorage.token)}}>Delete</button></div>
-            return <div key={index} style={{display: "inline-block"}}><img style={{border: "solid 2px black", padding: "1px", margin: "5px 2px 0", objectFit: "contain", maxHeight: "250px"}} src={photo.file_location} role="presentation" /><br /><button style={{display: "block", margin: "0 auto"}} onClick={() => {this.props.deletePhoto(photo.photo_id, localStorage.token)}}>Delete</button></div>
+            return <div key={index}><img style={{border: "solid 2px black", padding: "1px", margin: "5px 2px 0", objectFit: "contain", maxHeight: "250px"}} src={photo.file_location} role="presentation" /><br /><button style={button} onClick={() => {this.props.deletePhoto(photo.photo_id, localStorage.token)}}>Delete</button></div>
           })}
         </div>
         }
