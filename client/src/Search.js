@@ -49,7 +49,7 @@ class Search extends Component {
             type="text"
             name="search"
             floatingLabelText="Enter a Location"
-            hintText="Start Typing A City"
+            hintText="Filter your search by city"
             onChange={this.props.handleSearch}
             floatingLabelStyle={floatingLabelStyle}
             floatingLabelFocusStyle={floatingLabelFocusStyle}
