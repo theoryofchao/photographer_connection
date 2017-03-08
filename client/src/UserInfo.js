@@ -68,6 +68,14 @@ class UserInfo extends Component {
       onTouchTap={this.props.handleAlertClose}
     />,
   ];
+  var yearString = '';
+  if (this.props.userProfile.years_exp === 1) {
+    yearString = "Year Of Experience";
+  } else if (this.props.userProfile.years_exp > 1) {
+    yearString = "Years Of Experience";
+  } else {
+    yearString = "No Experience Yet";
+  }
     return (
         <div style={style}>
             <Avatar
@@ -78,7 +86,7 @@ class UserInfo extends Component {
               <span>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
               <span>@{this.props.userProfile.handle}</span><br /><br />
               <span>{this.props.userProfile.location_string}</span><br /><br />
-              <span>{this.props.userProfile.years_exp} Year(s) Of Experience</span><br /><br />
+              <span>{this.props.userProfile.years_exp} {yearString}</span><br /><br />
               <span>Contact: {this.props.userProfile.email}</span><br /><br />
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>

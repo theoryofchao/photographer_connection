@@ -70,7 +70,7 @@ class Login extends Component {
               onChange={this.props.handleLoginChange}
             />
             <input style={button} type="submit" value="Submit" />
-              <h5 style={{borderTop: "solid 2px black"}}>If you havent' signed up with Focus, please <FlatButton
+              <h5 style={{borderTop: "solid 2px black"}}>If you haven't signed up with Focus, please <FlatButton
                 style={{backgroundColor: "#e8ecf2"}}
                 href="/#/register"
                 >
