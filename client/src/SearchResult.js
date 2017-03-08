@@ -40,7 +40,6 @@ class SearchResult extends Component {
     let profileLink = "/user-profile/" + this.props.result.user_id;
     return (
         <div style={styles}>
-
             <Avatar
             style={floaty}
             src={this.props.result.profile_picture}
