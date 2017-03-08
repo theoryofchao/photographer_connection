@@ -18,8 +18,9 @@ var style = {
 
 var avatarStyle = {
   // backgroundColor: "#233443",
-  backgroundColor: '#32485B',//'linear-gradient( 180deg, #32485B, #638BAE 30%, #21303E)',
+  backgroundColor: '#32485B',
   height: "200px",
+  width: "200px",
   display: "flex",
   flexDirection: "row",
   justifyContent: "flex-start",
@@ -61,7 +62,6 @@ class UserInfo extends Component {
         <div style={style}>
             <Avatar
               src={profile_picture_url}
-              size={175}
               style={avatarStyle}
             />
             <div style={info}>
