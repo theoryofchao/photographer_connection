@@ -8,7 +8,6 @@ import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
 
 var style = {
-  paddingTop: "20px",
   backgroundColor: '#32485B',
   height: "200px",
   display: "flex",
@@ -28,16 +27,15 @@ var avatarStyle = {
 
 var info = {
   listStyleType: "none",
-  padding: "20px",
+  padding: "15px",
   color: 'white'
 }
 
 var description = {
-    alignItems: "center",
+    alignSelf: "inherit",
     display: "flex",
-    width: "20%",
+    width: "25%",
     padding: "50px",
-    border: "dotted 2px #b2b2b2",
     color: 'white'
 }
 
@@ -87,24 +85,24 @@ class UserInfo extends Component {
               style={avatarStyle}
             />
             <div style={info}>
-              <span><i style={iconStyle} className="fa fa-user fa-lg" aria-hidden="true"></i>  {this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
-              <span><i style={iconStyle} className="fa fa-at fa-lg" aria-hidden="true"></i> {this.props.userProfile.handle}</span><br /><br />
-              <span><i style={iconStyle} className="fa fa-map-marker fa-lg" aria-hidden="true"></i>   {this.props.userProfile.location_string}</span><br /><br />
-              <span><i style={iconStyle} className="fa fa-camera-retro fa-lg" aria-hidden="true"></i> {this.props.userProfile.years_exp} {yearString}</span><br /><br />
-              <span><i style={iconStyle} className="fa fa-envelope-o fa-lg" aria-hidden="true"></i> {this.props.userProfile.email}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-at fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;{this.props.userProfile.handle}</span><br /><br />
+              <span>&nbsp;<i style={iconStyle} className="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.props.userProfile.location_string}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-camera-retro fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;{this.props.userProfile.years_exp} {yearString}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-envelope-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;{this.props.userProfile.email}</span><br /><br />
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>
             <div style={consultation}>
               <h4 style={{margin: "9px", color: 'white'}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
               <DatePicker
               hintText="Select A Date"
-              hintStyle={{color: "#B1B1B1"}}
-              inputStyle={{color: "#7EBF2D"}}
+              hintStyle={{color: "#fff"}}
+              inputStyle={{color: "#fff"}}
               />
               <SelectField
-                  labelStyle={{color: "#7EBF2D"}}
+                  labelStyle={{color: "#fff"}}
                   hintText="Choose Your Shoot"
-                  hintStyle={{color: "#B1B1B1"}}
+                  hintStyle={{color: "#fff"}}
                   value={this.props.menuItemValue}
                   onChange={this.props.menuItemChange}
                 >

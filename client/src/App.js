@@ -55,13 +55,13 @@ var alertStyle = {
   height: "64px",
   top: "87%",
   right: "3%",
-  background: "green",
+  background: "#7EBF2D",
+  color: "#000",
   "text-align": "center",
   "vertical-align": "middle",
   "line-height": "64px",
   "font-weight": "bold",
   "border-radius": "15px",
-  color: "white"
 }
 
 var footer = {
