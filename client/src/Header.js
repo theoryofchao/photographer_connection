@@ -8,7 +8,7 @@ class Header extends Component {
         <div>
             <Navigate userA={this.props.userA} onLogoutClick={this.props.onLogoutClick}/>
             <br />
-            <Search sampleProfiles={this.props.sampleProfiles} searchResults={this.props.searchResults} resetAlbumParam={this.props.resetAlbumParam}/>
+            <Search sampleProfiles={this.props.sampleProfiles} searchResults={this.props.searchResults} resetAlbumParam={this.props.resetAlbumParam} handleSearch={this.props.handleSearch}/>
         </div>
     );
   }

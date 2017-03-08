@@ -20,6 +20,7 @@ const initialState = {
   uploadedFileCloudinaryUrl: '',
   photos: [],
   searchResults: [],
+  querySearchResults: [], //this one saves all searches here
   userProfile: {},
   userAlbums: [],
   myProfile: {},
@@ -361,6 +362,7 @@ class App extends Component {
             console.log(json.message); //if error occured
           } else {
             that.setState({searchResults: json});
+            that.setState({querySearchResults: json});
           }
         })
       }
@@ -368,6 +370,14 @@ class App extends Component {
     .catch((error) => {
       console.error(error);
     });
+  }
+
+  handleSearch = (e) => {
+    let filtered =  this.state.querySearchResults.filter((result) => {
+      return result.location_string.match(new RegExp('^'+e.target.value, 'i'));
+    });
+
+    this.setState({searchResults: filtered});
   }
 
   getUserProfile = (userId) => {
@@ -781,7 +791,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div style={defaultBackground}>
-          <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults} resetAlbumParam={this.resetAlbumParam.bind(this)}/>
+          <Header userA={this.state.userAuthenticated} onLogoutClick={this.onLogoutClick} sampleProfiles={this.sampleProfiles} searchResults={this.state.searchResults} resetAlbumParam={this.resetAlbumParam.bind(this)} handleSearch={this.handleSearch.bind(this)}/>
           <div className="mainBody" style={mainBody}>
           {Children.map(this.props.children, child =>
             cloneElement(child, {
