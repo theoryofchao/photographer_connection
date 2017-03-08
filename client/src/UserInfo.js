@@ -57,6 +57,14 @@ function genNum(min, max) {
 class UserInfo extends Component {
   render() {
   let profile_picture_url = this.props.userProfile.profile_picture ? this.props.userProfile.profile_picture : "https://img.clipartfest.com/ae3134c8983b10e4b65d9777294cec41_profile-icon-clip-art-profile-icon-clipart_300-300.png";
+  let yearString = '';
+  if (this.props.userProfile.years_exp === 1) {
+    yearString = "Year Of Experience";
+  } else if (this.props.userProfile.years_exp > 1) {
+    yearString = "Years Of Experience";
+  } else {
+    yearString = "No Experience Yet";
+  }
 
     return (
         <div style={style}>
@@ -68,7 +76,7 @@ class UserInfo extends Component {
               <span>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
               <span>@{this.props.userProfile.handle}</span><br /><br />
               <span>{this.props.userProfile.location_string}</span><br /><br />
-              <span>{this.props.userProfile.years_exp} Year(s) Of Experience</span><br /><br />
+              <span>{this.props.userProfile.years_exp} {yearString}</span><br /><br />
               <span>Contact: {this.props.userProfile.email}</span><br /><br />
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>
