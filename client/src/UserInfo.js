@@ -8,8 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 var style = {
   paddingTop: "20px",
-  backgroundColor: '#32485B',
-// backgroundColor: "#344d65",
+  backgroundColor: '#E0DFD5',
   height: "200px",
   display: "flex",
   flexDirection: "row",
@@ -18,7 +17,7 @@ var style = {
 
 var avatarStyle = {
   // backgroundColor: "#233443",
-  backgroundColor: '#32485B',
+  backgroundColor: '#E0DFD5',
   height: "200px",
   width: "200px",
   display: "flex",
@@ -30,7 +29,7 @@ var avatarStyle = {
 var info = {
   listStyleType: "none",
   padding: "20px",
-  color: 'white'
+  color: '#1F1300'
 }
 
 var description = {
@@ -39,7 +38,7 @@ var description = {
     width: "20%",
     padding: "50px",
     border: "dotted 2px #b2b2b2",
-    color: 'white'
+    color: '#1F1300'
 }
 
 var consultation = {
@@ -73,14 +72,14 @@ class UserInfo extends Component {
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>
             <div style={consultation}>
-              <h4 style={{margin: "9px", color: 'white'}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
+              <h4 style={{margin: "9px", color: '#1F1300'}}> Request a Consultation With {this.props.userProfile.first_name} </h4>
               <DatePicker
               hintText="Select A Date"
               hintStyle={{color: "#B1B1B1"}}
-              inputStyle={{color: "#7EBF2D"}}
+              inputStyle={{color: "#F06543"}}
               />
               <SelectField
-                  labelStyle={{color: "#7EBF2D"}}
+                  labelStyle={{color: "#F06543"}}
                   hintText="Choose Your Shoot"
                   hintStyle={{color: "#B1B1B1"}}
                   value={this.props.menuItemValue}

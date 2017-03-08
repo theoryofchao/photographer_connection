@@ -6,11 +6,11 @@ import FlatButton from 'material-ui/FlatButton';
 
 var style = {
   padding: "75px 10px 10px 10px",
-  background: 'linear-gradient( 180deg, #1a2733, #668fb2 )',
+  background: 'linear-gradient( 180deg, #E0DFD5, #668fb2 )',
 }
 
 var albumButton = {
-  color: "#7EBF2D",
+  color: "#F06543",
   margin: "0 5px"
 }
 
@@ -26,7 +26,7 @@ class Gallery extends Component {
       <div style={style}>
         <div style={{textAlign: "center"}}>
           <Link to={url}>
-            <FlatButton backgroundColor="#0D141A" style={albumButton} hoverColor="#354e63" rippleColor="#7EBF2D" onClick={this.props.resetUserParam} label="All Photos"/>
+            <FlatButton backgroundColor="#0D141A" style={albumButton} hoverColor="#354e63" rippleColor="#F06543" onClick={this.props.resetUserParam} label="All Photos"/>
           </Link>
           {this.props.userAlbums.map((album, index) => (
             <UserAlbums key={index} user_id={that.props.userProfile.user_id} album={album} resetUserParam={this.props.resetUserParam}/>

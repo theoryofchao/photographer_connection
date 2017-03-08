@@ -12,7 +12,7 @@ var titleStyle = {
 var button = {
   padding: "8px",
   backgroundColor: "#0e2d49",
-  color: "#7EBF2D",
+  color: "#F06543",
   fontSize: "0.8em",
 }
 

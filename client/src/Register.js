@@ -5,11 +5,11 @@ import FlatButton from 'material-ui/FlatButton';
 
 var mainBody = {
   height: "780px",
-  background: 'linear-gradient( 180deg, #1a2733, #668fb2 )'
+
 }
 
 var register = {
-  border: "solid 4px #7EBF2D",
+  border: "solid 4px #F06543",
   width: "50%",
   display: "flex",
   alignItems: "center",
@@ -30,7 +30,7 @@ var heading = {
 var button = {
   padding: "15px",
   backgroundColor: "#0e2d49",
-  color: "#7EBF2D",
+  color: "#F06543",
   borderRadius: "25px",
   fontSize: "0.9em",
   display: "flex",

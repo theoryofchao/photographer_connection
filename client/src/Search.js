@@ -3,15 +3,14 @@ import SearchResult from './SearchResult.js'
 var Carousel = require('nuka-carousel');
 
 
-let searchBarStyle = {
-  background: '#111a22',
+var searchBarStyle = {
+  background: '#E0DFD5',
   paddingTop: "65px",
 }
 
 var styles = {
   maxHeight: "211px",
   overflow: "hidden",
-  background: 'linear-gradient( 180deg, #111a22, #1a2733 )'
 }
 
 class Search extends Component {

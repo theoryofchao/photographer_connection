@@ -17,7 +17,6 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="intro" component={Intro} />
     <Route path="/" component={App}>
-
       <IndexRoute component={FillerPhotoBin} />
       <Route path="login" component={Login} />
       <Route path="register" component={Register} />

@@ -9,8 +9,8 @@ var main = {
   width: "100%",
   height: "100%",
   boxSizing: "border-box",
-  backgroundColor: '#1a2733',
-  color: 'white'
+  backgroundColor: '#E0DFD5',
+  color: '#1F1300'
 }
 
 var left = {
@@ -33,7 +33,7 @@ var hintStyle = {
 }
 
 var floatingLabelStyle = {
-  color: "#fff"
+  color: "##1F1300"
 }
 
 var floatingLabelFocusStyle = {
@@ -41,13 +41,13 @@ var floatingLabelFocusStyle = {
 }
 
 var formText = {
-  color: "#7EBF2D"
+  color: "#F06543"
 }
 
 var button = {
   padding: "15px",
-  backgroundColor: "#0e2d49",
-  color: "#7EBF2D",
+  backgroundColor: "#E0DFD5",
+  color: "#F06543",
   borderRadius: "25px",
   fontSize: "0.9em",
 }
@@ -79,7 +79,7 @@ class MyInfo extends Component {
           <div style={{textAlign: "center"}}>
             <h2 style={{textAlign: "center", margin: "0 20px 10px 0", display: "inline-block"}}>{this.props.myProfile.first_name} {this.props.myProfile.last_name}</h2>
             <Link to={url} style={{display: "inline-block"}}>
-              <FlatButton backgroundColor="#7EBF2D" hoverColor="#354e63" rippleColor="#7EBF2D" label="View your public profile"/>
+              <FlatButton backgroundColor="#F06543" hoverColor="#354e63" rippleColor="#F06543" label="View your public profile"/>
             </Link>
           </div>
           <div style={left}>

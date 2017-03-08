@@ -20,7 +20,7 @@ var coverImage = {
   },
   box: {
     inner: {
-      backgroundColor: "#fff",
+      backgroundColor: "##1F1300",
       color: "#4e4e4f",
       display: "flex",
       flexDirection: "row",
@@ -28,7 +28,7 @@ var coverImage = {
   outer: {
     position: "inline-block",
     width: "100%",
-    
+
   },
   list: {
     display: "flex",

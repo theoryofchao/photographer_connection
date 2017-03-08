@@ -36,10 +36,11 @@ const initialState = {
   photoToEdit: '',
   userInfo: false,
   menuItemValue: null,
+  themeSwitch: false
 }
 
 var defaultBackground = {
-  backgroundColor: "#1a2733"
+  backgroundColor: "#E0DFD5"
 }
 
 var mainBody = {
@@ -59,12 +60,12 @@ var alertStyle = {
   "line-height": "64px",
   "font-weight": "bold",
   "border-radius": "15px",
-  color: "white"
+  color: "#1F1300"
 }
 
 var footer = {
   fontSize: "0.75em",
-  color: "white",
+  color: "#1F1300",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -776,6 +777,15 @@ class App extends Component {
     return arr;
   }
 
+  toggleThemeTrue() {
+    this.setState({themeSwitch: true})
+  }
+
+  toggleThemeFalse() {
+    this.setState({themeSwitch: false})
+  }
+
+
   render() {
     console.log("APP STATE ON RENDER: ", this.state);
     return (
@@ -810,7 +820,9 @@ class App extends Component {
               toggleUserInfoTrue: this.toggleUserInfoTrue.bind(this),
               toggleUserInfoFalse: this.toggleUserInfoFalse.bind(this),
               menuItemChange: this.menuItemChange.bind(this),
-              shuffleArray: this.shuffleArray.bind(this)
+              shuffleArray: this.shuffleArray.bind(this),
+              toggleThemeTrue: this.toggleThemeTrue.bind(this),
+              toggleThemeFalse: this.toggleThemeFalse.bind(this)
             })
           )}
           </div>

@@ -12,7 +12,7 @@ import FlatButton from 'material-ui/FlatButton';
 // }
 
 var albumButton = {
-  color: "#7EBF2D",
+  color: "#F06543",
   margin: "0 5px"
 }
 
@@ -22,7 +22,7 @@ class UserAlbums extends Component {
     let url = `user-profile/${this.props.user_id}/album/${this.props.album.album_id}`;
     return (
       <Link to={url}>
-        <FlatButton backgroundColor="#0D141A" style={albumButton} hoverColor="#354e63" rippleColor="#7EBF2D" onClick={this.props.resetUserParam} label={this.props.album.name}/>
+        <FlatButton backgroundColor="#0D141A" style={albumButton} hoverColor="#354e63" rippleColor="#F06543" onClick={this.props.resetUserParam} label={this.props.album.name}/>
       </Link>
     );
   }

@@ -4,9 +4,8 @@ import TextField from 'material-ui/TextField';
 import MyAlbum from './MyAlbum.js';
 
 var padding = {
-  color: 'white',
+  color: '#1F1300',
   padding: "15px 30px",
-  background: 'linear-gradient( 180deg, #1a2733, #2b4054 95%, #668fb2 )',
 }
 
 var form = {
@@ -17,7 +16,7 @@ var form = {
 }
 
 var formh3 = {
-  color: 'white',
+  color: '#1F1300',
   marginBottom: "0",
   marginTop: "0"
 }
@@ -32,7 +31,7 @@ var hintStyle = {
 }
 
 var floatingLabelStyle = {
-  color: "#fff"
+  color: "##1F1300"
 }
 
 var floatingLabelFocusStyle = {
@@ -40,13 +39,13 @@ var floatingLabelFocusStyle = {
 }
 
 var formText = {
-  color: "#7EBF2D"
+  color: "#F06543"
 }
 
 var button = {
   padding: "8px",
   backgroundColor: "#0e2d49",
-  color: "#7EBF2D",
+  color: "#F06543",
   fontSize: "0.8em",
 }
 

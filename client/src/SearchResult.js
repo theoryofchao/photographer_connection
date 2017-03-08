@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router';
 
 var styles = {
-  border: "solid 1px #7EBF2D",
+  border: "solid 1px #F06543",
   borderRadius: "5px",
   padding: "10px",
   overflow: "auto",
@@ -17,7 +17,7 @@ var info = {
   float: "right",
   fontSize: "1em",
   margin: "0",
-  color: "#7EBF2D",
+  color: "#F06543",
   fontWeight: "bold"
 }
 
@@ -50,7 +50,7 @@ class SearchResult extends Component {
               <p style={info}>{this.props.result.last_name}</p><br /><br />
               <p style={info}>{this.props.result.location_string}</p><br />
               <Link to={profileLink}>
-                <FlatButton hoverColor="#354e63" backgroundColor="#7EBF2D" onClick={this.props.resetAlbumParam} style={button} label="Profile" />
+                <FlatButton hoverColor="#354e63" backgroundColor="#F06543" onClick={this.props.resetAlbumParam} style={button} label="Profile" />
               </Link>
             </div>
         </div>
