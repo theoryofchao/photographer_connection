@@ -49,6 +49,10 @@ var consultation = {
   flexDirection: "column"
 }
 
+var iconStyle = {
+  color: "#7EBF2D"
+}
+
 // function genNum(min, max) {
 //   return Math.floor(Math.random() * (max - min) + min);
 // } ***function worked, but was invoked on any event change, thus problematic
@@ -83,11 +87,11 @@ class UserInfo extends Component {
               style={avatarStyle}
             />
             <div style={info}>
-              <span>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
-              <span>@{this.props.userProfile.handle}</span><br /><br />
-              <span>{this.props.userProfile.location_string}</span><br /><br />
-              <span>{this.props.userProfile.years_exp} {yearString}</span><br /><br />
-              <span>Contact: {this.props.userProfile.email}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-user fa-lg" aria-hidden="true"></i>  {this.props.userProfile.first_name} {this.props.userProfile.last_name}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-at fa-lg" aria-hidden="true"></i> {this.props.userProfile.handle}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-map-marker fa-lg" aria-hidden="true"></i>   {this.props.userProfile.location_string}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-camera-retro fa-lg" aria-hidden="true"></i> {this.props.userProfile.years_exp} {yearString}</span><br /><br />
+              <span><i style={iconStyle} className="fa fa-envelope-o fa-lg" aria-hidden="true"></i> {this.props.userProfile.email}</span><br /><br />
             </div>
             <p style={description}>{this.props.userProfile.summary}</p>
             <div style={consultation}>
