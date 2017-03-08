@@ -83,7 +83,8 @@ var modalStyles = {
     alignItems: "center",
     flexDirection: "column",
     boxShadow: "5px 5px 5px #888",
-    background: 'linear-gradient( 180deg, #1a2733, #668fb2 )'
+    background: 'linear-gradient( 180deg, #1a2733, #668fb2 )',
+    zIndex: "500"
   }
 }
 

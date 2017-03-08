@@ -3,10 +3,13 @@ import TextField from 'material-ui/TextField';
 import SearchResult from './SearchResult.js'
 var Carousel = require('nuka-carousel');
 
+var searchField = {
+  paddingLeft: "10px"
+}
 
-let searchBarStyle = {
+var searchBarStyle = {
   background: '#111a22',
-  paddingTop: "65px",
+  paddingTop: "65px"
 }
 
 var styles = {
@@ -32,6 +35,7 @@ var formText = {
 }
 
 
+
 class Search extends Component {
   mixins: [Carousel.ControllerMixin]
   componentWillMount() {
@@ -44,13 +48,14 @@ class Search extends Component {
           <TextField
             type="text"
             name="search"
-            floatingLabelText="Search"
-            hintText="Enter a Location"
+            floatingLabelText="Enter a Location"
+            hintText="Start Typing A City"
             onChange={this.props.handleSearch}
             floatingLabelStyle={floatingLabelStyle}
             floatingLabelFocusStyle={floatingLabelFocusStyle}
             inputStyle={formText}
             hintStyle={hintStyle}
+            style={searchField}
           />
           <Carousel style={styles} slidesToShow={5} slidesToScroll={5}>
             {this.props.searchResults.map((result, index) => {

@@ -93,7 +93,7 @@ class UserInfo extends Component {
                   <MenuItem value={5} primaryText={"Weddings: $" + genNum(1220, 1299)} />
               </SelectField>
                 <Link to={"/"}><FlatButton
-                  style={{backgroundColor: "#b2b2b2"}}
+
                   icon={<i className="fa fa-envelope-o fa-2x" aria-hidden="true"></i>}
                 /></Link>
 
