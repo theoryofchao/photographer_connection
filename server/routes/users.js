@@ -16,7 +16,7 @@ router.get('/sample', function(req, res, next) {
 
   knex.select('user_id', 'email', 'handle', 'first_name', 'last_name', 'location_string', 'years_exp', 'summary', 'profile_picture')
   .from(`users`)
-  .whereNot(`first_name`, ``).orWhereNot(`last_name`, ``) //only get accounts where first_name or last_name are available
+  .whereNot(`first_name`, ``).orWhereNot(`last_name`, ``).orWhereNot(`location_string`, '') //only get accounts where first_name or last_name are available
   .orderBy(`created_at`, `desc`)
   .timeout(1000)
   .then( (result) => {
