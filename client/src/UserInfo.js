@@ -6,6 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
+import TextField from 'material-ui/TextField';
 
 var style = {
   backgroundColor: '#32485B',
@@ -51,6 +52,22 @@ var iconStyle = {
   color: "#7EBF2D"
 }
 
+var hintStyle = {
+  color: "#B1B1B1"
+}
+
+var floatingLabelStyle = {
+  color: "#000"
+}
+
+var floatingLabelFocusStyle = {
+  color: "#00BCD4"
+}
+
+var formText = {
+  color: "#000"
+}
+
 // function genNum(min, max) {
 //   return Math.floor(Math.random() * (max - min) + min);
 // } ***function worked, but was invoked on any event change, thus problematic
@@ -59,6 +76,15 @@ class UserInfo extends Component {
   render() {
   var profile_picture_url = this.props.userProfile.profile_picture ? this.props.userProfile.profile_picture : "https://img.clipartfest.com/ae3134c8983b10e4b65d9777294cec41_profile-icon-clip-art-profile-icon-clipart_300-300.png";
   var actions = [
+    <TextField
+      type="email"
+      floatingLabelText="Email"
+      hintText="Enter your contact e-mail"
+      floatingLabelStyle={floatingLabelStyle}
+      floatingLabelFocusStyle={floatingLabelFocusStyle}
+      inputStyle={formText}
+      hintStyle={hintStyle}
+    />,
     <FlatButton
       label="Cancel"
       primary={true}
