@@ -61,6 +61,7 @@ class Register extends Component {
                 value={this.props.registration.email}
                 hintText="Enter Your E-mail...."
                 floatingLabelText="Your E-mail"
+                floatingLabelStyle={{color: "#000"}}
                 onChange={this.props.handleRegistrationChange}
               />
               <TextField
@@ -70,6 +71,7 @@ class Register extends Component {
                 value={this.props.registration.password}
                 hintText="Enter Your New Password"
                 floatingLabelText="Enter A Password"
+                floatingLabelStyle={{color: "#000"}}
                 onChange={this.props.handleRegistrationChange}
               />
               <TextField
@@ -79,6 +81,7 @@ class Register extends Component {
                 value={this.props.registration.passwordConfirmation}
                 hintText="Confirm Your Password"
                 floatingLabelText="Please Confirm Your Password"
+                floatingLabelStyle={{color: "#000"}}
                 onChange={this.props.handleRegistrationChange}
                 />
                 <br />

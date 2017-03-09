@@ -57,6 +57,7 @@ class Login extends Component {
                 fullWidth={true}
                 type="email"
                 name="email"
+                floatingLabelStyle={{color: "#000"}}
                 floatingLabelText="E-mail"
                 hintText="Enter Your E-mail Address"
                 onChange={this.props.handleLoginChange}
@@ -66,6 +67,7 @@ class Login extends Component {
               type="password"
               name="password"
               floatingLabelText="Password"
+              floatingLabelStyle={{color: "#000"}}
               hintText="Enter Your Password"
               onChange={this.props.handleLoginChange}
             />

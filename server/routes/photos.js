@@ -100,7 +100,7 @@ router.post('/new/:album_id', (req, res, next) => {
         .returning(`*`)
         .then((result) => {
           console.log(result);
-          return res.status(200).json({'message' : `Photo inserted into album ${album_id}.`});
+          return res.status(200).json({'message' : `Photo inserted into album.`});
         })
         .catch((error) => {
           console.error(error);
