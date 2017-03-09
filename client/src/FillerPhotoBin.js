@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import Modal from 'react-modal';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -123,7 +123,7 @@ class FillerPhotoBin extends Component {
                       <ul style={coverImage.box.list}>
                         <li style={coverImage.space}><i className="fa fa-list fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Browse Artists</span></li>
                         <li style={coverImage.space}><i className="fa fa-map-marker fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Support Local</span></li>
-                        <li style={coverImage.space}><i className="fa fa-comments fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Live Messaging</span></li>
+                        <li style={coverImage.space}><i className="fa fa-comments fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Communicate</span></li>
                         <li style={coverImage.space}><i className="fa fa-address-book-o fa-3x" aria-hidden="true" style={{paddingBottom: "20px"}} ></i><br /><span>Book Your Shoot</span></li>
                         <FlatButton href="/#/register" label="Learn More" hoverColor="#7EBF2D" style={{color: "#fff"}}/>
                       </ul>
